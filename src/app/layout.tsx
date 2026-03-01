@@ -1,8 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const syne = Syne({
   subsets: ["latin"],
@@ -11,9 +17,15 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Ampliare Consultoria | Soluções Estratégicas",
+  title: {
+    default: "Ampliare Consultoria | Soluções Estratégicas",
+    template: "%s | Ampliare Consultoria",
+  },
   description:
-    "Ampliare Consultoria - Consultoria estratégica para ampliar resultados e transformar negócios.",
+    "Ampliare Consultoria - Consultoria estratégica para ampliar resultados e transformar negócios. Marketing, vendas e transformação digital.",
+  openGraph: {
+    locale: "pt_BR",
+  },
 };
 
 export default function RootLayout({
