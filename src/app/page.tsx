@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   Target,
@@ -82,16 +83,15 @@ const metodologiaCards: { title: string; description: string }[] = [
   },
 ];
 
-// TODO: substituir por imagens reais das logos
-const parceiros = [
-  "iFood",
-  "Fundação GrupoBoticário",
-  "Tecnisa",
-  "BRF",
-  "Vivo",
-  "SM",
-  "DAKO",
-  "Sicredi",
+const parceiros: { nome: string; logo: string }[] = [
+  { nome: "iFood", logo: "/parceiros/ifood.svg" },
+  { nome: "Fundação Grupo Boticário", logo: "/parceiros/grupoboticario.svg" },
+  { nome: "Tecnisa", logo: "/parceiros/tecnisa.svg" },
+  { nome: "BRF", logo: "/parceiros/brf.svg" },
+  { nome: "Vivo", logo: "/parceiros/vivo.svg" },
+  { nome: "SM", logo: "/parceiros/sm.svg" },
+  { nome: "DAKO", logo: "/parceiros/dako.svg" },
+  { nome: "Sicredi", logo: "/parceiros/sicredi.png" },
 ];
 
 const heroVariants = {
@@ -293,18 +293,28 @@ export default function Home() {
                 </h2>
               </motion.div>
 
-              {/* Carrossel/marquee infinito horizontal de logos */}
+              {/* Carrossel/marquee infinito horizontal de logos + nomes */}
               <div className="mt-10 overflow-hidden lg:mt-12" aria-label="Parceiros">
                 <div className="flex w-max animate-marquee gap-6 sm:gap-8">
-                  {[...parceiros, ...parceiros].map((nome, i) => (
+                  {[...parceiros, ...parceiros].map((p, i) => (
                     <div
-                      key={`${nome}-${i}`}
-                      className="flex h-20 w-[180px] shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition-all duration-300 hover:border-primary/40 hover:bg-white/10 hover:shadow-md hover:shadow-primary/10 sm:h-24 sm:w-[220px]"
+                      key={`${p.nome}-${i}`}
+                      className="flex h-24 w-[200px] shrink-0 flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition-all duration-300 hover:border-primary/40 hover:bg-white/10 hover:shadow-md hover:shadow-primary/10 sm:h-28 sm:w-[240px]"
                       role="img"
-                      aria-label={nome}
+                      aria-label={p.nome}
                     >
-                      <span className="text-center text-sm font-medium text-white/50 transition-colors duration-300 hover:text-primary sm:text-base">
-                        {nome}
+                      <div className="relative h-10 w-full flex-1 shrink-0 sm:h-12">
+                        <Image
+                          src={p.logo}
+                          alt=""
+                          width={120}
+                          height={48}
+                          className="h-full w-full object-contain object-center"
+                          unoptimized={p.logo.endsWith(".svg")}
+                        />
+                      </div>
+                      <span className="text-center text-xs font-medium text-white/70 transition-colors duration-300 hover:text-primary sm:text-sm">
+                        {p.nome}
                       </span>
                     </div>
                   ))}
