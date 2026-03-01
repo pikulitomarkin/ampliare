@@ -19,7 +19,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-foreground/95 backdrop-blur-md supports-[backdrop-filter]:bg-foreground/90">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a0a0a] shadow-lg">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -28,7 +28,7 @@ export function Header() {
           Ampliare Consultoria
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Menu principal">
           {navItems.map((item) => (
             <Link
               key={item.href}

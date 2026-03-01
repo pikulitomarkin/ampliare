@@ -110,9 +110,17 @@ const heroVariants = {
 export default function Home() {
   return (
     <>
-      {/* Hero — vídeo + texto institucional */}
-      <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-foreground to-primary/20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(123,47,190,0.25),transparent)]" aria-hidden />
+      {/* Hero — vídeo + fundo prismático (gramospirsm) + texto institucional */}
+      <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
+        {/* Efeito prismático / gramospirsm no fundo (roxo, rosa, azul, âmbar) */}
+        <div className="absolute inset-0" aria-hidden>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_20%,rgba(123,47,190,0.5),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_85%_15%,rgba(236,72,153,0.35),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_95%,rgba(59,130,246,0.25),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_55%_at_15%_75%,rgba(234,179,8,0.2),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(123,47,190,0.08)_60deg,rgba(236,72,153,0.06)_120deg,rgba(59,130,246,0.06)_180deg,rgba(234,179,8,0.05)_240deg,transparent_360deg)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/40 to-[#0a0a0a]" />
+        </div>
         <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 lg:pt-32">
           <motion.div
             custom={0}
@@ -150,8 +158,8 @@ export default function Home() {
             variants={heroVariants}
             className="mt-10 max-w-3xl sm:mt-12"
           >
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8">
-              <p className="text-lg leading-relaxed text-white/90 sm:text-xl">
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur-md sm:p-8">
+              <p className="text-lg font-medium leading-relaxed text-white sm:text-xl">
                 [TEXTO HERO]
               </p>
             </div>

@@ -21,6 +21,24 @@ body {
   min-width: 320px;
 }
 
+/* Header: garantir fundo escuro e texto visível em qualquer contexto */
+header {
+  background-color: #0a0a0a !important;
+}
+header a,
+header button {
+  color: #fff !important;
+}
+header a:hover {
+  opacity: 0.9;
+}
+header nav a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+header nav a[class*="bg-white"] {
+  color: #fff !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
