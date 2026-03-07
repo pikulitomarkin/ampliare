@@ -198,7 +198,7 @@ export default function Contato() {
                 <div>
                   <p className="text-sm font-medium text-white/70">Endereço</p>
                   <p className="mt-1 text-white/95">
-                    R. Bruxelas, 188 – Conj 02 – Sumaré, São Paulo – SP, 01259-020
+                    Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                   </p>
                 </div>
               </li>
@@ -209,10 +209,10 @@ export default function Contato() {
                 <div>
                   <p className="text-sm font-medium text-white/70">Telefone</p>
                   <a
-                    href="tel:+5511912613992"
+                    href="tel:+5541988356427"
                     className="mt-1 block text-white/95 hover:text-primary transition-colors"
                   >
-                    (11) 91261-3992
+                    (41) 98835-6427
                   </a>
                 </div>
               </li>
@@ -223,10 +223,10 @@ export default function Contato() {
                 <div>
                   <p className="text-sm font-medium text-white/70">E-mail</p>
                   <a
-                    href="mailto:contato@layerup.com.br"
+                    href="mailto:contato@ampliareconsultoria.com.br"
                     className="mt-1 block text-white/95 hover:text-primary transition-colors"
                   >
-                    contato@layerup.com.br
+                    contato@ampliareconsultoria.com.br
                   </a>
                 </div>
               </li>

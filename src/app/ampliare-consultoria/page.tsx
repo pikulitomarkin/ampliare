@@ -5,15 +5,32 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
 const marcosTimeline = [
-  { year: "2020", label: "Fundação da Ampliare Consultoria" },
-  { year: "2022", label: "Expansão de serviços e primeiros cases de destaque" },
-  { year: "2024", label: "Consolidação em marketing, vendas e transformação digital" },
+  {
+    year: "2021",
+    label:
+      "Início da atuação em projetos de consultoria nas áreas de estratégia, marketing e desenvolvimento de negócios.",
+  },
+  {
+    year: "2022",
+    label:
+      "Ampliação da base de clientes e evolução das soluções voltadas à estruturação comercial e crescimento empresarial.",
+  },
+  {
+    year: "2024",
+    label:
+      "Estruturação da Ampliare Consultoria e consolidação da atuação em marketing, vendas e transformação digital.",
+  },
+  {
+    year: "2026",
+    label:
+      "Expansão das iniciativas de consultoria e fortalecimento do apoio estratégico a empresas em crescimento.",
+  },
 ];
 
 const contadores = [
-  { valor: 8, sufixo: "", label: "Anos de experiência" },
-  { valor: 150, sufixo: "+", label: "Clientes atendidos" },
-  { valor: 300, sufixo: "+", label: "Cases entregues" },
+  { valor: 5, sufixo: "+", label: "anos de experiência na área" },
+  { valor: 400, sufixo: "+", label: "empresas atendidas" },
+  { valor: 700, sufixo: "+", label: "projetos e iniciativas desenvolvidas" },
 ];
 
 function ContadorAnimado({
@@ -151,17 +168,17 @@ export default function AmpliareConsultoria() {
             ))}
           </div>
 
-          {/* Timeline */}
+          {/* Timeline: linha roxa, círculo com número, ano em roxo, texto em cinza */}
           <div className="mt-16">
             <div className="relative max-w-2xl">
               <div
-                className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-primary/30"
+                className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-primary"
                 aria-hidden
               />
               <ul className="space-y-10">
                 {marcosTimeline.map((marco, index) => (
                   <motion.li
-                    key={marco.year}
+                    key={`${marco.year}-${index}`}
                     initial={{ opacity: 0, x: -16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -169,7 +186,7 @@ export default function AmpliareConsultoria() {
                     className="relative flex gap-6 pl-10"
                   >
                     <span
-                      className="absolute left-0 top-0.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-primary bg-white text-xs font-bold text-primary"
+                      className="absolute left-0 top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
                       aria-hidden
                     >
                       {index + 1}
@@ -178,7 +195,7 @@ export default function AmpliareConsultoria() {
                       <span className="font-display text-xl font-bold text-primary sm:text-2xl">
                         {marco.year}
                       </span>
-                      <p className="mt-1 text-base font-medium text-foreground">
+                      <p className="mt-2 text-base leading-relaxed text-foreground/70">
                         {marco.label}
                       </p>
                     </div>

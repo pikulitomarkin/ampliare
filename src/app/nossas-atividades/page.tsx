@@ -19,8 +19,8 @@ type Servico = {
 const servicos: Servico[] = [
   {
     id: "gestao-midia",
-    title: "Gestão de Mídia e Resultados Otimizados",
-    subtitle: "ADS LOVERS - Google ADS e Meta ADS",
+    title: "Como Atuamos",
+    subtitle: "Google ADS e Meta ADS",
     intro:
       "Vivemos em um mundo conectado, onde as pessoas passam grande parte do dia interagindo com conteúdos digitais em computadores e celulares. É nesse ambiente que elas consomem informação, se divertem e tomam decisões de compra. Por isso, sua marca precisa ocupar espaço nesses canais: se não estiver online, sua campanha simplesmente não será vista.",
     text: "Nosso time trabalha para transformar cada investimento em mídia paga em resultados reais. Com atenção aos detalhes e análise constante, ajustamos campanhas, peças e canais para que cada ação seja mais eficiente.",
@@ -37,7 +37,7 @@ const servicos: Servico[] = [
   {
     id: "gestao-redes-sociais",
     title: "Gestão de Redes Sociais",
-    subtitle: "Social Media Full — Gestão Completa de Redes Sociais",
+    subtitle: "Gestão Completa de Redes Sociais",
     intro:
       "Identificamos todos os objetivos do seu negócio para criar uma estratégia digital personalizada, potencializando a presença da sua marca nas redes sociais.",
     bullets: [
@@ -88,8 +88,8 @@ const servicos: Servico[] = [
     title: "Criação de Campanhas e Conteúdos",
     subtitle: "Dê vida às suas ideias",
     intro:
-      "Na Ampliare Consultoria, a criação publicitária se traduz em ideias que ganham vida. Cada projeto combina inovação e estratégia, garantindo que conceitos se tornem experiências reais e impactantes.",
-    text: "Comunicar sua marca, lançar novos produtos ou serviços e manter o público conectado exige mais do que boas intenções. A criação publicitária é um dos pilares de qualquer campanha de sucesso, unindo estratégia, criatividade e execução de forma integrada.",
+      "Na Ampliare Consultoria, a criação de campanhas e conteúdos se traduz em ideias que ganham vida. Cada projeto combina inovação e estratégia, garantindo que conceitos se tornem experiências reais e impactantes.",
+    text: "Comunicar sua marca, lançar novos produtos ou serviços e manter o público conectado exige mais do que boas intenções. A criação de campanhas e conteúdos é um dos pilares de qualquer campanha de sucesso, unindo estratégia, criatividade e execução de forma integrada.",
     subtitle2: "Transformando pensamento em resultado",
     steps: [
       "Análise de contexto e tendências",

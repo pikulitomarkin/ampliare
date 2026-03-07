@@ -1,12 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
-  ArrowRight,
-  Target,
-  Zap,
-  Users,
   TrendingUp,
   ArrowUp,
   Sparkles,
@@ -17,8 +14,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { SectionTag } from "@/components/SectionTag";
-import { ServiceCard } from "@/components/ServiceCard";
 
 const solucoesCards: {
   title: string;
@@ -51,47 +46,41 @@ const solucoesCards: {
   },
 ];
 
-const metodologiaPilares = [
-  "Método",
-  "Planejamento",
-  "Competência",
-  "Estrutura",
-  "Valores",
-] as const;
-const metodologiaAtivoIndex = 3; // Estrutura
-
-const metodologiaCards: { title: string; description: string }[] = [
+const metodologiaItens: { label: string; description: string }[] = [
   {
-    title: "Método",
+    label: "Método",
     description:
-      "Nosso trabalho é conduzido por um processo estruturado, que organiza etapas, define prioridades e garante clareza na execução. Atuamos com planejamento, acompanhamento contínuo e foco em resultados mensuráveis.",
+      "Nosso trabalho é conduzido por um processo estruturado, que organiza etapas, define prioridades e garante clareza na execução. Atuamos com planejamento, acompanhamento contínuo e foco em resultados mensuráveis, assegurando consistência em cada entrega e evolução constante ao longo do projeto.",
   },
   {
-    title: "Planejamento",
+    label: "Planejamento",
     description:
-      "Construímos caminhos claros para o crescimento das marcas, a partir de análise de mercado, posicionamento e definição de metas. Cada decisão é orientada por dados e visão de longo prazo.",
+      "Construímos caminhos claros para o crescimento das marcas, a partir de análise de mercado, posicionamento e definição de metas. Cada decisão é orientada por dados e visão de longo prazo, conectando comunicação, marketing e vendas a objetivos concretos de negócio.",
   },
   {
-    title: "Competência",
+    label: "Competência",
     description:
-      "Contamos com equipe especializada e experiência prática para transformar estratégia em ação. Nossa capacidade técnica permite executar projetos com eficiência, qualidade e integração entre diferentes frentes digitais.",
+      "Contamos com equipe especializada e experiência prática para transformar estratégia em ação. Nossa capacidade técnica permite executar projetos com eficiência, qualidade e integração entre diferentes frentes digitais, garantindo performance sustentável.",
   },
   {
-    title: "Estrutura e Valores",
+    label: "Estrutura",
     description:
-      "Valorizamos uma organização colaborativa, com processos bem definidos e cultura orientada a resultados. Estimulamos autonomia, inovação e responsabilidade compartilhada.",
+      "Valorizamos uma organização colaborativa, com processos bem definidos e cultura orientada a resultados. Estimulamos autonomia, inovação e responsabilidade compartilhada, criando um ambiente que favorece alta performance e crescimento contínuo.",
+  },
+  {
+    label: "DNA",
+    description:
+      "Nosso DNA é orientado por resultados e pela evolução contínua. Valorizamos agilidade, colaboração e aprendizado constante para desenvolver estratégias eficientes e gerar impacto real para nossos clientes. Trabalhamos com flexibilidade e consistência para transformar desafios em oportunidades e construir projetos de sucesso.",
   },
 ];
 
+// Logos em /public/logos/ — nomes exatos: logo_pizza_prime.png, logo_rede_dor-21331594.png, hotel-ibis-logo-115294069548cavco4znp.png. Adicionar petz.png e fast-shop.png quando disponíveis.
 const parceiros: { nome: string; logo: string }[] = [
-  { nome: "iFood", logo: "/parceiros/ifood.svg" },
-  { nome: "Fundação Grupo Boticário", logo: "/parceiros/grupoboticario.svg" },
-  { nome: "Tecnisa", logo: "/parceiros/tecnisa.svg" },
-  { nome: "BRF", logo: "/parceiros/brf.svg" },
-  { nome: "Vivo", logo: "/parceiros/vivo.svg" },
-  { nome: "SM", logo: "/parceiros/sm.svg" },
-  { nome: "DAKO", logo: "/parceiros/dako.svg" },
-  { nome: "Sicredi", logo: "/parceiros/sicredi.png" },
+  { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.png" },
+  { nome: "Petz", logo: "/logos/petz.png" },
+  { nome: "Fast Shop", logo: "/logos/fast-shop.png" },
+  { nome: "Rede D'Or", logo: "/logos/logo_rede_dor-21331594.png" },
+  { nome: "Ibis Hotels", logo: "/logos/hotel-ibis-logo-115294069548cavco4znp.png" },
 ];
 
 const heroVariants = {
@@ -107,7 +96,18 @@ const heroVariants = {
   }),
 };
 
+const ROTACAO_METODOLOGIA_MS = 3000;
+
 export default function Home() {
+  const [metodologiaAtivo, setMetodologiaAtivo] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setMetodologiaAtivo((i) => (i + 1) % metodologiaItens.length);
+    }, ROTACAO_METODOLOGIA_MS);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <>
       {/* Hero — vídeo + fundo prismático (gramospirsm) + texto institucional */}
@@ -156,12 +156,22 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={heroVariants}
-            className="mt-10 max-w-3xl sm:mt-12"
+            className="mt-10 max-w-3xl text-left sm:mt-12"
           >
-            <div className="rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur-md sm:p-8">
-              <p className="text-lg font-medium leading-relaxed text-white sm:text-xl">
-                [TEXTO HERO]
-              </p>
+            <h2 className="text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+              CRESCIMENTO QUE TRANSFORMA
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-white/90 sm:text-xl">
+              Somos uma consultoria digital que potencializa resultados, redefine
+              posicionamentos e transforma a maneira como empresas pensam e atuam.
+            </p>
+            <div className="mt-6">
+              <Link
+                href="/solucoes-estrategicas"
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all duration-200 hover:bg-primary-light hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+              >
+                CONHEÇA NOSSAS SOLUÇÕES
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -234,9 +244,11 @@ export default function Home() {
                         }}
                         className="min-w-[280px] shrink-0 sm:min-w-[320px] lg:min-w-0"
                       >
-                        <div className="group h-full rounded-2xl border border-primary/30 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
-                          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors group-hover:bg-primary/30">
-                            <card.icon className="h-6 w-6" />
+                        <div className="group flex h-full flex-col rounded-2xl border border-primary/30 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                          <div className="flex shrink-0 justify-center">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors group-hover:bg-primary/30">
+                              <card.icon className="h-10 w-10" size={40} />
+                            </div>
                           </div>
                           <h3 className="mt-4 text-lg font-semibold text-white">
                             {card.title}
@@ -293,32 +305,29 @@ export default function Home() {
                 </h2>
               </motion.div>
 
-              {/* Carrossel/marquee infinito horizontal de logos + nomes */}
-              <div className="mt-10 overflow-hidden lg:mt-12" aria-label="Parceiros">
-                <div className="flex w-max animate-marquee gap-6 sm:gap-8">
-                  {[...parceiros, ...parceiros].map((p, i) => (
-                    <div
-                      key={`${p.nome}-${i}`}
-                      className="flex h-24 w-[200px] shrink-0 flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-4 transition-all duration-300 hover:border-primary/40 hover:bg-white/10 hover:shadow-md hover:shadow-primary/10 sm:h-28 sm:w-[240px]"
-                      role="img"
-                      aria-label={p.nome}
-                    >
-                      <div className="relative h-10 w-full flex-1 shrink-0 sm:h-12">
-                        <Image
-                          src={p.logo}
-                          alt=""
-                          width={120}
-                          height={48}
-                          className="h-full w-full object-contain object-center"
-                          unoptimized={p.logo.endsWith(".svg")}
-                        />
-                      </div>
-                      <span className="text-center text-xs font-medium text-white/70 transition-colors duration-300 hover:text-primary sm:text-sm">
-                        {p.nome}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+              {/* Grid responsivo: logos reais, grayscale com hover colorido, altura 60px */}
+              <div className="mt-10 grid grid-cols-2 place-items-center gap-6 sm:grid-cols-3 sm:gap-8 lg:mt-12 lg:grid-cols-5 lg:gap-8" aria-label="Parceiros">
+                {parceiros.map((p, i) => (
+                  <motion.div
+                    key={p.nome}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.35, delay: i * 0.05 }}
+                    className="group flex h-[60px] w-full max-w-[180px] items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-[box-shadow,border-color] duration-300 ease-out hover:border-primary/40 hover:shadow-md hover:shadow-primary/10"
+                    role="img"
+                    aria-label={p.nome}
+                  >
+                    <Image
+                      src={p.logo}
+                      alt=""
+                      width={160}
+                      height={60}
+                      className="h-[60px] w-auto max-w-full object-contain grayscale transition-[filter] duration-300 ease-out group-hover:grayscale-0"
+                      unoptimized={p.logo.endsWith(".png") || p.logo.endsWith(".svg")}
+                    />
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -455,7 +464,7 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              {/* Direita: lista de pilares com dash e destaque roxo no ativo */}
+              {/* Direita: rotador animado — uma palavra ativa por vez, clique ou rotação a cada 3s */}
               <motion.ul
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -464,25 +473,31 @@ export default function Home() {
                 className="flex flex-col gap-3 border-l-2 border-white/20 pl-6"
                 role="list"
               >
-                {metodologiaPilares.map((pilar, index) => {
-                  const isAtivo = index === metodologiaAtivoIndex;
+                {metodologiaItens.map((item, index) => {
+                  const isAtivo = index === metodologiaAtivo;
                   return (
-                    <li key={pilar} className="flex items-center gap-3">
-                      <span
-                        className={`h-px w-6 shrink-0 bg-white/40 ${
-                          isAtivo ? "!w-8 !bg-primary" : ""
-                        }`}
-                        aria-hidden
-                      />
-                      <span
-                        className={`text-sm font-medium sm:text-base ${
-                          isAtivo
-                            ? "text-primary"
-                            : "text-white/70"
-                        }`}
+                    <li key={item.label}>
+                      <button
+                        type="button"
+                        onClick={() => setMetodologiaAtivo(index)}
+                        className="flex w-full items-center gap-3 text-left transition-colors hover:opacity-90"
+                        aria-pressed={isAtivo}
+                        aria-label={`Selecionar ${item.label}`}
                       >
-                        {pilar}
-                      </span>
+                        <span
+                          className={`h-px shrink-0 transition-all duration-300 ${
+                            isAtivo ? "w-8 bg-primary" : "w-6 bg-white/40"
+                          }`}
+                          aria-hidden
+                        />
+                        <span
+                          className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
+                            isAtivo ? "text-primary" : "text-white/70"
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      </button>
                     </li>
                   );
                 })}
@@ -490,7 +505,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Linha 2: CAPACIDADE (display) à esquerda | parágrafo à direita */}
+          {/* Linha 2: CAPACIDADE (fixo) à esquerda | conteúdo do item ativo à direita */}
           <div className="mt-14 grid grid-cols-1 gap-8 border-t border-white/10 pt-14 lg:mt-20 lg:grid-cols-2 lg:gap-16 lg:pt-20">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -505,90 +520,22 @@ export default function Home() {
                 CAPACIDADE
               </span>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex items-center"
-            >
-              <p className="text-base leading-relaxed text-white/80 sm:text-lg">
-                Nossas soluções personalizadas de marketing e vendas acompanham a
-                jornada do cliente com o objetivo de gerar valor e ampliar o
-                fechamento de negócios. Todas as ações são sustentadas pelo uso
-                de plataformas tecnológicas e dirigidas por dados.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Linha 3: 4 cards de metodologia */}
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16">
-            {metodologiaCards.map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8"
-              >
-                <h3 className="text-lg font-semibold text-primary sm:text-xl">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">
-                  {card.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <SectionTag>O que fazemos</SectionTag>
-            <h2 className="mt-4 text-2xl font-bold text-foreground sm:text-3xl">
-              Nossas áreas de atuação
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-foreground/80">
-              Serviços desenhados para impulsionar sua organização.
-            </p>
-          </motion.div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <ServiceCard
-              title="Estratégia"
-              description="Planejamento e execução de estratégias alinhadas aos seus objetivos."
-              icon={Target}
-              href="/solucoes-estrategicas"
-              index={0}
-            />
-            <ServiceCard
-              title="Performance"
-              description="Otimização de processos e indicadores para melhores resultados."
-              icon={Zap}
-              href="/solucoes-estrategicas"
-              index={1}
-            />
-            <ServiceCard
-              title="Gestão de pessoas"
-              description="Desenvolvimento de equipes e cultura organizacional."
-              icon={Users}
-              href="/nossas-atividades"
-              index={2}
-            />
-            <ServiceCard
-              title="Transformação"
-              description="Projetos de mudança e inovação para o futuro do negócio."
-              icon={ArrowRight}
-              href="/nossas-atividades"
-              index={3}
-            />
+            <div className="flex min-h-[180px] items-center sm:min-h-[200px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={metodologiaAtivo}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full"
+                >
+                  <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+                    {metodologiaItens[metodologiaAtivo].description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
@@ -633,26 +580,25 @@ export default function Home() {
                 <li className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                   <span>
-                    R. Bruxelas, 188 – Conj 02 – Sumaré, São Paulo – SP,
-                    01259-020
+                    Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-5 w-5 shrink-0 text-primary" />
                   <a
-                    href="tel:+5511912613992"
+                    href="tel:+5541988356427"
                     className="hover:text-primary transition-colors"
                   >
-                    (11) 91261-3992
+                    (41) 98835-6427
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="h-5 w-5 shrink-0 text-primary" />
                   <a
-                    href="mailto:contato@layerup.com.br"
+                    href="mailto:contato@ampliareconsultoria.com.br"
                     className="hover:text-primary transition-colors"
                   >
-                    contato@layerup.com.br
+                    contato@ampliareconsultoria.com.br
                   </a>
                 </li>
               </ul>

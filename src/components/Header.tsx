@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,12 +11,42 @@ const navItems = [
   { label: "Soluções Estratégicas", href: "/solucoes-estrategicas" },
   { label: "Nossas Atividades", href: "/nossas-atividades" },
   { label: "Ampliare Consultoria", href: "/ampliare-consultoria" },
-  { label: "Contato", href: "/contato" },
 ];
+
+const overlayVariants = {
+  closed: { opacity: 0, transition: { duration: 0.25 } },
+  open: { opacity: 1, transition: { duration: 0.25 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+};
+
+const contentVariants = {
+  closed: { opacity: 0, y: 20 },
+  open: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, delay: 0.05 + i * 0.06, ease: [0.22, 1, 0.36, 1] },
+  }),
+  exit: (i: number) => ({
+    opacity: 0,
+    y: 10,
+    transition: { duration: 0.2, delay: i * 0.02 },
+  }),
+};
 
 export function Header() {
   const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a0a0a] shadow-lg">
@@ -28,73 +58,53 @@ export function Header() {
           Ampliare Consultoria
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Menu principal">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === item.href
-                  ? "bg-white/10 text-white"
-                  : "text-white/80 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href="/contato"
-            className="rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-primary-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground"
-          >
-            Entre em Contato
-          </Link>
-        </div>
-
         <button
           type="button"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={mobileOpen}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={menuOpen}
         >
           <motion.div
             initial={false}
-            animate={{ rotate: mobileOpen ? 90 : 0 }}
+            animate={{ rotate: menuOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </motion.div>
         </button>
       </div>
 
       <AnimatePresence>
-        {mobileOpen && (
-          <motion.nav
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-white/10 bg-foreground md:hidden"
+        {menuOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="exit"
+            variants={overlayVariants}
+            className="fixed inset-0 z-40 bg-[#0a0a0a]"
+            aria-hidden="false"
           >
-            <div className="flex flex-col gap-0.5 px-4 py-4">
+            <nav
+              className="flex h-full flex-col items-center justify-center gap-8 px-6 py-20"
+              aria-label="Menu principal"
+            >
               {navItems.map((item, i) => (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{ duration: 0.2, delay: i * 0.03 }}
+                  custom={i}
+                  variants={contentVariants}
+                  initial="closed"
+                  animate="open"
+                  exit="exit"
                 >
                   <Link
                     href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`block rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
+                    onClick={() => setMenuOpen(false)}
+                    className={`block text-center text-2xl font-medium tracking-tight transition-colors sm:text-3xl lg:text-4xl ${
                       pathname === item.href
-                        ? "bg-white/10 text-white"
-                        : "text-white/80 hover:bg-white/5 hover:text-white"
+                        ? "text-white"
+                        : "text-white/85 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -102,22 +112,23 @@ export function Header() {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -8 }}
-                transition={{ duration: 0.2, delay: navItems.length * 0.03 }}
-                className="mt-2 px-4 pt-2"
+                custom={navItems.length}
+                variants={contentVariants}
+                initial="closed"
+                animate="open"
+                exit="exit"
+                className="mt-4"
               >
                 <Link
                   href="/contato"
-                  onClick={() => setMobileOpen(false)}
-                  className="block rounded-lg bg-primary py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-primary-light"
+                  onClick={() => setMenuOpen(false)}
+                  className="inline-block rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-200 hover:bg-primary-light hover:shadow-xl sm:text-xl"
                 >
                   Entre em Contato
                 </Link>
               </motion.div>
-            </div>
-          </motion.nav>
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

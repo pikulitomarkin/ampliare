@@ -93,25 +93,25 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <span>
-                  R. Bruxelas, 188 – Conj 02 – Sumaré, São Paulo – SP, 01259-020
+                  Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-accent" />
                 <a
-                  href="tel:+5511912613992"
+                  href="tel:+5541988356427"
                   className="hover:text-white transition-colors"
                 >
-                  (11) 91261-3992
+                  (41) 98835-6427
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-accent" />
                 <a
-                  href="mailto:contato@layerup.com.br"
+                  href="mailto:contato@ampliareconsultoria.com.br"
                   className="hover:text-white transition-colors"
                 >
-                  contato@layerup.com.br
+                  contato@ampliareconsultoria.com.br
                 </a>
               </li>
             </ul>
