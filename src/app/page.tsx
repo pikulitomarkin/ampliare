@@ -75,11 +75,11 @@ const metodologiaItens: { label: string; description: string }[] = [
 // Existentes: logo_pizza_prime.png, logo_rede_dor-21331594.png, hotel-ibis-logo-115294069548cavco4znp.png
 // Inexistentes: petz.png, fast-shop.png → placeholder com nome da marca
 const parceiros: { nome: string; logo: string | null }[] = [
-  { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.png" },
+  { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.svg" },
   { nome: "Petz", logo: null },
   { nome: "Fast Shop", logo: null },
-  { nome: "Rede D'Or", logo: "/logos/logo_rede_dor-21331594.png" },
-  { nome: "Ibis Hotels", logo: "/logos/hotel-ibis-logo-115294069548cavco4znp.png" },
+  { nome: "Rede D'Or", logo: "/logos/logo_rede_dor-21331594.svg" },
+  { nome: "Ibis Hotels", logo: "/logos/hotel-ibis-logo-115294069548cavco4znp.svg" },
 ];
 
 const heroVariants = {
@@ -103,18 +103,19 @@ function ParceiroLogo({ nome, logo }: { nome: string; logo: string | null }) {
   return (
     <span className="relative flex h-full w-full items-center justify-center">
       {logo !== null && (
-        <Image
+        <img
           src={logo}
           alt=""
-          width={160}
-          height={60}
           className="logo-parceiros h-[60px] w-auto max-w-full object-contain transition-[filter] duration-300 ease-out"
-          style={{ display: showPlaceholder ? "none" : undefined }}
+          style={{
+            height: "56px",
+            width: "auto",
+            display: showPlaceholder ? "none" : undefined,
+          }}
           onError={(e) => {
             e.currentTarget.style.display = "none";
             setImgFailed(true);
           }}
-          unoptimized
         />
       )}
       {showPlaceholder && (
@@ -138,18 +139,79 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — vídeo + fundo com glow bordô sutil */}
-      <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(125,43,43,0.15)_0%,transparent_60%),#0a0a0a]" aria-hidden />
-        <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 lg:pt-32">
+      {/* Hero — vídeo + background cinematográfico premium */}
+      <section
+        className="relative min-h-screen overflow-hidden"
+        style={{
+          minHeight: "100vh",
+          position: "relative",
+          background: [
+            "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.85) 100%)",
+            "radial-gradient(ellipse 60% 50% at 0% 0%, rgba(125,43,43,0.45) 0%, transparent 60%)",
+            "radial-gradient(ellipse 55% 45% at 100% 100%, rgba(101,54,20,0.4) 0%, transparent 55%)",
+            "radial-gradient(ellipse 70% 30% at 50% 100%, rgba(80,35,15,0.5) 0%, transparent 60%)",
+            "radial-gradient(ellipse 40% 20% at 50% 0%, rgba(125,43,43,0.25) 0%, transparent 50%)",
+            "linear-gradient(160deg, #0f0805 0%, #0a0a0a 35%, #100808 65%, #0a0605 100%)",
+          ].join(", "),
+        }}
+      >
+        {/* Grain / noise sutil */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`,
+            opacity: 0.4,
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+          aria-hidden
+        />
+        {/* Scan lines */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+          aria-hidden
+        />
+        {/* Borda brilhante bordô na parte inferior */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "2px",
+            background:
+              "linear-gradient(90deg, transparent 0%, #7D2B2B 30%, #9B4B2B 50%, #7D2B2B 70%, transparent 100%)",
+            zIndex: 2,
+          }}
+          aria-hidden
+        />
+        <div className="relative z-[3] mx-auto flex min-h-screen max-w-6xl flex-col px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 lg:pt-32">
           <motion.div
             custom={0}
             initial="hidden"
             animate="visible"
             variants={heroVariants}
-            className="flex-1"
+            className="relative z-[3] flex-1"
           >
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-[#2A2A2A] bg-black/40 shadow-2xl sm:rounded-2xl">
+            <div
+              className="aspect-video w-full overflow-hidden bg-black/40"
+              style={{
+                border: "1px solid rgba(125,43,43,0.3)",
+                boxShadow:
+                  "0 0 60px rgba(125,43,43,0.15), 0 0 120px rgba(80,30,10,0.1), inset 0 0 30px rgba(0,0,0,0.5)",
+                borderRadius: 4,
+                position: "relative",
+                zIndex: 3,
+              }}
+            >
               {/* Placeholder: troque pelo seu vídeo ou ID do YouTube */}
               <iframe
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
