@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -71,15 +71,84 @@ const metodologiaItens: { label: string; description: string }[] = [
   },
 ];
 
-// Parceiros: só usamos arquivos que existem em /public/logos/
-// Existentes: logo_pizza_prime.png, logo_rede_dor-21331594.png, hotel-ibis-logo-115294069548cavco4znp.png
-// Inexistentes: petz.png, fast-shop.png → placeholder com nome da marca
-const parceiros: { nome: string; logo: string | null }[] = [
-  { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.svg" },
-  { nome: "Petz", logo: null },
-  { nome: "Fast Shop", logo: null },
-  { nome: "Rede D'Or", logo: "/logos/logo_rede_dor-21331594.svg" },
-  { nome: "Ibis Hotels", logo: "/logos/hotel-ibis-logo-115294069548cavco4znp.svg" },
+// Parceiros: logos em SVG inline (sem dependência de arquivos externos)
+const cardStyleParceiro: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "1rem 1.5rem",
+  border: "1px solid #2A2A2A",
+  borderRadius: "6px",
+  background: "#111111",
+  minWidth: "120px",
+  height: "72px",
+};
+
+const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
+  {
+    nome: "Pizza Prime",
+    svg: (
+      <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
+        <text x="100" y="28" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+          PIZZA
+        </text>
+        <text x="100" y="52" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+          PRIME
+        </text>
+      </svg>
+    ),
+  },
+  {
+    nome: "Petz",
+    logo: "/logos/Petz.svg",
+    svg: (
+      <svg viewBox="0 0 160 60" style={{ width: "120px", height: "45px" }}>
+        <text x="80" y="42" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="32" fontWeight="900" fill="#F0EDE8">
+          Petz
+        </text>
+      </svg>
+    ),
+  },
+  {
+    nome: "Fast Shop",
+    logo: "/logos/FastShop.svg",
+    svg: (
+      <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
+        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="20" fontWeight="900" fill="#F0EDE8">
+          FAST
+        </text>
+        <text x="90" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="13" fill="#A8A8A8" letterSpacing="4">
+          SHOP
+        </text>
+      </svg>
+    ),
+  },
+  {
+    nome: "Rede D'Or",
+    svg: (
+      <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
+        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+          REDE
+        </text>
+        <text x="90" y="54" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="13" fill="#A8A8A8">
+          D&apos;OR
+        </text>
+      </svg>
+    ),
+  },
+  {
+    nome: "Ibis Hotels",
+    svg: (
+      <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
+        <text x="100" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="22" fontWeight="900" fill="#F0EDE8">
+          Ibis
+        </text>
+        <text x="100" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="14" fill="#A8A8A8">
+          Hotels
+        </text>
+      </svg>
+    ),
+  },
 ];
 
 const heroVariants = {
@@ -97,49 +166,30 @@ const heroVariants = {
 
 const ROTACAO_METODOLOGIA_MS = 3000;
 
-const cardStyle: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "1rem 1.5rem",
-  border: "1px solid #2A2A2A",
-  borderRadius: "6px",
-  background: "#111111",
-  minWidth: "120px",
-  height: "72px",
-};
-
-function ParceiroLogo({ nome, logo }: { nome: string; logo: string | null }) {
+function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
   const [imgFailed, setImgFailed] = useState(false);
-  const showPlaceholder = logo === null || imgFailed;
-
-  if (showPlaceholder) {
-    return (
-      <div style={{ ...cardStyle, background: "#2A2A2A" }}>
-        <span style={{ textAlign: "center", fontSize: "0.875rem", fontWeight: 500, color: "#6B6B6B" }}>
-          {nome}
-        </span>
-      </div>
-    );
-  }
-
+  const useImg = p.logo && !imgFailed;
   return (
-    <div style={cardStyle}>
-      <img
-        src={logo!}
-        alt={nome}
-        style={{
-          maxHeight: "48px",
-          width: "auto",
-          maxWidth: "120px",
-          objectFit: "contain",
-          filter: "grayscale(100%)",
-          transition: "filter 0.3s ease",
-        }}
-        onError={() => setImgFailed(true)}
-        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-        onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-      />
+    <div style={cardStyleParceiro}>
+      {useImg ? (
+        <img
+          src={p.logo}
+          alt={p.nome}
+          style={{
+            maxHeight: "48px",
+            width: "auto",
+            maxWidth: "120px",
+            objectFit: "contain",
+            filter: "grayscale(100%)",
+            transition: "filter 0.3s ease",
+          }}
+          onError={() => setImgFailed(true)}
+          onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
+          onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+        />
+      ) : (
+        p.svg
+      )}
     </div>
   );
 }
@@ -390,7 +440,7 @@ export default function Home() {
                 >
                   {[...parceiros, ...parceiros].map((p, i) => (
                     <div key={`${p.nome}-${i}`} className="shrink-0" role="img" aria-label={p.nome}>
-                      <ParceiroLogo nome={p.nome} logo={p.logo} />
+                      <ParceiroCard p={p} />
                     </div>
                   ))}
                 </div>
