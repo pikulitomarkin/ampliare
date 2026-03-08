@@ -41,7 +41,7 @@ export default function Contato() {
   };
 
   return (
-    <section className="min-h-screen px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24" style={{ background: "var(--bg-deep)" }}>
+    <section className="min-h-screen px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24" style={{ background: "var(--bg-main)" }}>
       <div className="mx-auto max-w-7xl">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function Contato() {
           >
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                <label htmlFor="nome" className="block text-sm font-medium" style={{ color: "var(--gray-700)" }}>
                   Nome *
                 </label>
                 <input
@@ -74,9 +74,9 @@ export default function Contato() {
                   type="text"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
-                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:border-[var(--crimson)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                   style={{
-                    borderColor: "var(--border-dark)",
+                    borderColor: "var(--border-light)",
                     background: "var(--bg-card)",
                     color: "var(--text-primary)",
                   }}
@@ -91,7 +91,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                <label htmlFor="email" className="block text-sm font-medium" style={{ color: "var(--gray-700)" }}>
                   E-mail *
                 </label>
                 <input
@@ -99,9 +99,9 @@ export default function Contato() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:border-[var(--crimson)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                   style={{
-                    borderColor: "var(--border-dark)",
+                    borderColor: "var(--border-light)",
                     background: "var(--bg-card)",
                     color: "var(--text-primary)",
                   }}
@@ -116,7 +116,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="telefone" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                <label htmlFor="telefone" className="block text-sm font-medium" style={{ color: "var(--gray-700)" }}>
                   Telefone *
                 </label>
                 <input
@@ -124,9 +124,9 @@ export default function Contato() {
                   type="tel"
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
-                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:border-[var(--crimson)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                   style={{
-                    borderColor: "var(--border-dark)",
+                    borderColor: "var(--border-light)",
                     background: "var(--bg-card)",
                     color: "var(--text-primary)",
                   }}
@@ -141,7 +141,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="empresa" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                <label htmlFor="empresa" className="block text-sm font-medium" style={{ color: "var(--gray-700)" }}>
                   Empresa
                 </label>
                 <input
@@ -149,9 +149,9 @@ export default function Contato() {
                   type="text"
                   value={empresa}
                   onChange={(e) => setEmpresa(e.target.value)}
-                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:border-[var(--crimson)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                   style={{
-                    borderColor: "var(--border-dark)",
+                    borderColor: "var(--border-light)",
                     background: "var(--bg-card)",
                     color: "var(--text-primary)",
                   }}
@@ -159,7 +159,7 @@ export default function Contato() {
                 />
               </div>
               <div>
-                <label htmlFor="mensagem" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
+                <label htmlFor="mensagem" className="block text-sm font-medium" style={{ color: "var(--gray-700)" }}>
                   Mensagem *
                 </label>
                 <textarea
@@ -167,9 +167,9 @@ export default function Contato() {
                   rows={4}
                   value={mensagem}
                   onChange={(e) => setMensagem(e.target.value)}
-                  className="mt-1.5 w-full min-h-[120px] resize-y rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  className="mt-1.5 w-full min-h-[120px] resize-y rounded border px-4 py-3 transition-colors focus:border-[var(--crimson)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                   style={{
-                    borderColor: "var(--border-dark)",
+                    borderColor: "var(--border-light)",
                     background: "var(--bg-card)",
                     color: "var(--text-primary)",
                   }}
@@ -184,15 +184,15 @@ export default function Contato() {
                 )}
               </div>
               {submitted && (
-                <p className="rounded px-4 py-3 text-sm" style={{ background: "var(--crimson-glow)", color: "var(--text-primary)" }}>
+                <p className="rounded px-4 py-3 text-sm" style={{ background: "var(--crimson-muted)", color: "var(--text-primary)" }}>
                   Mensagem recebida. Retornaremos em breve!
                 </p>
               )}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full items-center justify-center gap-2 rounded px-4 py-3.5 text-sm font-semibold uppercase tracking-wider shadow-lg transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)] disabled:cursor-not-allowed disabled:opacity-70"
-                style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
+                className="flex w-full items-center justify-center gap-2 rounded px-4 py-3.5 text-sm font-semibold uppercase tracking-wider shadow-lg transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)] disabled:cursor-not-allowed disabled:opacity-70"
+                style={{ background: "var(--crimson)", color: "var(--text-light)" }}
               >
                 {isSubmitting ? (
                   <>
@@ -218,22 +218,22 @@ export default function Contato() {
             </h2>
             <ul className="mt-6 space-y-6">
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-muted)", color: "var(--crimson)" }}>
                   <MapPin className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>Endereço</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--gray-700)" }}>Endereço</p>
                   <p className="mt-1" style={{ color: "var(--text-primary)" }}>
                     Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                   </p>
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-muted)", color: "var(--crimson)" }}>
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>Telefone</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--gray-700)" }}>Telefone</p>
                   <a
                     href="tel:+5541988356427"
                     className="mt-1 block transition-colors hover:opacity-90"
@@ -244,11 +244,11 @@ export default function Contato() {
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-muted)", color: "var(--crimson)" }}>
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>E-mail</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--gray-700)" }}>E-mail</p>
                   <a
                     href="mailto:contato@ampliareconsultoria.com.br"
                     className="mt-1 block transition-colors hover:opacity-90"

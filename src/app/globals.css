@@ -2,70 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ━━━ TEMA GLOBAL — inspirado na imagem Hero (cinza quente, bordô, rosa antigo, creme) ━━━ */
+/* ━━━ TEMA GLOBAL — cinza premium (light) inspirado na imagem Hero ━━━ */
 :root {
-  /* Backgrounds — do mais escuro ao mais claro */
-  --bg-deep: #0f0808;
-  --bg-dark: #1a0f0f;
-  --bg-card: #1f1313;
-  --bg-hover: #2a1818;
+  /* Backgrounds — cinza frio/quente em camadas */
+  --bg-main: #ECEAE6;
+  --bg-section: #E4E1DC;
+  --bg-card: #F2F0EC;
+  --bg-dark: #2A1F1F;
+  --bg-header: #1A1010;
 
-  /* Cor primária — bordô/vinho */
+  /* Primária bordô — identidade do logo */
   --crimson: #7D2B2B;
   --crimson-light: #9B3535;
-  --crimson-glow: rgba(125, 43, 43, 0.25);
+  --crimson-dark: #5C1F1F;
+  --crimson-muted: rgba(125, 43, 43, 0.12);
+  --crimson-glow: rgba(125, 43, 43, 0.12);
 
-  /* Tons rosados/antigos */
-  --rose-dark: #8B4A4A;
-  --rose-mid: #B07070;
-  --rose-muted: #C49090;
-
-  /* Cinzas quentes */
-  --gray-steel: #6B6B6B;
-  --gray-warm: #8a8075;
-  --gray-light: #C8C4BE;
-  --gray-muted: #A09890;
+  /* Cinzas — do mais escuro ao mais claro */
+  --gray-900: #2C2825;
+  --gray-700: #5A524E;
+  --gray-500: #8A827C;
+  --gray-300: #C4BFB8;
+  --gray-100: #ECEAE6;
 
   /* Texto */
-  --text-primary: #EDE8E0;
-  --text-secondary: #A09890;
-  --text-muted: #6B6060;
+  --text-primary: #2C2825;
+  --text-secondary: #5A524E;
+  --text-muted: #8A827C;
+  --text-light: #EDE8E0;
 
   /* Bordas */
-  --border-dark: #2A1A1A;
-  --border-mid: #3D2525;
-  --border-light: rgba(125, 43, 43, 0.3);
+  --border-light: #D8D4CE;
+  --border-mid: #C4BFB8;
+  --border-dark: #A09890;
 
   /* Gradientes */
-  --gradient-bg: linear-gradient(160deg, #0f0808 0%, #1a0f0f 50%, #0f0808 100%);
-  --gradient-section: linear-gradient(180deg, #0f0808 0%, #1a1010 100%);
-  --gradient-accent: linear-gradient(135deg, #7D2B2B 0%, #8B4A4A 50%, #6B6B6B 100%);
-  --gradient-hero: linear-gradient(135deg, #1a0f0f 0%, #2a1515 50%, #1a0f0f 100%);
+  --gradient-hero: linear-gradient(160deg, #DEDAD4 0%, #E8E4DE 50%, #DEDAD4 100%);
+  --gradient-section: linear-gradient(180deg, #ECEAE6 0%, #E4E1DC 100%);
+  --gradient-dark: linear-gradient(160deg, #2A1F1F 0%, #1A1010 100%);
+  --gradient-accent: linear-gradient(135deg, #7D2B2B 0%, #B07070 100%);
   --gradient-separator: linear-gradient(
     90deg,
     transparent 0%,
-    #7D2B2B 20%,
-    #B07070 50%,
-    #7D2B2B 80%,
+    #7D2B2B 30%,
+    #C4BFB8 50%,
+    #7D2B2B 70%,
     transparent 100%
   );
 
-  /* Compatibilidade Tailwind */
-  --background: var(--bg-deep);
+  /* Compatibilidade */
+  --background: var(--bg-main);
   --foreground: var(--text-primary);
   --primary: var(--crimson);
-  --primary-dark: #4a1818;
   --primary-light: var(--crimson-light);
-  --color-bg: var(--bg-deep);
-  --color-bg-2: var(--bg-card);
-  --color-crimson: var(--crimson);
-  --color-crimson-light: var(--crimson-light);
-  --color-gray-steel: var(--gray-steel);
-  --color-gray-light: var(--text-secondary);
-  --color-gray-border: var(--border-dark);
-  --color-white: var(--text-primary);
-  --accent: var(--gray-steel);
-  --accent-light: var(--text-secondary);
 }
 
 html {
@@ -111,44 +100,51 @@ textarea::placeholder {
 
 /* ━━━ Scrollbar customizada ━━━ */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f0808;
+  background: #E4E1DC;
 }
 ::-webkit-scrollbar-thumb {
   background: #7D2B2B;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 /* ━━━ Seleção de texto ━━━ */
 ::selection {
-  background: #7D2B2B;
-  color: #EDE8E0;
+  background: rgba(125, 43, 43, 0.2);
+  color: #2C2825;
 }
 
 /* ━━━ Separador entre seções ━━━ */
 .section-separator {
   height: 1px;
-  opacity: 0.5;
   background: var(--gradient-separator);
 }
 
-/* ━━━ Header: fundo escuro, borda ━━━ */
+/* ━━━ Header: fundo escuro quente ━━━ */
 header {
-  background-color: var(--bg-deep) !important;
-  border-bottom: 1px solid var(--border-dark) !important;
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 header a,
 header button {
-  color: var(--text-primary) !important;
+  color: var(--text-light) !important;
 }
 header a:hover {
   opacity: 0.9;
 }
 header nav a {
-  color: var(--text-primary) !important;
+  color: var(--text-light) !important;
+}
+
+/* Menu overlay: links hover bordô suave */
+.nav-overlay-link {
+  color: #EDE8E0 !important;
+}
+.nav-overlay-link:hover {
+  color: #B07070 !important;
 }
 
 /* ━━━ Títulos de seção: linha decorativa abaixo ━━━ */
@@ -206,10 +202,10 @@ header nav a {
   animation: button-pulse 1.5s ease-in-out infinite;
 }
 
-/* Botão CTA footer: bordô com hover */
+/* Botão CTA footer: bordô com hover (em seções escuras) */
 .btn-cta-footer {
   background: var(--crimson) !important;
-  color: var(--text-primary) !important;
+  color: var(--text-light) !important;
 }
 .btn-cta-footer:hover {
   background: var(--crimson-light) !important;
@@ -233,13 +229,35 @@ header nav a {
   animation: marquee 50s linear infinite;
 }
 
-/* Cards (parceiros, etc.): hover com bordô */
+/* Cards (parceiros, soluções, etc.): tema light */
 .card-parceiro {
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 12px rgba(44, 40, 37, 0.08);
 }
 .card-parceiro:hover {
-  background: var(--bg-hover) !important;
+  background: #FFFFFF !important;
   border-color: var(--crimson) !important;
+  box-shadow: 0 8px 32px rgba(125, 43, 43, 0.12) !important;
+}
+
+/* Cards de conteúdo (soluções, etc.) */
+.card-light {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 12px rgba(44, 40, 37, 0.08);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-light:hover {
+  background: #FFFFFF;
+  border-color: var(--crimson);
+  box-shadow: 0 8px 32px rgba(125, 43, 43, 0.12);
+}
+
+/* Metodologia: palavra grande menor no mobile para não cortar */
+@media (max-width: 768px) {
+  .metodologia-palavra {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
 }
 
 /* Parceiros: logo grayscale, hover tom bordô sutil */

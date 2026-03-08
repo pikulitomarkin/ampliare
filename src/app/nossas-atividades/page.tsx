@@ -199,12 +199,12 @@ export default function NossasAtividades() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden" style={{ background: "var(--bg-deep)" }}>
+      <section className="relative min-h-[60vh] overflow-hidden" style={{ background: "var(--bg-main)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-atividades.jpg)" }}
         />
-        <div className="absolute inset-0 opacity-75" style={{ background: "var(--bg-deep)" }} />
+        <div className="absolute inset-0 opacity-85" style={{ background: "var(--bg-main)" }} />
         <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -254,10 +254,10 @@ export default function NossasAtividades() {
             ))}
           </select>
 
-          {/* Menu lateral (desktop) */}
-          <aside className="hidden shrink-0 md:block lg:w-56">
+          {/* Menu lateral (desktop) — fundo card, borda, itens ativo/inativo */}
+          <aside className="hidden shrink-0 md:block lg:w-56" style={{ background: "var(--bg-card)", borderRight: "1px solid var(--border-light)" }}>
             <nav
-              className="sticky top-24 space-y-0.5"
+              className="sticky top-24 space-y-0.5 py-4 pr-4"
               aria-label="Navegação entre serviços"
             >
               {servicos.map((s) => (
@@ -269,7 +269,7 @@ export default function NossasAtividades() {
                     document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" });
                   }}
                   className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                    activeId === s.id ? "bg-[var(--crimson)] text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
+                    activeId === s.id ? "bg-[var(--crimson)] text-[var(--text-light)]" : "text-[var(--gray-700)] hover:text-[var(--crimson)]"
                   }`}
                 >
                   {s.title}
@@ -285,7 +285,7 @@ export default function NossasAtividades() {
                 key={s.id}
                 id={s.id}
                 className="scroll-mt-28 border-b py-12 last:border-0 lg:scroll-mt-24"
-                style={{ borderColor: "var(--border-dark)" }}
+                style={{ borderColor: "var(--border-light)" }}
               >
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr,280px]">
                   <div>
@@ -319,7 +319,7 @@ export default function NossasAtividades() {
                       </p>
                     )}
                     {s.objetivo && (
-                      <p className="mt-3 rounded-lg p-4 text-sm font-medium" style={{ background: "var(--crimson-glow)", color: "var(--text-primary)" }}>
+                      <p className="mt-3 rounded-lg p-4 text-sm font-medium" style={{ background: "var(--crimson-muted)", color: "var(--text-primary)" }}>
                         {s.objetivo}
                       </p>
                     )}
@@ -345,7 +345,7 @@ export default function NossasAtividades() {
                             className="flex gap-3 text-sm leading-relaxed sm:text-base"
                             style={{ color: "var(--text-secondary)" }}
                           >
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
+                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold" style={{ background: "var(--crimson-muted)", color: "var(--crimson)" }}>
                               {i + 1}
                             </span>
                             {step}
@@ -376,8 +376,8 @@ export default function NossasAtividades() {
         <div className="mt-12 text-center">
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
-            style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
+            className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+            style={{ background: "var(--crimson)", color: "var(--text-light)" }}
           >
             Falar sobre um projeto
           </Link>

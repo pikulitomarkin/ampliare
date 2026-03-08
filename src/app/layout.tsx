@@ -39,23 +39,23 @@ export default function RootLayout({
       <body className={`${syne.variable} font-sans antialiased min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-1">{children}</main>
-        <footer style={{ color: "var(--text-primary)" }}>
+        <footer>
           <section style={{ background: "var(--bg-dark)" }}>
             <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
               <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
                 <div>
-                  <h2 className="font-display text-responsive-h2 font-bold uppercase leading-tight tracking-tight" style={{ color: "var(--text-primary)" }}>
+                  <h2 className="font-display text-responsive-h2 font-bold uppercase leading-tight tracking-tight" style={{ color: "var(--text-light)" }}>
                     O digital avança todos os dias
                   </h2>
-                  <p className="mt-6 text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+                  <p className="mt-6 text-base leading-relaxed sm:text-lg" style={{ color: "var(--gray-300)" }}>
                     O ambiente digital se transforma em ritmo acelerado, exigindo adaptação contínua das marcas que desejam permanecer relevantes. Novas tecnologias, comportamentos e oportunidades surgem constantemente, e acompanhar esse movimento deixou de ser diferencial — tornou-se necessidade.
                   </p>
-                  <p className="mt-4 text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+                  <p className="mt-4 text-base leading-relaxed sm:text-lg" style={{ color: "var(--gray-300)" }}>
                     Empresas que evoluem com estratégia, dados e inovação conseguem não apenas acompanhar as mudanças, mas liderar seus mercados.
                   </p>
                 </div>
                 <div className="flex flex-col justify-center lg:items-end">
-                  <ul className="space-y-4 text-sm sm:text-base" style={{ color: "var(--text-primary)" }}>
+                  <ul className="space-y-4 text-sm sm:text-base" style={{ color: "var(--text-light)" }}>
                     <li className="flex items-start gap-3">
                       <MapPin className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--crimson)" }} />
                       <span>
@@ -64,13 +64,13 @@ export default function RootLayout({
                     </li>
                     <li className="flex items-center gap-3">
                       <Phone className="h-5 w-5 shrink-0" style={{ color: "var(--crimson)" }} />
-                      <a href="tel:+5541988356427" className="transition-colors hover:opacity-90" style={{ color: "var(--crimson)" }}>
+                      <a href="tel:+5541988356427" className="transition-colors hover:opacity-90" style={{ color: "var(--text-light)" }}>
                         (41) 98835-6427
                       </a>
                     </li>
                     <li className="flex items-center gap-3">
                       <Mail className="h-5 w-5 shrink-0" style={{ color: "var(--crimson)" }} />
-                      <a href="mailto:contato@ampliareconsultoria.com.br" className="transition-colors hover:opacity-90" style={{ color: "var(--crimson)" }}>
+                      <a href="mailto:contato@ampliareconsultoria.com.br" className="transition-colors hover:opacity-90" style={{ color: "var(--text-light)" }}>
                         contato@ampliareconsultoria.com.br
                       </a>
                     </li>
@@ -93,11 +93,12 @@ export default function RootLayout({
           </section>
           <div
             style={{
-              borderTop: "1px solid var(--border-dark)",
+              borderTop: "1px solid var(--border-light)",
               padding: "1.5rem",
               textAlign: "center",
               color: "var(--text-muted)",
               fontSize: "0.8rem",
+              background: "var(--bg-main)",
             }}
           >
             Ampliare Consultoria © 2026 — Todos os direitos reservados

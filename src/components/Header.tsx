@@ -23,7 +23,7 @@ export function Header() {
   }, [menuAberto]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#2A2A2A] bg-[#0a0a0a]/95 shadow-lg backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full shadow-lg backdrop-blur-md" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)", background: "var(--bg-header)" }}>
       <div
         className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-8 lg:px-16"
       >
@@ -54,8 +54,8 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#A8A8A8] transition-colors hover:text-[#7D2B2B]"
-          style={{ zIndex: 60 }}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
+          style={{ color: "var(--text-light)", zIndex: 60 }}
           onClick={() => setMenuAberto(!menuAberto)}
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuAberto}
@@ -66,115 +66,37 @@ export function Header() {
 
       {menuAberto && (
         <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "#0a0a0a",
-            zIndex: 50,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "2rem",
-            overflow: "hidden",
-          }}
+          className="fixed left-0 top-0 z-50 flex h-screen w-screen flex-col items-center justify-center gap-8 overflow-hidden"
+          style={{ backgroundColor: "#1A1010" }}
         >
           <button
             type="button"
             onClick={() => setMenuAberto(false)}
-            style={{
-              position: "absolute",
-              top: "1.5rem",
-              right: "1.5rem",
-              color: "#A8A8A8",
-              fontSize: "2rem",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
+            className="absolute right-6 top-6 cursor-pointer border-none bg-transparent text-[2rem] transition-colors hover:opacity-80"
+            style={{ color: "var(--text-light)" }}
             aria-label="Fechar menu"
           >
             ✕
           </button>
 
-          <nav
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "2rem",
-            }}
-          >
-            <Link
-              href="/"
-              onClick={() => setMenuAberto(false)}
-              style={{
-                color: "#F0EDE8",
-                fontSize: "2rem",
-                fontWeight: "300",
-                textDecoration: "none",
-                letterSpacing: "0.05em",
-              }}
-            >
+          <nav className="flex flex-col items-center gap-8">
+            <Link href="/" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
               Início
             </Link>
-            <Link
-              href="/solucoes-estrategicas"
-              onClick={() => setMenuAberto(false)}
-              style={{
-                color: "#F0EDE8",
-                fontSize: "2rem",
-                fontWeight: "300",
-                textDecoration: "none",
-                letterSpacing: "0.05em",
-              }}
-            >
+            <Link href="/solucoes-estrategicas" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
               Soluções Estratégicas
             </Link>
-            <Link
-              href="/nossas-atividades"
-              onClick={() => setMenuAberto(false)}
-              style={{
-                color: "#F0EDE8",
-                fontSize: "2rem",
-                fontWeight: "300",
-                textDecoration: "none",
-                letterSpacing: "0.05em",
-              }}
-            >
+            <Link href="/nossas-atividades" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
               Nossas Atividades
             </Link>
-            <Link
-              href="/ampliare-consultoria"
-              onClick={() => setMenuAberto(false)}
-              style={{
-                color: "#F0EDE8",
-                fontSize: "2rem",
-                fontWeight: "300",
-                textDecoration: "none",
-                letterSpacing: "0.05em",
-              }}
-            >
+            <Link href="/ampliare-consultoria" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
               Ampliare Consultoria
             </Link>
             <Link
               href="/contato"
               onClick={() => setMenuAberto(false)}
-              style={{
-                display: "inline-block",
-                marginTop: "1rem",
-                padding: "0.875rem 2.5rem",
-                backgroundColor: "#7D2B2B",
-                color: "#F0EDE8",
-                fontSize: "1rem",
-                fontWeight: "500",
-                textDecoration: "none",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-              }}
+              className="mt-4 inline-block px-10 py-3.5 text-base font-medium uppercase tracking-wider no-underline transition-colors hover:opacity-90"
+              style={{ backgroundColor: "var(--crimson)", color: "#EDE8E0" }}
             >
               Entre em Contato
             </Link>

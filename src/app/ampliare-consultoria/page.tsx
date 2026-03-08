@@ -109,13 +109,12 @@ export default function AmpliareConsultoria() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-deep)" }}>
+      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-header)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-ampliare.jpg)" }}
         />
-        <div className="absolute inset-0 opacity-60" style={{ background: "var(--bg-deep)" }} />
-        <div className="absolute inset-0 opacity-70" style={{ background: "var(--bg-deep)" }} />
+        <div className="absolute inset-0 opacity-70" style={{ background: "var(--bg-header)" }} />
         <div className="relative flex min-h-[50vh] flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
           <div className="mx-auto max-w-7xl px-6 text-center md:px-8 lg:px-16">
             <motion.h1
@@ -123,7 +122,7 @@ export default function AmpliareConsultoria() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--text-light)" }}
             >
               Nós criamos a evolução
             </motion.h1>
@@ -132,7 +131,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Sobre */}
-      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
+      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-light)", background: "var(--bg-section)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -156,7 +155,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Marcos: timeline + contadores + fotos equipe */}
-      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-deep)" }}>
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-main)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,7 +209,7 @@ export default function AmpliareConsultoria() {
                   >
                     <span
                       className="absolute left-0 top-0.5 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
-                      style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
+                      style={{ background: "var(--crimson)", color: "var(--text-light)" }}
                       aria-hidden
                     >
                       {index + 1}
@@ -248,7 +247,7 @@ export default function AmpliareConsultoria() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
                   className="group relative h-[280px] overflow-hidden rounded-lg border transition-[border-color] duration-300 hover:border-[var(--crimson)]"
-                  style={{ borderColor: "var(--border-dark)" }}
+                  style={{ borderColor: "var(--border-light)" }}
                 >
                   <Image
                     src={card.imagem}
@@ -277,7 +276,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Transformação */}
-      <section className="border-t px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
+      <section className="border-t px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-light)", background: "var(--bg-section)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -307,7 +306,7 @@ export default function AmpliareConsultoria() {
                 className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2"
                 style={{
                   background: "var(--crimson)",
-                  color: "var(--text-primary)",
+                  color: "var(--text-light)",
                 }}
               >
                 Fale conosco

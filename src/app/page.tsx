@@ -82,7 +82,7 @@ const cardStyleParceiro: React.CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   padding: "1rem 1.5rem",
-  border: "1px solid var(--border-dark)",
+  border: "1px solid var(--border-light)",
   borderRadius: "6px",
   background: "var(--bg-card)",
   minWidth: "120px",
@@ -94,10 +94,10 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
     nome: "Pizza Prime",
     svg: (
       <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
-        <text x="100" y="28" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+        <text x="100" y="28" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
           PIZZA
         </text>
-        <text x="100" y="52" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+        <text x="100" y="52" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
           PRIME
         </text>
       </svg>
@@ -108,7 +108,7 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
     logo: "/logos/Petz.svg",
     svg: (
       <svg viewBox="0 0 160 60" style={{ width: "120px", height: "45px" }}>
-        <text x="80" y="42" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="32" fontWeight="900" fill="#F0EDE8">
+        <text x="80" y="42" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="32" fontWeight="900" fill="#2C2825">
           Petz
         </text>
       </svg>
@@ -119,10 +119,10 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
     logo: "/logos/FastShop.svg",
     svg: (
       <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
-        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="20" fontWeight="900" fill="#F0EDE8">
+        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="20" fontWeight="900" fill="#2C2825">
           FAST
         </text>
-        <text x="90" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="13" fill="#A8A8A8" letterSpacing="4">
+        <text x="90" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="13" fill="#5A524E" letterSpacing="4">
           SHOP
         </text>
       </svg>
@@ -132,10 +132,10 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
     nome: "Rede D'Or",
     svg: (
       <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
-        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#F0EDE8">
+        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
           REDE
         </text>
-        <text x="90" y="54" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="13" fill="#A8A8A8">
+        <text x="90" y="54" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="13" fill="#5A524E">
           D&apos;OR
         </text>
       </svg>
@@ -145,10 +145,10 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
     nome: "Ibis Hotels",
     svg: (
       <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
-        <text x="100" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="22" fontWeight="900" fill="#F0EDE8">
+        <text x="100" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="22" fontWeight="900" fill="#2C2825">
           Ibis
         </text>
-        <text x="100" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="14" fill="#A8A8A8">
+        <text x="100" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="14" fill="#5A524E">
           Hotels
         </text>
       </svg>
@@ -217,7 +217,7 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "var(--bg-deep)",
+          background: "var(--bg-main)",
         }}
       >
         {/* Imagem de fundo fullscreen */}
@@ -278,7 +278,7 @@ export default function Home() {
       <section
         id="solucoes"
         className="relative overflow-x-hidden overflow-y-visible py-16 sm:py-20 lg:py-24"
-        style={{ background: "var(--bg-dark)" }}
+        style={{ background: "var(--bg-main)" }}
       >
         <div className="mx-auto max-w-7xl overflow-x-hidden px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -327,8 +327,8 @@ export default function Home() {
                 <div className="mt-8">
                   <Link
                     href="/solucoes-estrategicas"
-                    className="inline-flex items-center justify-center rounded bg-[var(--crimson)] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider shadow-md transition-all hover:bg-[var(--crimson-light)] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-dark)]"
-                    style={{ color: "var(--text-primary)" }}
+                    className="inline-flex items-center justify-center rounded px-5 py-2.5 text-sm font-semibold uppercase tracking-wider shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+                    style={{ background: "var(--crimson)", color: "var(--text-light)" }}
                   >
                     Conheça nossas soluções
                   </Link>
@@ -349,9 +349,9 @@ export default function Home() {
                         delay: index * 0.08,
                       }}
                     >
-                      <div className="group flex h-full flex-col rounded-xl border p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[var(--crimson)] hover:shadow-crimson-sm lg:p-6" style={{ borderColor: "var(--border-dark)", backgroundColor: "var(--bg-card)" }}>
+                      <div className="card-light group flex h-full flex-col rounded-xl border p-4 lg:p-6" style={{ borderColor: "var(--border-light)", backgroundColor: "var(--bg-card)" }}>
                         <div className="flex shrink-0 justify-center">
-                          <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors" style={{ backgroundColor: "rgba(125,43,43,0.2)", color: "var(--crimson)" }}>
+                          <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
                             <card.icon className="h-10 w-10 glow-crimson" size={40} />
                           </div>
                         </div>
@@ -384,7 +384,7 @@ export default function Home() {
       <section
         id="parceiros"
         className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
-        style={{ background: "var(--bg-deep)" }}
+        style={{ background: "var(--bg-section)" }}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -446,7 +446,7 @@ export default function Home() {
       <section
         id="servicos"
         className="py-16 sm:py-20 lg:py-24"
-        style={{ background: "var(--bg-dark)" }}
+        style={{ background: "var(--bg-main)" }}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
@@ -481,7 +481,7 @@ export default function Home() {
                 <div className="mt-6">
                   <Link
                     href="/nossas-atividades"
-                    className="inline-flex items-center justify-center rounded border-2 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all hover:bg-[var(--crimson)] hover:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-dark)]"
+                    className="inline-flex items-center justify-center rounded border-2 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all hover:bg-[var(--crimson)] hover:text-[var(--text-light)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
                     style={{ borderColor: "var(--crimson)", color: "var(--crimson)" }}
                   >
                     O que fazemos
@@ -527,7 +527,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="relative h-[400px] overflow-hidden rounded-xl border shadow-sm"
-                style={{ borderColor: "var(--border-dark)" }}
+                style={{ borderColor: "var(--border-light)" }}
               >
                 <Image
                   src={img.src}
@@ -545,14 +545,14 @@ export default function Home() {
       {/* Separador */}
       <div className="section-separator" aria-hidden />
 
-      {/* Metodologia — animação rotativa: palavra + texto (esquerda), menu clicável (direita) */}
+      {/* Metodologia — seção escura para contraste */}
       <section
         id="metodologia"
-        className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
-        style={{ background: "var(--bg-deep)" }}
+        className="relative overflow-clip py-16 sm:py-20 lg:py-24"
+        style={{ background: "var(--bg-dark)" }}
       >
-        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16" style={{ overflow: "visible" }}>
+          <div className="flex flex-col gap-10 lg:flex-row lg:gap-12" style={{ overflow: "visible" }}>
             <motion.div
               initial={{ opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -568,13 +568,22 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <div className="grid min-w-0 flex-1 grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
+            <div
+              className="grid min-w-0 flex-1 grid-cols-1 md:grid-cols-2"
+              style={{
+                gap: "4rem",
+                alignItems: "start",
+                overflow: "visible",
+                width: "100%",
+              }}
+            >
               {/* Coluna esquerda: palavra grande + texto */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
+                style={{ overflow: "visible", minWidth: 0 }}
               >
                 <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//METODOLOGIAS"}
@@ -586,15 +595,21 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
+                    className="metodologia-palavra"
                     style={{
-                      fontSize: "clamp(2rem, 8vw, 6rem)",
+                      fontSize: "clamp(2.5rem, 6vw, 5rem)",
                       fontWeight: 900,
-                      background: "var(--gradient-accent)",
+                      lineHeight: 1,
+                      whiteSpace: "nowrap",
+                      overflow: "visible",
+                      width: "100%",
+                      maxWidth: "100%",
+                      background: "linear-gradient(135deg, #7D2B2B, #B07070)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
-                      lineHeight: 1,
-                      marginBottom: "2rem",
+                      marginBottom: "1.5rem",
+                      display: "block",
                     }}
                   >
                     {metodologiaItens[ativo].palavra}
@@ -607,7 +622,7 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1rem" }}
+                    style={{ color: "var(--text-light)", lineHeight: 1.8, fontSize: "1rem" }}
                   >
                     {metodologiaItens[ativo].texto}
                   </motion.p>
@@ -642,7 +657,7 @@ export default function Home() {
                       gap: "1rem",
                       padding: "0.75rem 0",
                       cursor: "pointer",
-                      borderBottom: "1px solid var(--border-dark)",
+                      borderBottom: "1px solid rgba(255,255,255,0.08)",
                       transition: "all 0.3s",
                     }}
                   >
@@ -650,13 +665,13 @@ export default function Home() {
                       style={{
                         width: index === ativo ? "40px" : "20px",
                         height: "2px",
-                        background: index === ativo ? "var(--crimson)" : "var(--border-mid)",
+                        background: index === ativo ? "var(--crimson)" : "rgba(255,255,255,0.08)",
                         transition: "all 0.3s",
                       }}
                     />
                     <span
                       style={{
-                        color: index === ativo ? "var(--crimson)" : "var(--text-muted)",
+                        color: index === ativo ? "var(--crimson)" : "var(--gray-300)",
                         fontWeight: index === ativo ? 600 : 400,
                         fontSize: "0.95rem",
                         transition: "all 0.3s",

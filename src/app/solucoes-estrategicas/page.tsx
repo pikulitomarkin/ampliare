@@ -68,17 +68,12 @@ export default function SolucoesEstrategicas() {
   return (
     <>
       {/* Hero: imagem de fundo + overlay escuro + título e subtítulo */}
-      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-deep)" }}>
+      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-header)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-solucoes.jpg)" }}
         />
-        <div
-          className="absolute inset-0 opacity-90"
-          style={{ background: "linear-gradient(to bottom, var(--crimson-glow) 0%, var(--bg-deep) 50%, var(--bg-deep) 100%)" }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 opacity-70" style={{ background: "var(--bg-deep)" }} aria-hidden />
+        <div className="absolute inset-0 opacity-75" style={{ background: "var(--bg-header)" }} aria-hidden />
 
         <div className="relative mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
           <motion.div
@@ -87,10 +82,10 @@ export default function SolucoesEstrategicas() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl" style={{ color: "var(--text-primary)" }}>
+            <h1 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl" style={{ color: "var(--text-light)" }}>
               Soluções em marketing e vendas
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg sm:text-xl" style={{ color: "var(--text-secondary)" }}>
+            <p className="mx-auto mt-5 max-w-2xl text-lg sm:text-xl" style={{ color: "var(--gray-300)" }}>
               As marcas de destaque no mercado são visionárias, adaptáveis e
               direcionadas por dados.
             </p>
@@ -99,7 +94,7 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Seção introdutória */}
-      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
+      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-light)", background: "var(--bg-section)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,7 +116,7 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Grid de soluções */}
-      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-deep)" }}>
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-main)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {solucoes.map((item, index) => (
@@ -131,10 +126,10 @@ export default function SolucoesEstrategicas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group rounded-xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--crimson)] hover:shadow-crimson-sm sm:p-8"
-                style={{ borderColor: "var(--border-dark)", background: "var(--bg-card)" }}
+                className="card-light group rounded-xl border p-6 sm:p-8"
+                style={{ borderColor: "var(--border-light)", background: "var(--bg-card)" }}
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 group-hover:opacity-90" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ background: "var(--crimson-muted)", color: "var(--crimson)" }}>
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 text-xl font-semibold" style={{ color: "var(--text-primary)" }}>
@@ -154,8 +149,8 @@ export default function SolucoesEstrategicas() {
           >
             <Link
               href="/contato"
-              className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
-              style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
+              className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+              style={{ background: "var(--crimson)", color: "var(--text-light)" }}
             >
               Solicitar proposta
             </Link>
