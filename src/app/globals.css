@@ -2,30 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ━━━ PALETA — extraída do logo Ampliare ━━━ */
+/* ━━━ TEMA GLOBAL — inspirado na imagem Hero (cinza quente, bordô, rosa antigo, creme) ━━━ */
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-2: #111111;
-  --color-crimson: #7D2B2B;
-  --color-crimson-light: #9B3535;
-  --color-gray-steel: #6B6B6B;
-  --color-gray-light: #A8A8A8;
-  --color-gray-border: #2A2A2A;
-  --color-white: #F0EDE8;
+  /* Backgrounds — do mais escuro ao mais claro */
+  --bg-deep: #0f0808;
+  --bg-dark: #1a0f0f;
+  --bg-card: #1f1313;
+  --bg-hover: #2a1818;
 
-  --gradient-hero: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
-  --gradient-crimson: linear-gradient(135deg, #7D2B2B 0%, #4a1818 100%);
-  --gradient-steel: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-  --gradient-accent: linear-gradient(90deg, #7D2B2B, #6B6B6B, #7D2B2B);
+  /* Cor primária — bordô/vinho */
+  --crimson: #7D2B2B;
+  --crimson-light: #9B3535;
+  --crimson-glow: rgba(125, 43, 43, 0.25);
 
-  /* Compatibilidade com Tailwind */
-  --background: var(--color-bg);
-  --foreground: var(--color-white);
-  --primary: var(--color-crimson);
+  /* Tons rosados/antigos */
+  --rose-dark: #8B4A4A;
+  --rose-mid: #B07070;
+  --rose-muted: #C49090;
+
+  /* Cinzas quentes */
+  --gray-steel: #6B6B6B;
+  --gray-warm: #8a8075;
+  --gray-light: #C8C4BE;
+  --gray-muted: #A09890;
+
+  /* Texto */
+  --text-primary: #EDE8E0;
+  --text-secondary: #A09890;
+  --text-muted: #6B6060;
+
+  /* Bordas */
+  --border-dark: #2A1A1A;
+  --border-mid: #3D2525;
+  --border-light: rgba(125, 43, 43, 0.3);
+
+  /* Gradientes */
+  --gradient-bg: linear-gradient(160deg, #0f0808 0%, #1a0f0f 50%, #0f0808 100%);
+  --gradient-section: linear-gradient(180deg, #0f0808 0%, #1a1010 100%);
+  --gradient-accent: linear-gradient(135deg, #7D2B2B 0%, #8B4A4A 50%, #6B6B6B 100%);
+  --gradient-hero: linear-gradient(135deg, #1a0f0f 0%, #2a1515 50%, #1a0f0f 100%);
+  --gradient-separator: linear-gradient(
+    90deg,
+    transparent 0%,
+    #7D2B2B 20%,
+    #B07070 50%,
+    #7D2B2B 80%,
+    transparent 100%
+  );
+
+  /* Compatibilidade Tailwind */
+  --background: var(--bg-deep);
+  --foreground: var(--text-primary);
+  --primary: var(--crimson);
   --primary-dark: #4a1818;
-  --primary-light: var(--color-crimson-light);
-  --accent: var(--color-gray-steel);
-  --accent-light: var(--color-gray-light);
+  --primary-light: var(--crimson-light);
+  --color-bg: var(--bg-deep);
+  --color-bg-2: var(--bg-card);
+  --color-crimson: var(--crimson);
+  --color-crimson-light: var(--crimson-light);
+  --color-gray-steel: var(--gray-steel);
+  --color-gray-light: var(--text-secondary);
+  --color-gray-border: var(--border-dark);
+  --color-white: var(--text-primary);
+  --accent: var(--gray-steel);
+  --accent-light: var(--text-secondary);
 }
 
 html {
@@ -37,6 +77,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   min-width: 320px;
+}
+
+/* Placeholder de inputs no tema */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
 }
 
 /* ━━━ Tipografia responsiva (clamp) ━━━ */
@@ -62,29 +108,6 @@ body {
   display: none;
 }
 
-/* Hero: círculos decorativos menores no mobile */
-.hero-glow-left {
-  width: 500px;
-  height: 500px;
-  left: -10%;
-}
-.hero-glow-right {
-  width: 400px;
-  height: 400px;
-  right: -5%;
-}
-@media (max-width: 768px) {
-  .hero-glow-left {
-    width: 260px;
-    height: 260px;
-    left: -25%;
-  }
-  .hero-glow-right {
-    width: 200px;
-    height: 200px;
-    right: -15%;
-  }
-}
 
 /* ━━━ Scrollbar customizada ━━━ */
 ::-webkit-scrollbar {
@@ -92,7 +115,7 @@ body {
   height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #0f0808;
 }
 ::-webkit-scrollbar-thumb {
   background: #7D2B2B;
@@ -102,23 +125,30 @@ body {
 /* ━━━ Seleção de texto ━━━ */
 ::selection {
   background: #7D2B2B;
-  color: #F0EDE8;
+  color: #EDE8E0;
+}
+
+/* ━━━ Separador entre seções ━━━ */
+.section-separator {
+  height: 1px;
+  opacity: 0.5;
+  background: var(--gradient-separator);
 }
 
 /* ━━━ Header: fundo escuro, borda ━━━ */
 header {
-  background-color: #0a0a0a !important;
-  border-bottom: 1px solid #2A2A2A !important;
+  background-color: var(--bg-deep) !important;
+  border-bottom: 1px solid var(--border-dark) !important;
 }
 header a,
 header button {
-  color: var(--color-white) !important;
+  color: var(--text-primary) !important;
 }
 header a:hover {
   opacity: 0.9;
 }
 header nav a {
-  color: var(--color-white) !important;
+  color: var(--text-primary) !important;
 }
 
 /* ━━━ Títulos de seção: linha decorativa abaixo ━━━ */
@@ -152,7 +182,7 @@ header nav a {
     background: var(--gradient-crimson);
   }
   .text-gradient-capacidade {
-    background: linear-gradient(135deg, #7D2B2B, #6B6B6B);
+    background: var(--gradient-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -176,6 +206,19 @@ header nav a {
   animation: button-pulse 1.5s ease-in-out infinite;
 }
 
+/* Botão CTA footer: bordô com hover */
+.btn-cta-footer {
+  background: var(--crimson) !important;
+  color: var(--text-primary) !important;
+}
+.btn-cta-footer:hover {
+  background: var(--crimson-light) !important;
+}
+.btn-cta-footer:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 2px;
+}
+
 /* Marquee infinito */
 @keyframes marquee {
   0% {
@@ -188,6 +231,15 @@ header nav a {
 
 .animate-marquee {
   animation: marquee 50s linear infinite;
+}
+
+/* Cards (parceiros, etc.): hover com bordô */
+.card-parceiro {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.card-parceiro:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--crimson) !important;
 }
 
 /* Parceiros: logo grayscale, hover tom bordô sutil */

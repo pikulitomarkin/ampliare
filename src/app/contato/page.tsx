@@ -41,7 +41,7 @@ export default function Contato() {
   };
 
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
+    <section className="min-h-screen px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24" style={{ background: "var(--bg-deep)" }}>
       <div className="mx-auto max-w-7xl">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +49,10 @@ export default function Contato() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h1 className="text-3xl font-bold tracking-tight text-[#F0EDE8] sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "var(--text-primary)" }}>
             Entre em Contato
           </h1>
-          <p className="mt-3 text-lg text-[#A8A8A8]">
+          <p className="mt-3 text-lg" style={{ color: "var(--text-secondary)" }}>
             Vamos conversar sobre como acelerar o crescimento do seu negócio
           </p>
         </motion.header>
@@ -66,7 +66,7 @@ export default function Contato() {
           >
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium text-[#A8A8A8]">
+                <label htmlFor="nome" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                   Nome *
                 </label>
                 <input
@@ -74,7 +74,12 @@ export default function Contato() {
                   type="text"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
-                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  style={{
+                    borderColor: "var(--border-dark)",
+                    background: "var(--bg-card)",
+                    color: "var(--text-primary)",
+                  }}
                   placeholder="Seu nome"
                   aria-invalid={!!errors.nome}
                   aria-describedby={errors.nome ? "erro-nome" : undefined}
@@ -86,7 +91,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-[#A8A8A8]">
+                <label htmlFor="email" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                   E-mail *
                 </label>
                 <input
@@ -94,7 +99,12 @@ export default function Contato() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  style={{
+                    borderColor: "var(--border-dark)",
+                    background: "var(--bg-card)",
+                    color: "var(--text-primary)",
+                  }}
                   placeholder="seu@email.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "erro-email" : undefined}
@@ -106,7 +116,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="telefone" className="block text-sm font-medium text-[#A8A8A8]">
+                <label htmlFor="telefone" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                   Telefone *
                 </label>
                 <input
@@ -114,7 +124,12 @@ export default function Contato() {
                   type="tel"
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
-                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  style={{
+                    borderColor: "var(--border-dark)",
+                    background: "var(--bg-card)",
+                    color: "var(--text-primary)",
+                  }}
                   placeholder="(11) 99999-9999"
                   aria-invalid={!!errors.telefone}
                   aria-describedby={errors.telefone ? "erro-telefone" : undefined}
@@ -126,7 +141,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="empresa" className="block text-sm font-medium text-[#A8A8A8]">
+                <label htmlFor="empresa" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                   Empresa
                 </label>
                 <input
@@ -134,12 +149,17 @@ export default function Contato() {
                   type="text"
                   value={empresa}
                   onChange={(e) => setEmpresa(e.target.value)}
-                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
+                  className="mt-1.5 w-full rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  style={{
+                    borderColor: "var(--border-dark)",
+                    background: "var(--bg-card)",
+                    color: "var(--text-primary)",
+                  }}
                   placeholder="Sua empresa"
                 />
               </div>
               <div>
-                <label htmlFor="mensagem" className="block text-sm font-medium text-[#A8A8A8]">
+                <label htmlFor="mensagem" className="block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                   Mensagem *
                 </label>
                 <textarea
@@ -147,7 +167,12 @@ export default function Contato() {
                   rows={4}
                   value={mensagem}
                   onChange={(e) => setMensagem(e.target.value)}
-                  className="mt-1.5 w-full min-h-[120px] resize-y rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
+                  className="mt-1.5 w-full min-h-[120px] resize-y rounded border px-4 py-3 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+                  style={{
+                    borderColor: "var(--border-dark)",
+                    background: "var(--bg-card)",
+                    color: "var(--text-primary)",
+                  }}
                   placeholder="Como podemos ajudar?"
                   aria-invalid={!!errors.mensagem}
                   aria-describedby={errors.mensagem ? "erro-mensagem" : undefined}
@@ -159,14 +184,15 @@ export default function Contato() {
                 )}
               </div>
               {submitted && (
-                <p className="rounded bg-[#7D2B2B]/20 px-4 py-3 text-sm text-[#F0EDE8]">
+                <p className="rounded px-4 py-3 text-sm" style={{ background: "var(--crimson-glow)", color: "var(--text-primary)" }}>
                   Mensagem recebida. Retornaremos em breve!
                 </p>
               )}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full items-center justify-center gap-2 rounded bg-[#7D2B2B] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a] disabled:cursor-not-allowed disabled:opacity-70"
+                className="flex w-full items-center justify-center gap-2 rounded px-4 py-3.5 text-sm font-semibold uppercase tracking-wider shadow-lg transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)] disabled:cursor-not-allowed disabled:opacity-70"
+                style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
               >
                 {isSubmitting ? (
                   <>
@@ -187,44 +213,46 @@ export default function Contato() {
             transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-col justify-center lg:pl-4"
           >
-            <h2 className="text-lg font-semibold text-white lg:text-xl">
+            <h2 className="text-lg font-semibold lg:text-xl" style={{ color: "var(--text-primary)" }}>
               Informações de contato
             </h2>
             <ul className="mt-6 space-y-6">
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
                   <MapPin className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-[#A8A8A8]">Endereço</p>
-                  <p className="mt-1 text-[#F0EDE8]">
+                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>Endereço</p>
+                  <p className="mt-1" style={{ color: "var(--text-primary)" }}>
                     Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                   </p>
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-[#A8A8A8]">Telefone</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>Telefone</p>
                   <a
                     href="tel:+5541988356427"
-                    className="mt-1 block text-[#F0EDE8] transition-colors hover:text-[#7D2B2B]"
+                    className="mt-1 block transition-colors hover:opacity-90"
+                    style={{ color: "var(--text-primary)" }}
                   >
                     (41) 98835-6427
                   </a>
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-[#A8A8A8]">E-mail</p>
+                  <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>E-mail</p>
                   <a
                     href="mailto:contato@ampliareconsultoria.com.br"
-                    className="mt-1 block text-[#F0EDE8] transition-colors hover:text-[#7D2B2B]"
+                    className="mt-1 block transition-colors hover:opacity-90"
+                    style={{ color: "var(--text-primary)" }}
                   >
                     contato@ampliareconsultoria.com.br
                   </a>

@@ -199,12 +199,12 @@ export default function NossasAtividades() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden bg-[#0a0a0a]">
+      <section className="relative min-h-[60vh] overflow-hidden" style={{ background: "var(--bg-deep)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-atividades.jpg)" }}
         />
-        <div className="absolute inset-0 bg-[#0a0a0a]/75" />
+        <div className="absolute inset-0 opacity-75" style={{ background: "var(--bg-deep)" }} />
         <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -212,13 +212,13 @@ export default function NossasAtividades() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl" style={{ color: "var(--text-primary)" }}>
               Ações de marketing e vendas
             </h1>
-            <p className="mt-4 text-xl font-medium text-[#7D2B2B] sm:text-2xl">
+            <p className="mt-4 text-xl font-medium sm:text-2xl" style={{ color: "var(--crimson)" }}>
               Como Atuamos para Gerar Impacto e Resultados
             </p>
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
               Ajudamos empresas a crescer no ambiente digital com soluções
               integradas de marketing, vendas e tecnologia. Atuamos de forma
               estratégica e orientada por dados, transformando desafios em
@@ -234,7 +234,8 @@ export default function NossasAtividades() {
         <div className="lg:flex lg:gap-12">
           {/* Select dropdown no mobile */}
           <select
-            className="mb-6 w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white md:mb-0 md:hidden"
+            className="mb-6 w-full rounded border p-3 md:mb-0 md:hidden"
+            style={{ borderColor: "var(--border-mid)", background: "var(--bg-card)", color: "var(--text-primary)" }}
             value={Math.max(0, servicos.findIndex((s) => s.id === activeId))}
             onChange={(e) => {
               const i = Number(e.target.value);
@@ -268,9 +269,7 @@ export default function NossasAtividades() {
                     document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" });
                   }}
                   className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                    activeId === s.id
-                      ? "bg-[#7D2B2B] text-white"
-                      : "text-[#6B6B6B] hover:bg-[#111111] hover:text-[#F0EDE8]"
+                    activeId === s.id ? "bg-[var(--crimson)] text-[var(--text-primary)]" : "text-[var(--text-muted)] hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)]"
                   }`}
                 >
                   {s.title}
@@ -285,7 +284,8 @@ export default function NossasAtividades() {
               <section
                 key={s.id}
                 id={s.id}
-                className="scroll-mt-28 border-b border-black/5 py-12 last:border-0 lg:scroll-mt-24"
+                className="scroll-mt-28 border-b py-12 last:border-0 lg:scroll-mt-24"
+                style={{ borderColor: "var(--border-dark)" }}
               >
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr,280px]">
                   <div>
@@ -293,32 +293,33 @@ export default function NossasAtividades() {
                       initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl"
+                      className="text-2xl font-bold sm:text-3xl"
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {s.title}
                     </motion.h2>
                     {s.subtitle && (
-                      <p className="mt-2 text-lg font-semibold text-[#7D2B2B]">
+                      <p className="mt-2 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
                         {s.subtitle}
                       </p>
                     )}
                     {s.intro && (
-                      <p className="mt-4 text-base leading-relaxed text-[#A8A8A8]">
+                      <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                         {s.intro}
                       </p>
                     )}
                     {s.text && (
-                      <p className="mt-4 text-base leading-relaxed text-[#A8A8A8]">
+                      <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                         {s.text}
                       </p>
                     )}
                     {s.subtitle2 && (
-                      <p className="mt-6 text-lg font-semibold text-[#7D2B2B]">
+                      <p className="mt-6 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
                         {s.subtitle2}
                       </p>
                     )}
                     {s.objetivo && (
-                      <p className="mt-3 rounded-lg bg-[#7D2B2B]/10 p-4 text-sm font-medium text-[#F0EDE8]">
+                      <p className="mt-3 rounded-lg p-4 text-sm font-medium" style={{ background: "var(--crimson-glow)", color: "var(--text-primary)" }}>
                         {s.objetivo}
                       </p>
                     )}
@@ -327,9 +328,10 @@ export default function NossasAtividades() {
                         {s.bullets.map((b, i) => (
                           <li
                             key={i}
-                            className="flex gap-2 text-sm leading-relaxed text-[#A8A8A8] sm:text-base"
+                            className="flex gap-2 text-sm leading-relaxed sm:text-base"
+                            style={{ color: "var(--text-secondary)" }}
                           >
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7D2B2B]" />
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "var(--crimson)" }} />
                             {b}
                           </li>
                         ))}
@@ -340,9 +342,10 @@ export default function NossasAtividades() {
                         {s.steps.map((step, i) => (
                           <li
                             key={i}
-                            className="flex gap-3 text-sm leading-relaxed text-[#A8A8A8] sm:text-base"
+                            className="flex gap-3 text-sm leading-relaxed sm:text-base"
+                            style={{ color: "var(--text-secondary)" }}
                           >
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-xs font-semibold text-[#7D2B2B]">
+                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
                               {i + 1}
                             </span>
                             {step}
@@ -373,7 +376,8 @@ export default function NossasAtividades() {
         <div className="mt-12 text-center">
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+            className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+            style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
           >
             Falar sobre um projeto
           </Link>

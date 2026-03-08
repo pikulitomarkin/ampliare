@@ -94,11 +94,11 @@ function ContadorAnimado({
       viewport={{ once: true }}
       className="text-center"
     >
-      <span className="font-display text-4xl font-bold text-[#7D2B2B] sm:text-5xl lg:text-6xl">
+      <span className="font-display text-4xl font-bold sm:text-5xl lg:text-6xl" style={{ color: "var(--crimson)" }}>
         {count}
         {sufixo}
       </span>
-      <p className="mt-2 text-sm font-medium text-[#A8A8A8] sm:text-base">
+      <p className="mt-2 text-sm font-medium sm:text-base" style={{ color: "var(--text-secondary)" }}>
         {label}
       </p>
     </motion.div>
@@ -109,20 +109,21 @@ export default function AmpliareConsultoria() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[50vh] overflow-hidden bg-[#0a0a0a] sm:min-h-[55vh]">
+      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-deep)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-ampliare.jpg)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 to-[#0a0a0a]" />
-        <div className="absolute inset-0 bg-[#0a0a0a]/70" />
+        <div className="absolute inset-0 opacity-60" style={{ background: "var(--bg-deep)" }} />
+        <div className="absolute inset-0 opacity-70" style={{ background: "var(--bg-deep)" }} />
         <div className="relative flex min-h-[50vh] flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
           <div className="mx-auto max-w-7xl px-6 text-center md:px-8 lg:px-16">
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
+              className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+              style={{ color: "var(--text-primary)" }}
             >
               Nós criamos a evolução
             </motion.h1>
@@ -131,7 +132,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Sobre */}
-      <section className="border-b border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -139,10 +140,10 @@ export default function AmpliareConsultoria() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl" style={{ color: "var(--text-primary)" }}>
               Sobre a Ampliare Consultoria
             </h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
               Não esperamos que as oportunidades apareçam, nós mesmas as
               criamos. Somos uma consultoria digital que potencializa
               resultados, redefine posicionamentos e transforma a maneira como
@@ -155,7 +156,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Marcos: timeline + contadores + fotos equipe */}
-      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16">
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-deep)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -163,13 +164,13 @@ export default function AmpliareConsultoria() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl" style={{ color: "var(--text-primary)" }}>
               Marcos da Nossa Trajetória
             </h2>
-            <p className="mt-2 text-lg font-semibold text-[#7D2B2B]">
+            <p className="mt-2 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
               Crescendo, inovando e impactando
             </p>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#A8A8A8]">
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
               Evolução é essencial. No mercado, empresas que não avançam ficam
               para trás. Na Ampliare Consultoria, buscamos constantemente
               desenvolver soluções mais eficazes e inovadoras, garantindo
@@ -193,7 +194,8 @@ export default function AmpliareConsultoria() {
           <div className="mt-16">
             <div className="relative max-w-2xl">
               <div
-                className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-[#7D2B2B]"
+                className="absolute left-[11px] top-2 bottom-2 w-0.5"
+                style={{ background: "var(--crimson)" }}
                 aria-hidden
               />
               <ul className="space-y-10">
@@ -207,16 +209,17 @@ export default function AmpliareConsultoria() {
                     className="relative flex gap-6 pl-10"
                   >
                     <span
-                      className="absolute left-0 top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-[#7D2B2B] text-xs font-bold text-white"
+                      className="absolute left-0 top-0.5 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
+                      style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
                       aria-hidden
                     >
                       {index + 1}
                     </span>
                     <div>
-                      <span className="font-display text-xl font-bold text-[#7D2B2B] sm:text-2xl">
+                      <span className="font-display text-xl font-bold sm:text-2xl" style={{ color: "var(--crimson)" }}>
                         {marco.year}
                       </span>
-                      <p className="mt-2 text-base leading-relaxed text-[#A8A8A8]">
+                      <p className="mt-2 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                         {marco.label}
                       </p>
                     </div>
@@ -233,7 +236,7 @@ export default function AmpliareConsultoria() {
             viewport={{ once: true }}
             className="mt-20"
           >
-            <h3 className="text-xl font-bold uppercase tracking-wider text-[#F0EDE8]">
+            <h3 className="text-xl font-bold uppercase tracking-wider" style={{ color: "var(--text-primary)" }}>
               Nosso Foco
             </h3>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -244,7 +247,8 @@ export default function AmpliareConsultoria() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="group relative h-[280px] overflow-hidden rounded-lg border border-[#2A2A2A] transition-[border-color] duration-300 hover:border-[#7D2B2B]"
+                  className="group relative h-[280px] overflow-hidden rounded-lg border transition-[border-color] duration-300 hover:border-[var(--crimson)]"
+                  style={{ borderColor: "var(--border-dark)" }}
                 >
                   <Image
                     src={card.imagem}
@@ -273,7 +277,7 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Transformação */}
-      <section className="border-t border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+      <section className="border-t px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -281,13 +285,13 @@ export default function AmpliareConsultoria() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl" style={{ color: "var(--text-primary)" }}>
               Transformação Digital Inteligente
             </h2>
-            <p className="mt-2 text-lg font-semibold text-[#7D2B2B]">
+            <p className="mt-2 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
               Impulsionando negócios para crescer no ritmo do mundo atual
             </p>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
               Planejar, analisar dados e estruturar estratégias eficazes são
               passos essenciais para criar cases de impacto real. Mais do que
               conquistar clientes, buscamos construir parcerias duradouras,
@@ -300,7 +304,11 @@ export default function AmpliareConsultoria() {
             <div className="mt-10">
               <Link
                 href="/contato"
-                className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#111111]"
+                className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                style={{
+                  background: "var(--crimson)",
+                  color: "var(--text-primary)",
+                }}
               >
                 Fale conosco
               </Link>

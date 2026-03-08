@@ -82,9 +82,9 @@ const cardStyleParceiro: React.CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   padding: "1rem 1.5rem",
-  border: "1px solid #2A2A2A",
+  border: "1px solid var(--border-dark)",
   borderRadius: "6px",
-  background: "#111111",
+  background: "var(--bg-card)",
   minWidth: "120px",
   height: "72px",
 };
@@ -156,24 +156,11 @@ const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
   },
 ];
 
-const heroVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: i * 0.15,
-      ease: [0.22, 1, 0.36, 1] as const,
-    },
-  }),
-};
-
 function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
   const [imgFailed, setImgFailed] = useState(false);
   const useImg = p.logo && !imgFailed;
   return (
-    <div style={cardStyleParceiro}>
+    <div className="card-parceiro" style={cardStyleParceiro}>
       {useImg ? (
         <img
           src={p.logo}
@@ -220,144 +207,78 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — imagem "Nós Criamos a Evolução" + fundo dark premium */}
+      {/* Hero — imagem fullscreen + overlay + conteúdo */}
       <section
-        className="overflow-hidden"
         style={{
-          minHeight: "100vh",
           position: "relative",
+          width: "100%",
+          minHeight: "100vh",
           overflow: "hidden",
-          background: `
-    radial-gradient(ellipse 90% 70% at 50% 0%, rgba(125,43,43,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 0% 30%, rgba(101,54,20,0.22) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 100% 60%, rgba(125,43,43,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(60,25,10,0.3) 0%, transparent 60%),
-    linear-gradient(170deg, #1a0f0f 0%, #120c0c 25%, #0e0a0a 50%, #150d0d 75%, #1a0f0f 100%)
-  `,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--bg-deep)",
         }}
       >
-        {/* Camada 1: Textura noise sutil */}
+        {/* Imagem de fundo fullscreen */}
+        <img
+          src={`/logos/${encodeURIComponent("NÓS CRIAMOS A EVOLUÇÃO-2.png")}`}
+          alt="Nós Criamos a Evolução"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            zIndex: 0,
+          }}
+        />
+
+        {/* Overlay gradiente sobre a imagem para profundidade */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             zIndex: 1,
-            opacity: 0.35,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`,
-            pointerEvents: "none",
-          }}
-          aria-hidden
-        />
-        {/* Camada 2: Linhas diagonais decorativas sutis */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            zIndex: 1,
-            backgroundImage: `repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 60px,
-    rgba(125,43,43,0.03) 60px,
-    rgba(125,43,43,0.03) 61px
-  )`,
-            pointerEvents: "none",
-          }}
-          aria-hidden
-        />
-        {/* Camada 3: Glow bordô superior */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: "3px",
-            zIndex: 4,
-            background:
-              "linear-gradient(90deg, transparent 0%, #7D2B2B 20%, #C8603A 50%, #7D2B2B 80%, transparent 100%)",
-            boxShadow:
-              "0 0 20px rgba(125,43,43,0.8), 0 0 40px rgba(125,43,43,0.4)",
-          }}
-          aria-hidden
-        />
-        {/* Camada 4: Glow bordô inferior */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "2px",
-            zIndex: 4,
-            background:
-              "linear-gradient(90deg, transparent 0%, #7D2B2B 30%, #9B4B2B 50%, #7D2B2B 70%, transparent 100%)",
-          }}
-          aria-hidden
-        />
-        {/* Camada 5: Círculo de luz quente à esquerda (reduzido no mobile) */}
-        <div
-          className="hero-glow-left"
-          style={{
-            position: "absolute",
-            top: "20%",
-            zIndex: 1,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(125,43,43,0.12) 0%, transparent 70%)",
-            pointerEvents: "none",
-          }}
-          aria-hidden
-        />
-        {/* Camada 6: Círculo de luz fria (cinza) à direita (reduzido no mobile) */}
-        <div
-          className="hero-glow-right"
-          style={{
-            position: "absolute",
-            bottom: "10%",
-            zIndex: 1,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(107,107,107,0.1) 0%, transparent 70%)",
-            pointerEvents: "none",
+            background: `
+              linear-gradient(to bottom,
+                rgba(15,8,8,0.3) 0%,
+                rgba(15,8,8,0.1) 40%,
+                rgba(15,8,8,0.5) 70%,
+                rgba(15,8,8,0.95) 100%
+              ),
+              linear-gradient(to right,
+                rgba(15,8,8,0.6) 0%,
+                transparent 50%,
+                rgba(15,8,8,0.3) 100%
+              )
+            `,
           }}
           aria-hidden
         />
 
+        {/* Conteúdo sobre a imagem */}
         <div
-          className="mx-auto max-w-7xl px-6 pt-24 pb-0 md:px-8 md:pt-28 lg:px-16 lg:pt-32"
-          style={{ position: "relative", zIndex: 3 }}
+          style={{
+            position: "relative",
+            zIndex: 2,
+            textAlign: "center",
+            padding: "2rem",
+          }}
         >
-          <motion.div
-            custom={0}
-            initial="hidden"
-            animate="visible"
-            variants={heroVariants}
-            style={{ position: "relative", zIndex: 3 }}
-          >
-            <img
-              src={`/logos/${encodeURIComponent("NÓS CRIAMOS A EVOLUÇÃO-2.png")}`}
-              alt="Nós Criamos a Evolução"
-              style={{
-                width: "100%",
-                maxWidth: "900px",
-                height: "auto",
-                objectFit: "cover",
-                borderRadius: "4px",
-                position: "relative",
-                zIndex: 3,
-                boxShadow:
-                  "0 0 80px rgba(125,43,43,0.25), 0 0 160px rgba(80,30,10,0.15)",
-              }}
-            />
-          </motion.div>
+          {/* Espaço para tagline ou CTA se necessário */}
         </div>
       </section>
 
-      {/* Soluções — tag vertical, título, 4 cards (conteúdo direto após o vídeo) */}
+      {/* Separador */}
+      <div className="section-separator" aria-hidden />
+
+      {/* Soluções — tag vertical, título, 4 cards */}
       <section
         id="solucoes"
-        className="relative overflow-x-hidden overflow-y-visible bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-x-hidden overflow-y-visible py-16 sm:py-20 lg:py-24"
+        style={{ background: "var(--bg-dark)" }}
       >
         <div className="mx-auto max-w-7xl overflow-x-hidden px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -369,8 +290,8 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+                className="text-sm font-semibold tracking-[0.2em]"
+                style={{ writingMode: "vertical-rl", textOrientation: "mixed", color: "var(--crimson)" }}
               >
                 {"//SOLUÇÕES"}
               </span>
@@ -383,20 +304,22 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//SOLUÇÕES"}
                 </p>
                 <h2
-                  className="mt-3 border-l-4 border-[#7D2B2B] pl-4 font-bold uppercase tracking-tight text-[#F0EDE8]"
+                  className="mt-3 border-l-4 pl-4 font-bold uppercase tracking-tight"
                   style={{
                     fontSize: "clamp(1.6rem, 4vw, 3rem)",
                     wordBreak: "break-word",
                     lineHeight: 1.2,
+                    borderColor: "var(--crimson)",
+                    color: "var(--text-primary)",
                   }}
                 >
                   Crescimento exige estratégia
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
+                <p className="mt-4 max-w-2xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
                   Nossas soluções propõem uma nova forma de pensar, criar e gerar
                   resultados de alto impacto para o mundo em constante
                   transformação.
@@ -404,7 +327,8 @@ export default function Home() {
                 <div className="mt-8">
                   <Link
                     href="/solucoes-estrategicas"
-                    className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
+                    className="inline-flex items-center justify-center rounded bg-[var(--crimson)] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider shadow-md transition-all hover:bg-[var(--crimson-light)] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-dark)]"
+                    style={{ color: "var(--text-primary)" }}
                   >
                     Conheça nossas soluções
                   </Link>
@@ -425,19 +349,19 @@ export default function Home() {
                         delay: index * 0.08,
                       }}
                     >
-                      <div className="group flex h-full flex-col rounded-xl border border-[#2A2A2A] bg-[#111111] p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm lg:p-6">
+                      <div className="group flex h-full flex-col rounded-xl border p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[var(--crimson)] hover:shadow-crimson-sm lg:p-6" style={{ borderColor: "var(--border-dark)", backgroundColor: "var(--bg-card)" }}>
                         <div className="flex shrink-0 justify-center">
-                          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors group-hover:bg-[#7D2B2B]/30">
+                          <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors" style={{ backgroundColor: "rgba(125,43,43,0.2)", color: "var(--crimson)" }}>
                             <card.icon className="h-10 w-10 glow-crimson" size={40} />
                           </div>
                         </div>
-                        <h3 className="mt-4 text-lg font-semibold text-[#F0EDE8]">
-                          {card.title}
-                        </h3>
-                        <p
-                          className="mt-3 leading-relaxed text-[#A8A8A8]"
-                          style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
-                        >
+                        <h3 className="mt-4 text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                            {card.title}
+                          </h3>
+                          <p
+                            className="mt-3 leading-relaxed"
+                            style={{ color: "var(--text-secondary)", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
+                          >
                           {card.description}
                         </p>
                       </div>
@@ -459,7 +383,8 @@ export default function Home() {
       `}} />
       <section
         id="parceiros"
-        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
+        style={{ background: "var(--bg-deep)" }}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -471,8 +396,8 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+                className="text-sm font-semibold tracking-[0.2em]"
+                style={{ writingMode: "vertical-rl", textOrientation: "mixed", color: "var(--crimson)" }}
               >
                 {"//PARCEIROS"}
               </span>
@@ -488,7 +413,7 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//PARCEIROS"}
                 </p>
-                <h2 className="mt-3 text-responsive-h2 font-bold uppercase tracking-tight text-[#F0EDE8]">
+                <h2 className="mt-3 text-responsive-h2 font-bold uppercase tracking-tight" style={{ color: "var(--text-primary)" }}>
                   Marcas que estão evoluindo conosco
                 </h2>
               </motion.div>
@@ -514,10 +439,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Separador */}
+      <div className="section-separator" aria-hidden />
+
       {/* Ecossistema de Serviços — tag + título à esquerda, texto à direita, grid 3 imagens */}
       <section
         id="servicos"
-        className="bg-[#111111] py-16 sm:py-20 lg:py-24"
+        className="py-16 sm:py-20 lg:py-24"
+        style={{ background: "var(--bg-dark)" }}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
@@ -530,10 +459,10 @@ export default function Home() {
                 aria-hidden
               >
                 <span
-                  className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
-                  style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-                >
-                  {"//SERVIÇOS"}
+                className="text-sm font-semibold tracking-[0.2em]"
+                style={{ writingMode: "vertical-rl", textOrientation: "mixed", color: "var(--crimson)" }}
+              >
+                {"//SERVIÇOS"}
                 </span>
               </motion.div>
               <motion.div
@@ -543,16 +472,17 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="min-w-0"
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//SERVIÇOS"}
                 </p>
-                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 border-l-4 pl-4 text-2xl font-bold uppercase tracking-tight sm:text-3xl lg:text-4xl" style={{ borderColor: "var(--crimson)", color: "var(--text-primary)" }}>
                   Ecossistema de serviços
                 </h2>
                 <div className="mt-6">
                   <Link
                     href="/nossas-atividades"
-                    className="inline-flex items-center justify-center rounded border-2 border-[#7D2B2B] bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-[#7D2B2B] transition-all hover:bg-[#7D2B2B] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#111111]"
+                    className="inline-flex items-center justify-center rounded border-2 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all hover:bg-[var(--crimson)] hover:text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-dark)]"
+                    style={{ borderColor: "var(--crimson)", color: "var(--crimson)" }}
                   >
                     O que fazemos
                   </Link>
@@ -567,7 +497,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex items-start lg:pt-2"
             >
-              <p className="text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
+              <p className="text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
                 Entendemos o mercado e as tendências para gerar soluções
                 assertivas. Nossos serviços envolvem planejamento, produção,
                 análise e otimização de todos os processos de marketing e vendas.
@@ -596,7 +526,8 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="relative h-[400px] overflow-hidden rounded-xl border border-[#2A2A2A] shadow-sm"
+                className="relative h-[400px] overflow-hidden rounded-xl border shadow-sm"
+                style={{ borderColor: "var(--border-dark)" }}
               >
                 <Image
                   src={img.src}
@@ -611,10 +542,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Separador */}
+      <div className="section-separator" aria-hidden />
+
       {/* Metodologia — animação rotativa: palavra + texto (esquerda), menu clicável (direita) */}
       <section
         id="metodologia"
-        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
+        style={{ background: "var(--bg-deep)" }}
       >
         <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
@@ -626,8 +561,8 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+                className="text-sm font-semibold tracking-[0.2em]"
+                style={{ writingMode: "vertical-rl", textOrientation: "mixed", color: "var(--crimson)" }}
               >
                 {"//METODOLOGIAS"}
               </span>
@@ -641,7 +576,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//METODOLOGIAS"}
                 </p>
                 <AnimatePresence mode="wait">
@@ -654,7 +589,7 @@ export default function Home() {
                     style={{
                       fontSize: "clamp(2rem, 8vw, 6rem)",
                       fontWeight: 900,
-                      background: "linear-gradient(135deg, #7D2B2B, #6B6B6B)",
+                      background: "var(--gradient-accent)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
@@ -672,7 +607,7 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    style={{ color: "#A8A8A8", lineHeight: 1.8, fontSize: "1rem" }}
+                    style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1rem" }}
                   >
                     {metodologiaItens[ativo].texto}
                   </motion.p>
@@ -707,7 +642,7 @@ export default function Home() {
                       gap: "1rem",
                       padding: "0.75rem 0",
                       cursor: "pointer",
-                      borderBottom: "1px solid #1a1a1a",
+                      borderBottom: "1px solid var(--border-dark)",
                       transition: "all 0.3s",
                     }}
                   >
@@ -715,13 +650,13 @@ export default function Home() {
                       style={{
                         width: index === ativo ? "40px" : "20px",
                         height: "2px",
-                        background: index === ativo ? "#7D2B2B" : "#333",
+                        background: index === ativo ? "var(--crimson)" : "var(--border-mid)",
                         transition: "all 0.3s",
                       }}
                     />
                     <span
                       style={{
-                        color: index === ativo ? "#7D2B2B" : "#6B6B6B",
+                        color: index === ativo ? "var(--crimson)" : "var(--text-muted)",
                         fontWeight: index === ativo ? 600 : 400,
                         fontSize: "0.95rem",
                         transition: "all 0.3s",

@@ -68,20 +68,17 @@ export default function SolucoesEstrategicas() {
   return (
     <>
       {/* Hero: imagem de fundo + overlay escuro + título e subtítulo */}
-      <section className="relative min-h-[50vh] overflow-hidden bg-[#0a0a0a] sm:min-h-[55vh]">
-        {/* Imagem de fundo — substitua url por sua imagem em /public */}
+      <section className="relative min-h-[50vh] overflow-hidden sm:min-h-[55vh]" style={{ background: "var(--bg-deep)" }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(/hero-solucoes.jpg)",
-          }}
+          style={{ backgroundImage: "url(/hero-solucoes.jpg)" }}
         />
-        {/* Fallback se a imagem não existir: gradiente */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[#7D2B2B]/30 via-[#0a0a0a]/90 to-[#0a0a0a]"
+          className="absolute inset-0 opacity-90"
+          style={{ background: "linear-gradient(to bottom, var(--crimson-glow) 0%, var(--bg-deep) 50%, var(--bg-deep) 100%)" }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-[#0a0a0a]/70" aria-hidden />
+        <div className="absolute inset-0 opacity-70" style={{ background: "var(--bg-deep)" }} aria-hidden />
 
         <div className="relative mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
           <motion.div
@@ -90,10 +87,10 @@ export default function SolucoesEstrategicas() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl" style={{ color: "var(--text-primary)" }}>
               Soluções em marketing e vendas
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-white/90 sm:text-xl">
+            <p className="mx-auto mt-5 max-w-2xl text-lg sm:text-xl" style={{ color: "var(--text-secondary)" }}>
               As marcas de destaque no mercado são visionárias, adaptáveis e
               direcionadas por dados.
             </p>
@@ -102,7 +99,7 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Seção introdutória */}
-      <section className="border-b border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+      <section className="border-b px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ borderColor: "var(--border-dark)", background: "var(--bg-dark)" }}>
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -110,10 +107,10 @@ export default function SolucoesEstrategicas() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl" style={{ color: "var(--text-primary)" }}>
               Soluções Integradas de Marketing e Crescimento
             </h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
               Empresas que se destacam são aquelas que combinam visão estratégica
               com execução eficaz. Nossas soluções unem inteligência de mercado,
               criatividade e tecnologia para gerar resultados consistentes e
@@ -124,7 +121,7 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Grid de soluções */}
-      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16">
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16" style={{ background: "var(--bg-deep)" }}>
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {solucoes.map((item, index) => (
@@ -134,15 +131,16 @@ export default function SolucoesEstrategicas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group rounded-xl border border-[#2A2A2A] bg-[#0a0a0a] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm sm:p-8"
+                className="group rounded-xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--crimson)] hover:shadow-crimson-sm sm:p-8"
+                style={{ borderColor: "var(--border-dark)", background: "var(--bg-card)" }}
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors duration-300 group-hover:bg-[#7D2B2B]/30">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 group-hover:opacity-90" style={{ background: "var(--crimson-glow)", color: "var(--crimson)" }}>
                   <item.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-[#F0EDE8]">
+                <h3 className="mt-4 text-xl font-semibold" style={{ color: "var(--text-primary)" }}>
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#A8A8A8] sm:text-base">
+                <p className="mt-3 text-sm leading-relaxed sm:text-base" style={{ color: "var(--text-secondary)" }}>
                   {item.description}
                 </p>
               </motion.div>
@@ -156,7 +154,8 @@ export default function SolucoesEstrategicas() {
           >
             <Link
               href="/contato"
-              className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#111111]"
+              className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-deep)]"
+              style={{ background: "var(--crimson)", color: "var(--text-primary)" }}
             >
               Solicitar proposta
             </Link>
