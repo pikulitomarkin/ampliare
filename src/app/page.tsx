@@ -71,11 +71,13 @@ const metodologiaItens: { label: string; description: string }[] = [
   },
 ];
 
-// Logos em /public/logos/ — marquee infinito
-const parceiros: { nome: string; logo: string }[] = [
+// Parceiros: só usamos arquivos que existem em /public/logos/
+// Existentes: logo_pizza_prime.png, logo_rede_dor-21331594.png, hotel-ibis-logo-115294069548cavco4znp.png
+// Inexistentes: petz.png, fast-shop.png → placeholder com nome da marca
+const parceiros: { nome: string; logo: string | null }[] = [
   { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.png" },
-  { nome: "Petz", logo: "/logos/petz.png" },
-  { nome: "Fast Shop", logo: "/logos/fast-shop.png" },
+  { nome: "Petz", logo: null },
+  { nome: "Fast Shop", logo: null },
   { nome: "Rede D'Or", logo: "/logos/logo_rede_dor-21331594.png" },
   { nome: "Ibis Hotels", logo: "/logos/hotel-ibis-logo-115294069548cavco4znp.png" },
 ];
@@ -94,6 +96,35 @@ const heroVariants = {
 };
 
 const ROTACAO_METODOLOGIA_MS = 3000;
+
+function ParceiroLogo({ nome, logo }: { nome: string; logo: string | null }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const showPlaceholder = logo === null || imgFailed;
+  return (
+    <span className="relative flex h-full w-full items-center justify-center">
+      {logo !== null && (
+        <Image
+          src={logo}
+          alt=""
+          width={160}
+          height={60}
+          className="logo-parceiros h-[60px] w-auto max-w-full object-contain transition-[filter] duration-300 ease-out"
+          style={{ display: showPlaceholder ? "none" : undefined }}
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+            setImgFailed(true);
+          }}
+          unoptimized
+        />
+      )}
+      {showPlaceholder && (
+        <span className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#2A2A2A] px-2">
+          <span className="text-center text-sm font-medium text-[#6B6B6B]">{nome}</span>
+        </span>
+      )}
+    </span>
+  );
+}
 
 export default function Home() {
   const [metodologiaAtivo, setMetodologiaAtivo] = useState(0);
@@ -282,18 +313,11 @@ export default function Home() {
                   {[...parceiros, ...parceiros].map((p, i) => (
                     <div
                       key={`${p.nome}-${i}`}
-                      className="group flex h-[60px] w-[160px] shrink-0 items-center justify-center rounded-xl border border-[#2A2A2A] bg-[#111111] px-4 py-3 transition-[filter,box-shadow,border-color] duration-300 ease-out hover:border-[#7D2B2B] hover:shadow-crimson-sm"
+                      className="group relative flex h-[60px] w-[160px] shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#2A2A2A] bg-[#111111] px-4 py-3 transition-[box-shadow,border-color] duration-300 ease-out hover:border-[#7D2B2B] hover:shadow-crimson-sm"
                       role="img"
                       aria-label={p.nome}
                     >
-                      <Image
-                        src={p.logo}
-                        alt=""
-                        width={160}
-                        height={60}
-                        className="logo-parceiros h-[60px] w-auto max-w-full object-contain transition-[filter] duration-300 ease-out"
-                        unoptimized={p.logo.endsWith(".png") || p.logo.endsWith(".svg")}
-                      />
+                      <ParceiroLogo nome={p.nome} logo={p.logo} />
                     </div>
                   ))}
                 </div>
