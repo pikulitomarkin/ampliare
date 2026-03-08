@@ -24,7 +24,7 @@ const contentVariants = {
   open: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, delay: 0.05 + i * 0.06, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.35, delay: 0.05 + i * 0.06, ease: [0.22, 1, 0.36, 1] as const },
   }),
   exit: (i: number) => ({
     opacity: 0,
