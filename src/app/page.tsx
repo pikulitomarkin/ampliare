@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -43,30 +43,35 @@ const solucoesCards: {
   },
 ];
 
-const metodologiaItens: { label: string; description: string }[] = [
+const metodologiaItens = [
   {
-    label: "Método",
-    description:
+    titulo: "Método",
+    palavra: "MÉTODO",
+    texto:
       "Nosso trabalho é conduzido por um processo estruturado, que organiza etapas, define prioridades e garante clareza na execução. Atuamos com planejamento, acompanhamento contínuo e foco em resultados mensuráveis, assegurando consistência em cada entrega e evolução constante ao longo do projeto.",
   },
   {
-    label: "Planejamento",
-    description:
+    titulo: "Planejamento",
+    palavra: "PLANEJAMENTO",
+    texto:
       "Construímos caminhos claros para o crescimento das marcas, a partir de análise de mercado, posicionamento e definição de metas. Cada decisão é orientada por dados e visão de longo prazo, conectando comunicação, marketing e vendas a objetivos concretos de negócio.",
   },
   {
-    label: "Competência",
-    description:
+    titulo: "Competência",
+    palavra: "COMPETÊNCIA",
+    texto:
       "Contamos com equipe especializada e experiência prática para transformar estratégia em ação. Nossa capacidade técnica permite executar projetos com eficiência, qualidade e integração entre diferentes frentes digitais, garantindo performance sustentável.",
   },
   {
-    label: "Estrutura",
-    description:
+    titulo: "Estrutura",
+    palavra: "ESTRUTURA",
+    texto:
       "Valorizamos uma organização colaborativa, com processos bem definidos e cultura orientada a resultados. Estimulamos autonomia, inovação e responsabilidade compartilhada, criando um ambiente que favorece alta performance e crescimento contínuo.",
   },
   {
-    label: "DNA",
-    description:
+    titulo: "DNA",
+    palavra: "DNA",
+    texto:
       "Nosso DNA é orientado por resultados e pela evolução contínua. Valorizamos agilidade, colaboração e aprendizado constante para desenvolver estratégias eficientes e gerar impacto real para nossos clientes. Trabalhamos com flexibilidade e consistência para transformar desafios em oportunidades e construir projetos de sucesso.",
   },
 ];
@@ -164,8 +169,6 @@ const heroVariants = {
   }),
 };
 
-const ROTACAO_METODOLOGIA_MS = 3000;
-
 function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
   const [imgFailed, setImgFailed] = useState(false);
   const useImg = p.logo && !imgFailed;
@@ -195,57 +198,90 @@ function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
 }
 
 export default function Home() {
-  const [metodologiaAtivo, setMetodologiaAtivo] = useState(0);
+  const [ativo, setAtivo] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const irPara = (index: number) => {
+    setAtivo(index);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setAtivo((prev) => (prev + 1) % metodologiaItens.length);
+    }, 3000);
+  };
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setMetodologiaAtivo((i) => (i + 1) % metodologiaItens.length);
-    }, ROTACAO_METODOLOGIA_MS);
-    return () => clearInterval(t);
+    timerRef.current = setInterval(() => {
+      setAtivo((prev) => (prev + 1) % metodologiaItens.length);
+    }, 3000);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, []);
 
   return (
     <>
-      {/* Hero — vídeo + background cinematográfico premium */}
+      {/* Hero — imagem "Nós Criamos a Evolução" + fundo dark premium */}
       <section
         className="overflow-hidden"
         style={{
           minHeight: "100vh",
           position: "relative",
+          overflow: "hidden",
           background: `
-    radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.85) 100%),
-    radial-gradient(ellipse 60% 50% at 0% 0%, rgba(125,43,43,0.45) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 45% at 100% 100%, rgba(101,54,20,0.4) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 30% at 50% 100%, rgba(80,35,15,0.5) 0%, transparent 60%),
-    linear-gradient(160deg, #0f0805 0%, #0a0a0a 35%, #100808 65%, #0a0605 100%)
+    radial-gradient(ellipse 90% 70% at 50% 0%, rgba(125,43,43,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 0% 30%, rgba(101,54,20,0.22) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 100% 60%, rgba(125,43,43,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(60,25,10,0.3) 0%, transparent 60%),
+    linear-gradient(170deg, #1a0f0f 0%, #120c0c 25%, #0e0a0a 50%, #150d0d 75%, #1a0f0f 100%)
   `,
         }}
       >
-        {/* Grain / noise sutil */}
+        {/* Camada 1: Textura noise sutil */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E")`,
-            opacity: 0.4,
-            pointerEvents: "none",
             zIndex: 1,
+            opacity: 0.35,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E")`,
+            pointerEvents: "none",
           }}
           aria-hidden
         />
-        {/* Scan lines */}
+        {/* Camada 2: Linhas diagonais decorativas sutis */}
         <div
           style={{
             position: "absolute",
             inset: 0,
+            zIndex: 1,
+            backgroundImage: `repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 60px,
+    rgba(125,43,43,0.03) 60px,
+    rgba(125,43,43,0.03) 61px
+  )`,
+            pointerEvents: "none",
+          }}
+          aria-hidden
+        />
+        {/* Camada 3: Glow bordô superior */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: "3px",
+            zIndex: 4,
             background:
-              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
-            pointerEvents: "none",
-            zIndex: 1,
+              "linear-gradient(90deg, transparent 0%, #7D2B2B 20%, #C8603A 50%, #7D2B2B 80%, transparent 100%)",
+            boxShadow:
+              "0 0 20px rgba(125,43,43,0.8), 0 0 40px rgba(125,43,43,0.4)",
           }}
           aria-hidden
         />
-        {/* Borda brilhante bordô na parte inferior */}
+        {/* Camada 4: Glow bordô inferior */}
         <div
           style={{
             position: "absolute",
@@ -253,60 +289,77 @@ export default function Home() {
             left: 0,
             right: 0,
             height: "2px",
+            zIndex: 4,
             background:
               "linear-gradient(90deg, transparent 0%, #7D2B2B 30%, #9B4B2B 50%, #7D2B2B 70%, transparent 100%)",
-            zIndex: 2,
           }}
           aria-hidden
         />
-        <div className="relative z-[3] mx-auto flex min-h-screen max-w-6xl flex-col px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 lg:pt-32">
+        {/* Camada 5: Círculo de luz quente à esquerda (reduzido no mobile) */}
+        <div
+          className="hero-glow-left"
+          style={{
+            position: "absolute",
+            top: "20%",
+            zIndex: 1,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(125,43,43,0.12) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+          aria-hidden
+        />
+        {/* Camada 6: Círculo de luz fria (cinza) à direita (reduzido no mobile) */}
+        <div
+          className="hero-glow-right"
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            zIndex: 1,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle, rgba(107,107,107,0.1) 0%, transparent 70%)",
+            pointerEvents: "none",
+          }}
+          aria-hidden
+        />
+
+        <div
+          className="mx-auto max-w-7xl px-6 pt-24 pb-0 md:px-8 md:pt-28 lg:px-16 lg:pt-32"
+          style={{ position: "relative", zIndex: 3 }}
+        >
           <motion.div
             custom={0}
             initial="hidden"
             animate="visible"
             variants={heroVariants}
-            className="relative z-[3] flex-1"
+            style={{ position: "relative", zIndex: 3 }}
           >
-            <div
-              className="aspect-video w-full overflow-hidden bg-black/40"
+            <img
+              src={`/logos/${encodeURIComponent("NÓS CRIAMOS A EVOLUÇÃO-2.png")}`}
+              alt="Nós Criamos a Evolução"
               style={{
-                border: "1px solid rgba(125,43,43,0.3)",
-                boxShadow:
-                  "0 0 60px rgba(125,43,43,0.15), 0 0 120px rgba(80,30,10,0.1), inset 0 0 30px rgba(0,0,0,0.5)",
-                borderRadius: 4,
+                width: "100%",
+                maxWidth: "900px",
+                height: "auto",
+                objectFit: "cover",
+                borderRadius: "4px",
                 position: "relative",
                 zIndex: 3,
+                boxShadow:
+                  "0 0 80px rgba(125,43,43,0.25), 0 0 160px rgba(80,30,10,0.15)",
               }}
-            >
-              {/* Placeholder: troque pelo seu vídeo ou ID do YouTube */}
-              <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
-                title="Vídeo institucional Ampliare Consultoria"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
-              {/* Alternativa com <video> local (descomente e ajuste src/poster):
-              <video
-                className="h-full w-full object-cover"
-                poster="/hero-poster.jpg"
-                controls
-                playsInline
-              >
-                <source src="/hero-video.mp4" type="video/mp4" />
-              </video>
-              */}
-            </div>
+            />
           </motion.div>
         </div>
       </section>
 
-      {/* Soluções — tag vertical, título, 4 cards */}
+      {/* Soluções — tag vertical, título, 4 cards (conteúdo direto após o vídeo) */}
       <section
         id="solucoes"
-        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-x-hidden overflow-y-visible bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl overflow-x-hidden px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -323,7 +376,7 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 overflow-x-hidden">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -333,7 +386,14 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//SOLUÇÕES"}
                 </p>
-                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+                <h2
+                  className="mt-3 border-l-4 border-[#7D2B2B] pl-4 font-bold uppercase tracking-tight text-[#F0EDE8]"
+                  style={{
+                    fontSize: "clamp(1.6rem, 4vw, 3rem)",
+                    wordBreak: "break-word",
+                    lineHeight: 1.2,
+                  }}
+                >
                   Crescimento exige estratégia
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
@@ -351,39 +411,39 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Cards em scroll horizontal (mobile) / grid (desktop) */}
+              {/* Grid responsivo: 1 col mobile, 2 cols tablet, 4 cols desktop */}
               <div className="mt-12 lg:mt-14">
-                <div className="-mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:overflow-visible lg:px-0">
-                  <ul className="flex gap-5 pb-2 lg:grid lg:grid-cols-4 lg:pb-0">
-                    {solucoesCards.map((card, index) => (
-                      <motion.li
-                        key={card.title}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.4,
-                          delay: index * 0.08,
-                        }}
-                        className="min-w-[280px] shrink-0 sm:min-w-[320px] lg:min-w-0"
-                      >
-                        <div className="group flex h-full flex-col rounded-xl border border-[#2A2A2A] bg-[#111111] p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm">
-                          <div className="flex shrink-0 justify-center">
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors group-hover:bg-[#7D2B2B]/30">
-                              <card.icon className="h-10 w-10 glow-crimson" size={40} />
-                            </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {solucoesCards.map((card, index) => (
+                    <motion.li
+                      key={card.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.4,
+                        delay: index * 0.08,
+                      }}
+                    >
+                      <div className="group flex h-full flex-col rounded-xl border border-[#2A2A2A] bg-[#111111] p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm lg:p-6">
+                        <div className="flex shrink-0 justify-center">
+                          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors group-hover:bg-[#7D2B2B]/30">
+                            <card.icon className="h-10 w-10 glow-crimson" size={40} />
                           </div>
-                          <h3 className="mt-4 text-lg font-semibold text-[#F0EDE8]">
-                            {card.title}
-                          </h3>
-                          <p className="mt-3 text-sm leading-relaxed text-[#A8A8A8]">
-                            {card.description}
-                          </p>
                         </div>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
+                        <h3 className="mt-4 text-lg font-semibold text-[#F0EDE8]">
+                          {card.title}
+                        </h3>
+                        <p
+                          className="mt-3 leading-relaxed text-[#A8A8A8]"
+                          style={{ fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
+                        >
+                          {card.description}
+                        </p>
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -401,7 +461,7 @@ export default function Home() {
         id="parceiros"
         className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -428,12 +488,16 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//PARCEIROS"}
                 </p>
-                <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 text-responsive-h2 font-bold uppercase tracking-tight text-[#F0EDE8]">
                   Marcas que estão evoluindo conosco
                 </h2>
               </motion.div>
 
-              <div className="mt-10 overflow-hidden lg:mt-12" aria-label="Parceiros">
+              <div
+                className="mt-10 overflow-x-auto pb-4 scrollbar-hide lg:mt-12 lg:overflow-hidden lg:pb-0"
+                style={{ scrollbarWidth: "none" }}
+                aria-label="Parceiros"
+              >
                 <div
                   className="flex w-max gap-8 sm:gap-10"
                   style={{ animation: "marquee-parceiros 40s linear infinite" }}
@@ -455,8 +519,8 @@ export default function Home() {
         id="servicos"
         className="bg-[#111111] py-16 sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
             <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -12 }}
@@ -547,12 +611,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Metodologia — fundo escuro, pilares, CAPACIDADE */}
+      {/* Metodologia — animação rotativa: palavra + texto (esquerda), menu clicável (direita) */}
       <section
         id="metodologia"
         className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -569,7 +633,8 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <div className="grid min-w-0 flex-1 grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="grid min-w-0 flex-1 grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
+              {/* Coluna esquerda: palavra grande + texto */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -579,85 +644,95 @@ export default function Home() {
                 <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//METODOLOGIAS"}
                 </p>
-                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
-                  Análise de resultados
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
-                  Transformamos empresas com estratégias de evolução digital,
-                  serviços de marketing e vendas, outsourcing de times
-                  multidisciplinares e proficientes em analytics.
-                </p>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={ativo}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                    style={{
+                      fontSize: "clamp(2rem, 8vw, 6rem)",
+                      fontWeight: 900,
+                      background: "linear-gradient(135deg, #7D2B2B, #6B6B6B)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      lineHeight: 1,
+                      marginBottom: "2rem",
+                    }}
+                  >
+                    {metodologiaItens[ativo].palavra}
+                  </motion.div>
+                </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={ativo}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ color: "#A8A8A8", lineHeight: 1.8, fontSize: "1rem" }}
+                  >
+                    {metodologiaItens[ativo].texto}
+                  </motion.p>
+                </AnimatePresence>
               </motion.div>
 
-              <motion.ul
+              {/* Coluna direita: menu clicável — horizontal scroll no mobile, lista no desktop */}
+              <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex flex-col gap-3 border-l-2 border-[#2A2A2A] pl-6"
-                role="list"
+                className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide md:flex-col md:overflow-visible md:gap-0 md:pb-0"
+                style={{ scrollbarWidth: "none" }}
               >
-                {metodologiaItens.map((item, index) => {
-                  const isAtivo = index === metodologiaAtivo;
-                  return (
-                    <li key={item.label}>
-                      <button
-                        type="button"
-                        onClick={() => setMetodologiaAtivo(index)}
-                        className="flex w-full items-center gap-3 text-left transition-colors hover:opacity-90"
-                        aria-pressed={isAtivo}
-                        aria-label={`Selecionar ${item.label}`}
-                      >
-                        <span
-                          className={`h-px shrink-0 transition-all duration-300 ${
-                            isAtivo ? "w-8 bg-[#7D2B2B]" : "w-6 bg-[#6B6B6B]/60"
-                          }`}
-                          aria-hidden
-                        />
-                        <span
-                          className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
-                            isAtivo ? "text-[#7D2B2B]" : "text-[#A8A8A8]"
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </motion.ul>
-            </div>
-          </div>
-
-          <div className="mt-14 grid grid-cols-1 gap-8 border-t border-[#2A2A2A] pt-14 lg:mt-20 lg:grid-cols-2 lg:gap-16 lg:pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center lg:justify-start"
-            >
-              <span
-                className="font-display text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-gradient-capacidade"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                CAPACIDADE
-              </span>
-            </motion.div>
-            <div className="flex min-h-[180px] items-center sm:min-h-[200px]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={metodologiaAtivo}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full"
-                >
-                  <p className="text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
-                    {metodologiaItens[metodologiaAtivo].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+                {metodologiaItens.map((item, index) => (
+                  <div
+                    key={item.titulo}
+                    onClick={() => irPara(index)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        irPara(index);
+                      }
+                    }}
+                    className="shrink-0 md:shrink"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
+                      padding: "0.75rem 0",
+                      cursor: "pointer",
+                      borderBottom: "1px solid #1a1a1a",
+                      transition: "all 0.3s",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: index === ativo ? "40px" : "20px",
+                        height: "2px",
+                        background: index === ativo ? "#7D2B2B" : "#333",
+                        transition: "all 0.3s",
+                      }}
+                    />
+                    <span
+                      style={{
+                        color: index === ativo ? "#7D2B2B" : "#6B6B6B",
+                        fontWeight: index === ativo ? 600 : 400,
+                        fontSize: "0.95rem",
+                        transition: "all 0.3s",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      {item.titulo}
+                    </span>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>

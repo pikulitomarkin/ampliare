@@ -41,8 +41,8 @@ export default function Contato() {
   };
 
   return (
-    <section className="min-h-screen bg-[#0a0a0a] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="mx-auto max-w-6xl">
+    <section className="min-h-screen bg-[#0a0a0a] px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
+      <div className="mx-auto max-w-7xl">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function Contato() {
           </p>
         </motion.header>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:mt-16 lg:gap-16">
           {/* Coluna esquerda — Formulário */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

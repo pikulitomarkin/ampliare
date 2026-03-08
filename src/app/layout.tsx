@@ -41,10 +41,10 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <footer className="text-white">
           <section className="bg-black">
-            <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-              <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
+              <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
                 <div>
-                  <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight text-[#F0EDE8] sm:text-4xl md:text-5xl">
+                  <h2 className="font-display text-responsive-h2 font-bold uppercase leading-tight tracking-tight text-[#F0EDE8]">
                     O digital avança todos os dias
                   </h2>
                   <p className="mt-6 text-base leading-relaxed text-[#A8A8A8] sm:text-lg">

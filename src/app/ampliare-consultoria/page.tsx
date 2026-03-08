@@ -5,26 +5,23 @@ import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const equipeCards = [
+// Nosso Foco — imagens de serviços (pasta /public/site/ vazia; usando Unsplash)
+const focoCards = [
   {
-    foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
-    nome: "Consultoria Estratégica",
-    cargo: "Planejamento & Crescimento",
+    imagem: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    legenda: "Análise Estratégica",
   },
   {
-    foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
-    nome: "Inteligência de Mercado",
-    cargo: "Dados & Performance",
+    imagem: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=600&q=80",
+    legenda: "Marketing & Performance",
   },
   {
-    foto: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80",
-    nome: "Marketing & Conteúdo",
-    cargo: "Criação & Campanhas",
+    imagem: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+    legenda: "Criação de Campanhas",
   },
   {
-    foto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
-    nome: "Transformação Digital",
-    cargo: "Tecnologia & Inovação",
+    imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    legenda: "Soluções Digitais & IA",
   },
 ];
 
@@ -119,8 +116,8 @@ export default function AmpliareConsultoria() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 to-[#0a0a0a]" />
         <div className="absolute inset-0 bg-[#0a0a0a]/70" />
-        <div className="relative flex min-h-[50vh] flex-col justify-center px-4 py-20 sm:min-h-[55vh] sm:py-24">
-          <div className="mx-auto max-w-6xl text-center">
+        <div className="relative flex min-h-[50vh] flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
+          <div className="mx-auto max-w-7xl px-6 text-center md:px-8 lg:px-16">
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -134,8 +131,8 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Sobre */}
-      <section className="border-b border-[#2A2A2A] bg-[#111111] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section className="border-b border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -158,8 +155,8 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Marcos: timeline + contadores + fotos equipe */}
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -229,40 +226,44 @@ export default function AmpliareConsultoria() {
             </div>
           </div>
 
-          {/* Nossa Equipe — cards com fotos Unsplash */}
+          {/* Nosso Foco — cards de serviços com overlay e legenda no hover */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mt-20"
           >
-            <h3 className="text-xl font-bold text-[#F0EDE8]">
-              Nossa equipe
+            <h3 className="text-xl font-bold uppercase tracking-wider text-[#F0EDE8]">
+              Nosso Foco
             </h3>
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {equipeCards.map((card, i) => (
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {focoCards.map((card, i) => (
                 <motion.div
-                  key={card.nome}
+                  key={card.legenda}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="flex flex-col overflow-hidden border border-[#2A2A2A] bg-[#111111]"
-                  style={{ borderRadius: 8, height: 320 }}
+                  className="group relative h-[280px] overflow-hidden rounded-lg border border-[#2A2A2A] transition-[border-color] duration-300 hover:border-[#7D2B2B]"
                 >
-                  <div className="relative shrink-0 w-full overflow-hidden" style={{ height: "70%" }}>
-                    <Image
-                      src={card.foto}
-                      alt=""
-                      width={600}
-                      height={400}
-                      className="h-full w-full object-cover"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    />
-                  </div>
-                  <div className="flex shrink-0 flex-col justify-center p-4" style={{ height: "30%" }}>
-                    <p className="font-semibold text-[#F0EDE8]">{card.nome}</p>
-                    <p className="mt-1 text-sm text-[#A8A8A8]">{card.cargo}</p>
+                  <Image
+                    src={card.imagem}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    style={{ maxWidth: "100%", objectFit: "cover" }}
+                  />
+                  {/* Overlay gradiente escuro no hover */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    aria-hidden
+                  />
+                  {/* Legenda centralizada, visível no hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="text-center font-semibold text-white drop-shadow-lg">
+                      {card.legenda}
+                    </span>
                   </div>
                 </motion.div>
               ))}
@@ -272,8 +273,8 @@ export default function AmpliareConsultoria() {
       </section>
 
       {/* Seção Transformação */}
-      <section className="border-t border-[#2A2A2A] bg-[#111111] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section className="border-t border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -83,7 +83,7 @@ export default function SolucoesEstrategicas() {
         />
         <div className="absolute inset-0 bg-[#0a0a0a]/70" aria-hidden />
 
-        <div className="relative mx-auto flex min-h-[50vh] max-w-6xl flex-col justify-center px-4 py-20 sm:min-h-[55vh] sm:px-6 sm:py-24 lg:px-8">
+        <div className="relative mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16 sm:min-h-[55vh]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,8 +102,8 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Seção introdutória */}
-      <section className="border-b border-[#2A2A2A] bg-[#111111] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
+      <section className="border-b border-[#2A2A2A] bg-[#111111] px-6 py-16 md:px-8 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -124,9 +124,9 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Grid de soluções */}
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <section className="px-6 py-16 md:px-8 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {solucoes.map((item, index) => (
               <motion.div
                 key={item.title}

@@ -205,7 +205,7 @@ export default function NossasAtividades() {
           style={{ backgroundImage: "url(/hero-atividades.jpg)" }}
         />
         <div className="absolute inset-0 bg-[#0a0a0a]/75" />
-        <div className="relative mx-auto flex min-h-[60vh] max-w-6xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="relative mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-20 md:px-8 md:py-24 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -229,11 +229,32 @@ export default function NossasAtividades() {
         </div>
       </section>
 
-      {/* Layout: menu lateral (desktop) / tabs (mobile) + conteúdo */}
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+      {/* Layout: select (mobile) / menu lateral (desktop) + conteúdo */}
+      <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 lg:py-16 lg:px-16">
         <div className="lg:flex lg:gap-12">
+          {/* Select dropdown no mobile */}
+          <select
+            className="mb-6 w-full rounded border border-zinc-700 bg-zinc-900 p-3 text-white md:mb-0 md:hidden"
+            value={Math.max(0, servicos.findIndex((s) => s.id === activeId))}
+            onChange={(e) => {
+              const i = Number(e.target.value);
+              const id = servicos[i]?.id;
+              if (id) {
+                setActiveId(id);
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            aria-label="Selecionar serviço"
+          >
+            {servicos.map((s, i) => (
+              <option key={s.id} value={i}>
+                {s.title}
+              </option>
+            ))}
+          </select>
+
           {/* Menu lateral (desktop) */}
-          <aside className="hidden shrink-0 lg:block lg:w-56">
+          <aside className="hidden shrink-0 md:block lg:w-56">
             <nav
               className="sticky top-24 space-y-0.5"
               aria-label="Navegação entre serviços"
@@ -257,29 +278,6 @@ export default function NossasAtividades() {
               ))}
             </nav>
           </aside>
-
-          {/* Tabs mobile: scroll horizontal */}
-          <div className="lg:hidden">
-            <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-none">
-              {servicos.map((s) => (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-medium transition-colors sm:text-sm ${
-                    activeId === s.id
-                      ? "bg-[#7D2B2B] text-white"
-                      : "bg-[#111111] text-[#6B6B6B] hover:bg-[#1a1a1a] hover:text-[#F0EDE8]"
-                  }`}
-                >
-                  {s.title.length > 28 ? `${s.title.slice(0, 26)}…` : s.title}
-                </a>
-              ))}
-            </div>
-          </div>
 
           {/* Conteúdo: seções de cada serviço */}
           <main className="min-w-0 flex-1 pt-4 lg:pt-0">
@@ -361,7 +359,8 @@ export default function NossasAtividades() {
                         alt={servicosImagens[index].alt}
                         width={500}
                         height={350}
-                        className="object-cover w-full h-[350px]"
+                        className="h-[350px] w-full object-cover"
+                        style={{ maxWidth: "100%" }}
                       />
                     </div>
                   </div>

@@ -30,12 +30,60 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   min-width: 320px;
+}
+
+/* ━━━ Tipografia responsiva (clamp) ━━━ */
+.text-responsive-h1 {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+}
+.text-responsive-h2 {
+  font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+}
+.text-responsive-h3 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+.text-responsive-p {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+/* Esconder scrollbar em containers de scroll horizontal (ex.: parceiros mobile) */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero: círculos decorativos menores no mobile */
+.hero-glow-left {
+  width: 500px;
+  height: 500px;
+  left: -10%;
+}
+.hero-glow-right {
+  width: 400px;
+  height: 400px;
+  right: -5%;
+}
+@media (max-width: 768px) {
+  .hero-glow-left {
+    width: 260px;
+    height: 260px;
+    left: -25%;
+  }
+  .hero-glow-right {
+    width: 200px;
+    height: 200px;
+    right: -15%;
+  }
 }
 
 /* ━━━ Scrollbar customizada ━━━ */

@@ -24,13 +24,32 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#2A2A2A] bg-[#0a0a0a]/95 shadow-lg backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="shrink-0 transition-opacity hover:opacity-90">
-          <img
-            src="/logos/ampliare.jpeg"
-            alt="Ampliare Consultoria"
-            style={{ height: "48px", width: "auto", objectFit: "contain" }}
-          />
+      <div
+        className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-8 lg:px-16"
+      >
+        <Link
+          href="/"
+          className="shrink-0 transition-opacity hover:opacity-90"
+          style={{ position: "relative", zIndex: 10, maxWidth: "100%" }}
+          aria-label="Ampliare Consultoria - início"
+        >
+          <svg
+            viewBox="0 0 260 90"
+            style={{ maxWidth: "100%", height: "auto", width: "160px", flexShrink: 0 }}
+            className="h-auto"
+            aria-hidden
+          >
+            <rect x="2" y="2" width="62" height="62" fill="#1a1a1a" stroke="#555" strokeWidth="1.5" rx="2" />
+            <polygon points="33,10 58,50 8,50" fill="#7D2B2B" />
+            <polygon points="8,50 33,50 8,64" fill="#6B6B6B" />
+            <polygon points="58,50 33,50 58,64" fill="#8a8a8a" />
+            <text x="78" y="38" fontFamily="Georgia, serif" fontSize="22" fontWeight="400" fill="#C8C4BE" letterSpacing="5">
+              AMPLIARE
+            </text>
+            <text x="84" y="56" fontFamily="Georgia, serif" fontSize="9" fontWeight="400" fill="#888884" letterSpacing="4">
+              CONSULTORIA
+            </text>
+          </svg>
         </Link>
 
         <button
