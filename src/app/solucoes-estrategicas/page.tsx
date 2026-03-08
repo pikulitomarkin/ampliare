@@ -68,7 +68,7 @@ export default function SolucoesEstrategicas() {
   return (
     <>
       {/* Hero: imagem de fundo + overlay escuro + título e subtítulo */}
-      <section className="relative min-h-[50vh] overflow-hidden bg-foreground sm:min-h-[55vh]">
+      <section className="relative min-h-[50vh] overflow-hidden bg-[#0a0a0a] sm:min-h-[55vh]">
         {/* Imagem de fundo — substitua url por sua imagem em /public */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -78,10 +78,10 @@ export default function SolucoesEstrategicas() {
         />
         {/* Fallback se a imagem não existir: gradiente */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-primary/30 via-foreground/85 to-foreground"
+          className="absolute inset-0 bg-gradient-to-b from-[#7D2B2B]/30 via-[#0a0a0a]/90 to-[#0a0a0a]"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-foreground/70" aria-hidden />
+        <div className="absolute inset-0 bg-[#0a0a0a]/70" aria-hidden />
 
         <div className="relative mx-auto flex min-h-[50vh] max-w-6xl flex-col justify-center px-4 py-20 sm:min-h-[55vh] sm:px-6 sm:py-24 lg:px-8">
           <motion.div
@@ -102,7 +102,7 @@ export default function SolucoesEstrategicas() {
       </section>
 
       {/* Seção introdutória */}
-      <section className="border-b border-black/5 bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="border-b border-[#2A2A2A] bg-[#111111] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -110,10 +110,10 @@ export default function SolucoesEstrategicas() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
               Soluções Integradas de Marketing e Crescimento
             </h2>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-foreground/85 sm:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
               Empresas que se destacam são aquelas que combinam visão estratégica
               com execução eficaz. Nossas soluções unem inteligência de mercado,
               criatividade e tecnologia para gerar resultados consistentes e
@@ -134,15 +134,15 @@ export default function SolucoesEstrategicas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group rounded-2xl border-2 border-primary/20 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 sm:p-8"
+                className="group rounded-xl border border-[#2A2A2A] bg-[#0a0a0a] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm sm:p-8"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors duration-300 group-hover:bg-[#7D2B2B]/30">
                   <item.icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-foreground">
+                <h3 className="mt-4 text-xl font-semibold text-[#F0EDE8]">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/80 sm:text-base">
+                <p className="mt-3 text-sm leading-relaxed text-[#A8A8A8] sm:text-base">
                   {item.description}
                 </p>
               </motion.div>
@@ -156,7 +156,7 @@ export default function SolucoesEstrategicas() {
           >
             <Link
               href="/contato"
-              className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-primary-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#111111]"
             >
               Solicitar proposta
             </Link>

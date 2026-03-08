@@ -2,13 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ━━━ PALETA — extraída do logo Ampliare ━━━ */
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #7B2FBE;
-  --primary-dark: #5e2392;
-  --accent: #E5B319;
-  --accent-light: #f0c84d;
+  --color-bg: #0a0a0a;
+  --color-bg-2: #111111;
+  --color-crimson: #7D2B2B;
+  --color-crimson-light: #9B3535;
+  --color-gray-steel: #6B6B6B;
+  --color-gray-light: #A8A8A8;
+  --color-gray-border: #2A2A2A;
+  --color-white: #F0EDE8;
+
+  --gradient-hero: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+  --gradient-crimson: linear-gradient(135deg, #7D2B2B 0%, #4a1818 100%);
+  --gradient-steel: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  --gradient-accent: linear-gradient(90deg, #7D2B2B, #6B6B6B, #7D2B2B);
+
+  /* Compatibilidade com Tailwind */
+  --background: var(--color-bg);
+  --foreground: var(--color-white);
+  --primary: var(--color-crimson);
+  --primary-dark: #4a1818;
+  --primary-light: var(--color-crimson-light);
+  --accent: var(--color-gray-steel);
+  --accent-light: var(--color-gray-light);
 }
 
 html {
@@ -21,37 +38,89 @@ body {
   min-width: 320px;
 }
 
-/* Header: garantir fundo escuro e texto visível em qualquer contexto */
+/* ━━━ Scrollbar customizada ━━━ */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #7D2B2B;
+  border-radius: 2px;
+}
+
+/* ━━━ Seleção de texto ━━━ */
+::selection {
+  background: #7D2B2B;
+  color: #F0EDE8;
+}
+
+/* ━━━ Header: fundo escuro, borda ━━━ */
 header {
   background-color: #0a0a0a !important;
+  border-bottom: 1px solid #2A2A2A !important;
 }
 header a,
 header button {
-  color: #fff !important;
+  color: var(--color-white) !important;
 }
 header a:hover {
   opacity: 0.9;
 }
 header nav a {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--color-white) !important;
 }
-header nav a[class*="bg-white"] {
-  color: #fff !important;
+
+/* ━━━ Títulos de seção: linha decorativa abaixo ━━━ */
+.section-title-deco {
+  position: relative;
+}
+.section-title-deco::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 2px;
+  background: #7D2B2B;
+}
+
+/* ━━━ H2 com linha bordô à esquerda ━━━ */
+.h2-border-left {
+  border-left: 3px solid #7D2B2B;
+  padding-left: 1rem;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .bg-gradient-crimson {
+    background: var(--gradient-crimson);
+  }
+  .text-gradient-capacidade {
+    background: linear-gradient(135deg, #7D2B2B, #6B6B6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-crimson {
+    filter: drop-shadow(0 0 8px rgba(125, 43, 43, 0.4));
+  }
 }
 
-/* Botão: pulse suave no hover */
+/* Botão: pulse suave no hover (bordô) */
 @keyframes button-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(123, 47, 190, 0.4);
+    box-shadow: 0 0 0 0 rgba(125, 43, 43, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(123, 47, 190, 0);
+    box-shadow: 0 0 0 8px rgba(125, 43, 43, 0);
   }
 }
 
@@ -59,7 +128,7 @@ header nav a[class*="bg-white"] {
   animation: button-pulse 1.5s ease-in-out infinite;
 }
 
-/* Marquee infinito: duas cópias do conteúdo, desloca 50% (uma cópia) */
+/* Marquee infinito */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -71,4 +140,12 @@ header nav a[class*="bg-white"] {
 
 .animate-marquee {
   animation: marquee 50s linear infinite;
+}
+
+/* Parceiros: logo grayscale, hover tom bordô sutil */
+.logo-parceiros {
+  filter: grayscale(100%);
+}
+.group:hover .logo-parceiros {
+  filter: sepia(1) saturate(0.5);
 }

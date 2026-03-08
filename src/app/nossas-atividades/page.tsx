@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 type Servico = {
@@ -163,6 +164,18 @@ const servicos: Servico[] = [
   },
 ];
 
+const servicosImagens: { src: string; alt: string }[] = [
+  { src: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80", alt: "Dashboard de anúncios e performance digital" },
+  { src: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80", alt: "Social media e redes sociais" },
+  { src: "https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80", alt: "Equipe em reunião estratégica" },
+  { src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80", alt: "E-commerce e compras online" },
+  { src: "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=80", alt: "Equipe criativa em campanha" },
+  { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", alt: "Gráficos e análise de dados de mercado" },
+  { src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80", alt: "Desenvolvimento web e código" },
+  { src: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80", alt: "SEO e pesquisa orgânica" },
+  { src: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80", alt: "Inteligência artificial e tecnologia" },
+];
+
 export default function NossasAtividades() {
   const [activeId, setActiveId] = useState<string | null>(servicos[0].id);
 
@@ -186,12 +199,12 @@ export default function NossasAtividades() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden bg-foreground">
+      <section className="relative min-h-[60vh] overflow-hidden bg-[#0a0a0a]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url(/hero-atividades.jpg)" }}
         />
-        <div className="absolute inset-0 bg-foreground/75" />
+        <div className="absolute inset-0 bg-[#0a0a0a]/75" />
         <div className="relative mx-auto flex min-h-[60vh] max-w-6xl flex-col justify-center px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -202,7 +215,7 @@ export default function NossasAtividades() {
             <h1 className="text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
               Ações de marketing e vendas
             </h1>
-            <p className="mt-4 text-xl font-medium text-primary sm:text-2xl">
+            <p className="mt-4 text-xl font-medium text-[#7D2B2B] sm:text-2xl">
               Como Atuamos para Gerar Impacto e Resultados
             </p>
             <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg">
@@ -235,8 +248,8 @@ export default function NossasAtividades() {
                   }}
                   className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                     activeId === s.id
-                      ? "bg-primary/15 text-primary"
-                      : "text-foreground/80 hover:bg-black/5 hover:text-foreground"
+                      ? "bg-[#7D2B2B] text-white"
+                      : "text-[#6B6B6B] hover:bg-[#111111] hover:text-[#F0EDE8]"
                   }`}
                 >
                   {s.title}
@@ -258,8 +271,8 @@ export default function NossasAtividades() {
                   }}
                   className={`shrink-0 rounded-full px-4 py-2 text-xs font-medium transition-colors sm:text-sm ${
                     activeId === s.id
-                      ? "bg-primary text-white"
-                      : "bg-black/5 text-foreground/80 hover:bg-black/10"
+                      ? "bg-[#7D2B2B] text-white"
+                      : "bg-[#111111] text-[#6B6B6B] hover:bg-[#1a1a1a] hover:text-[#F0EDE8]"
                   }`}
                 >
                   {s.title.length > 28 ? `${s.title.slice(0, 26)}…` : s.title}
@@ -282,32 +295,32 @@ export default function NossasAtividades() {
                       initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="text-2xl font-bold text-foreground sm:text-3xl"
+                      className="text-2xl font-bold text-[#F0EDE8] sm:text-3xl"
                     >
                       {s.title}
                     </motion.h2>
                     {s.subtitle && (
-                      <p className="mt-2 text-lg font-semibold text-primary">
+                      <p className="mt-2 text-lg font-semibold text-[#7D2B2B]">
                         {s.subtitle}
                       </p>
                     )}
                     {s.intro && (
-                      <p className="mt-4 text-base leading-relaxed text-foreground/85">
+                      <p className="mt-4 text-base leading-relaxed text-[#A8A8A8]">
                         {s.intro}
                       </p>
                     )}
                     {s.text && (
-                      <p className="mt-4 text-base leading-relaxed text-foreground/85">
+                      <p className="mt-4 text-base leading-relaxed text-[#A8A8A8]">
                         {s.text}
                       </p>
                     )}
                     {s.subtitle2 && (
-                      <p className="mt-6 text-lg font-semibold text-primary">
+                      <p className="mt-6 text-lg font-semibold text-[#7D2B2B]">
                         {s.subtitle2}
                       </p>
                     )}
                     {s.objetivo && (
-                      <p className="mt-3 rounded-lg bg-primary/10 p-4 text-sm font-medium text-foreground">
+                      <p className="mt-3 rounded-lg bg-[#7D2B2B]/10 p-4 text-sm font-medium text-[#F0EDE8]">
                         {s.objetivo}
                       </p>
                     )}
@@ -316,9 +329,9 @@ export default function NossasAtividades() {
                         {s.bullets.map((b, i) => (
                           <li
                             key={i}
-                            className="flex gap-2 text-sm leading-relaxed text-foreground/85 sm:text-base"
+                            className="flex gap-2 text-sm leading-relaxed text-[#A8A8A8] sm:text-base"
                           >
-                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#7D2B2B]" />
                             {b}
                           </li>
                         ))}
@@ -329,9 +342,9 @@ export default function NossasAtividades() {
                         {s.steps.map((step, i) => (
                           <li
                             key={i}
-                            className="flex gap-3 text-sm leading-relaxed text-foreground/85 sm:text-base"
+                            className="flex gap-3 text-sm leading-relaxed text-[#A8A8A8] sm:text-base"
                           >
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15 text-xs font-semibold text-primary">
+                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-xs font-semibold text-[#7D2B2B]">
                               {i + 1}
                             </span>
                             {step}
@@ -340,13 +353,16 @@ export default function NossasAtividades() {
                       </ol>
                     )}
                   </div>
-                  {/* Imagem placeholder lateral */}
+                  {/* Imagem do serviço — Unsplash */}
                   <div className="hidden lg:block">
-                    <div
-                      className="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-300 flex items-center justify-center text-zinc-500 text-sm"
-                      aria-hidden
-                    >
-                      Serviço {index + 1}
+                    <div className="overflow-hidden rounded-xl shadow-md">
+                      <Image
+                        src={servicosImagens[index].src}
+                        alt={servicosImagens[index].alt}
+                        width={500}
+                        height={350}
+                        className="object-cover w-full h-[350px]"
+                      />
                     </div>
                   </div>
                 </div>
@@ -358,7 +374,7 @@ export default function NossasAtividades() {
         <div className="mt-12 text-center">
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-primary-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
           >
             Falar sobre um projeto
           </Link>

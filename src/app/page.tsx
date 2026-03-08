@@ -8,9 +8,6 @@ import {
   ArrowUp,
   Sparkles,
   Megaphone,
-  MapPin,
-  Phone,
-  Mail,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
@@ -74,7 +71,7 @@ const metodologiaItens: { label: string; description: string }[] = [
   },
 ];
 
-// Logos em /public/logos/ — nomes exatos: logo_pizza_prime.png, logo_rede_dor-21331594.png, hotel-ibis-logo-115294069548cavco4znp.png. Adicionar petz.png e fast-shop.png quando disponíveis.
+// Logos em /public/logos/ — marquee infinito
 const parceiros: { nome: string; logo: string }[] = [
   { nome: "Pizza Prime", logo: "/logos/logo_pizza_prime.png" },
   { nome: "Petz", logo: "/logos/petz.png" },
@@ -110,17 +107,9 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — vídeo + fundo prismático (gramospirsm) + texto institucional */}
+      {/* Hero — vídeo + fundo com glow bordô sutil */}
       <section className="relative min-h-screen overflow-hidden bg-[#0a0a0a]">
-        {/* Efeito prismático / gramospirsm no fundo (roxo, rosa, azul, âmbar) */}
-        <div className="absolute inset-0" aria-hidden>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_20%,rgba(123,47,190,0.5),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_85%_15%,rgba(236,72,153,0.35),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_95%,rgba(59,130,246,0.25),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_55%_at_15%_75%,rgba(234,179,8,0.2),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(123,47,190,0.08)_60deg,rgba(236,72,153,0.06)_120deg,rgba(59,130,246,0.06)_180deg,rgba(234,179,8,0.05)_240deg,transparent_360deg)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0a]/40 to-[#0a0a0a]" />
-        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(125,43,43,0.15)_0%,transparent_60%),#0a0a0a]" aria-hidden />
         <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-4 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 lg:px-8 lg:pt-32">
           <motion.div
             custom={0}
@@ -129,7 +118,7 @@ export default function Home() {
             variants={heroVariants}
             className="flex-1"
           >
-            <div className="aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black/40 shadow-2xl ring-1 ring-white/5 sm:rounded-2xl">
+            <div className="aspect-video w-full overflow-hidden rounded-xl border border-[#2A2A2A] bg-black/40 shadow-2xl sm:rounded-2xl">
               {/* Placeholder: troque pelo seu vídeo ou ID do YouTube */}
               <iframe
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&rel=0"
@@ -150,41 +139,16 @@ export default function Home() {
               */}
             </div>
           </motion.div>
-
-          <motion.div
-            custom={1}
-            initial="hidden"
-            animate="visible"
-            variants={heroVariants}
-            className="mt-10 max-w-3xl text-left sm:mt-12"
-          >
-            <h2 className="text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
-              CRESCIMENTO QUE TRANSFORMA
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-white/90 sm:text-xl">
-              Somos uma consultoria digital que potencializa resultados, redefine
-              posicionamentos e transforma a maneira como empresas pensam e atuam.
-            </p>
-            <div className="mt-6">
-              <Link
-                href="/solucoes-estrategicas"
-                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all duration-200 hover:bg-primary-light hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
-              >
-                CONHEÇA NOSSAS SOLUÇÕES
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Soluções — tag vertical, título, 4 cards em scroll horizontal */}
+      {/* Soluções — tag vertical, título, 4 cards */}
       <section
         id="solucoes"
-        className="relative overflow-hidden bg-foreground py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
-            {/* Tag vertical lateral */}
             <motion.div
               initial={{ opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -193,7 +157,7 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-primary"
+                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
                 style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
               >
                 {"//SOLUÇÕES"}
@@ -207,13 +171,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//SOLUÇÕES"}
                 </p>
-                <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
                   Crescimento exige estratégia
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
                   Nossas soluções propõem uma nova forma de pensar, criar e gerar
                   resultados de alto impacto para o mundo em constante
                   transformação.
@@ -221,7 +185,7 @@ export default function Home() {
                 <div className="mt-8">
                   <Link
                     href="/solucoes-estrategicas"
-                    className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-primary-light hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground"
+                    className="inline-flex items-center justify-center rounded bg-[#7D2B2B] px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a]"
                   >
                     Conheça nossas soluções
                   </Link>
@@ -244,16 +208,16 @@ export default function Home() {
                         }}
                         className="min-w-[280px] shrink-0 sm:min-w-[320px] lg:min-w-0"
                       >
-                        <div className="group flex h-full flex-col rounded-2xl border border-primary/30 bg-white/5 p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                        <div className="group flex h-full flex-col rounded-xl border border-[#2A2A2A] bg-[#111111] p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#7D2B2B] hover:shadow-crimson-sm">
                           <div className="flex shrink-0 justify-center">
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/20 text-primary transition-colors group-hover:bg-primary/30">
-                              <card.icon className="h-10 w-10" size={40} />
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#7D2B2B]/20 text-[#7D2B2B] transition-colors group-hover:bg-[#7D2B2B]/30">
+                              <card.icon className="h-10 w-10 glow-crimson" size={40} />
                             </div>
                           </div>
-                          <h3 className="mt-4 text-lg font-semibold text-white">
+                          <h3 className="mt-4 text-lg font-semibold text-[#F0EDE8]">
                             {card.title}
                           </h3>
-                          <p className="mt-3 text-sm leading-relaxed text-white/80">
+                          <p className="mt-3 text-sm leading-relaxed text-[#A8A8A8]">
                             {card.description}
                           </p>
                         </div>
@@ -267,14 +231,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Parceiros — tag vertical, grid de logos */}
+      {/* Parceiros — marquee infinito de logos */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes marquee-parceiros {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}} />
       <section
         id="parceiros"
-        className="relative overflow-hidden bg-[#16141f] py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
-            {/* Tag vertical lateral */}
             <motion.div
               initial={{ opacity: 0, x: -12 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -283,51 +252,51 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-primary"
+                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
                 style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
               >
                 {"//PARCEIROS"}
               </span>
             </motion.div>
 
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 overflow-hidden">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//PARCEIROS"}
                 </p>
-                <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
                   Marcas que estão evoluindo conosco
                 </h2>
               </motion.div>
 
-              {/* Grid responsivo: logos reais, grayscale com hover colorido, altura 60px */}
-              <div className="mt-10 grid grid-cols-2 place-items-center gap-6 sm:grid-cols-3 sm:gap-8 lg:mt-12 lg:grid-cols-5 lg:gap-8" aria-label="Parceiros">
-                {parceiros.map((p, i) => (
-                  <motion.div
-                    key={p.nome}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="group flex h-[60px] w-full max-w-[180px] items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition-[box-shadow,border-color] duration-300 ease-out hover:border-primary/40 hover:shadow-md hover:shadow-primary/10"
-                    role="img"
-                    aria-label={p.nome}
-                  >
-                    <Image
-                      src={p.logo}
-                      alt=""
-                      width={160}
-                      height={60}
-                      className="h-[60px] w-auto max-w-full object-contain grayscale transition-[filter] duration-300 ease-out group-hover:grayscale-0"
-                      unoptimized={p.logo.endsWith(".png") || p.logo.endsWith(".svg")}
-                    />
-                  </motion.div>
-                ))}
+              <div className="mt-10 overflow-hidden lg:mt-12" aria-label="Parceiros">
+                <div
+                  className="flex w-max gap-8 sm:gap-10"
+                  style={{ animation: "marquee-parceiros 40s linear infinite" }}
+                >
+                  {[...parceiros, ...parceiros].map((p, i) => (
+                    <div
+                      key={`${p.nome}-${i}`}
+                      className="group flex h-[60px] w-[160px] shrink-0 items-center justify-center rounded-xl border border-[#2A2A2A] bg-[#111111] px-4 py-3 transition-[filter,box-shadow,border-color] duration-300 ease-out hover:border-[#7D2B2B] hover:shadow-crimson-sm"
+                      role="img"
+                      aria-label={p.nome}
+                    >
+                      <Image
+                        src={p.logo}
+                        alt=""
+                        width={160}
+                        height={60}
+                        className="logo-parceiros h-[60px] w-auto max-w-full object-contain transition-[filter] duration-300 ease-out"
+                        unoptimized={p.logo.endsWith(".png") || p.logo.endsWith(".svg")}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -337,11 +306,10 @@ export default function Home() {
       {/* Ecossistema de Serviços — tag + título à esquerda, texto à direita, grid 3 imagens */}
       <section
         id="servicos"
-        className="bg-white py-16 sm:py-20 lg:py-24"
+        className="bg-[#111111] py-16 sm:py-20 lg:py-24"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-            {/* Coluna esquerda: tag vertical (desktop) + título + botão */}
             <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -12 }}
@@ -351,7 +319,7 @@ export default function Home() {
                 aria-hidden
               >
                 <span
-                  className="text-sm font-semibold tracking-[0.2em] text-primary"
+                  className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
                   style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
                 >
                   {"//SERVIÇOS"}
@@ -364,16 +332,16 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="min-w-0"
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//SERVIÇOS"}
                 </p>
-                <h2 className="mt-3 text-2xl font-bold uppercase tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold uppercase tracking-tight text-[#F0EDE8] sm:text-3xl lg:text-4xl">
                   Ecossistema de serviços
                 </h2>
                 <div className="mt-6">
                   <Link
                     href="/nossas-atividades"
-                    className="inline-flex items-center justify-center rounded-lg border-2 border-primary bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-primary transition-all duration-200 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    className="inline-flex items-center justify-center rounded border-2 border-[#7D2B2B] bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider text-[#7D2B2B] transition-all hover:bg-[#7D2B2B] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#111111]"
                   >
                     O que fazemos
                   </Link>
@@ -381,7 +349,6 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Coluna direita: texto */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -389,7 +356,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex items-start lg:pt-2"
             >
-              <p className="text-base leading-relaxed text-foreground/85 sm:text-lg">
+              <p className="text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
                 Entendemos o mercado e as tendências para gerar soluções
                 assertivas. Nossos serviços envolvem planejamento, produção,
                 análise e otimização de todos os processos de marketing e vendas.
@@ -397,36 +364,48 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Grid de 3 imagens de equipe (placeholders 4:3) */}
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8 lg:mt-16">
-            {[1, 2, 3].map((i) => (
+            {[
+              {
+                src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+                alt: "Reunião de estratégia em agência",
+              },
+              {
+                src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+                alt: "Equipe trabalhando em projeto digital",
+              },
+              {
+                src: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+                alt: "Apresentação e análise de dados",
+              },
+            ].map((img, i) => (
               <motion.div
-                key={i}
+                key={img.src}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: (i - 1) * 0.1 }}
-                className="overflow-hidden rounded-xl border border-black/5 bg-zinc-100 shadow-sm"
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                className="relative h-[400px] overflow-hidden rounded-xl border border-[#2A2A2A] shadow-sm"
               >
-                <div
-                  className="aspect-[4/3] w-full bg-gradient-to-br from-zinc-200 to-zinc-300 flex items-center justify-center text-zinc-500 text-sm font-medium"
-                  aria-hidden
-                >
-                  Equipe {i}
-                </div>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Metodologia — fundo escuro, pilares, CAPACIDADE, 4 cards */}
+      {/* Metodologia — fundo escuro, pilares, CAPACIDADE */}
       <section
         id="metodologia"
-        className="relative overflow-hidden bg-foreground py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden bg-[#0a0a0a] py-16 sm:py-20 lg:py-24"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          {/* Linha 1: tag + título/texto à esquerda | lista de pilares à direita */}
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -436,7 +415,7 @@ export default function Home() {
               aria-hidden
             >
               <span
-                className="text-sm font-semibold tracking-[0.2em] text-primary"
+                className="text-sm font-semibold tracking-[0.2em] text-[#7D2B2B]"
                 style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
               >
                 {"//METODOLOGIAS"}
@@ -444,33 +423,31 @@ export default function Home() {
             </motion.div>
 
             <div className="grid min-w-0 flex-1 grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-              {/* Esquerda: título + texto introdutório */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary lg:sr-only">
+                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//METODOLOGIAS"}
                 </p>
-                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+                <h2 className="mt-3 border-l-4 border-[#7D2B2B] pl-4 text-2xl font-bold text-[#F0EDE8] sm:text-3xl lg:text-4xl">
                   Análise de resultados
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+                <p className="mt-4 text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
                   Transformamos empresas com estratégias de evolução digital,
                   serviços de marketing e vendas, outsourcing de times
                   multidisciplinares e proficientes em analytics.
                 </p>
               </motion.div>
 
-              {/* Direita: rotador animado — uma palavra ativa por vez, clique ou rotação a cada 3s */}
               <motion.ul
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex flex-col gap-3 border-l-2 border-white/20 pl-6"
+                className="flex flex-col gap-3 border-l-2 border-[#2A2A2A] pl-6"
                 role="list"
               >
                 {metodologiaItens.map((item, index) => {
@@ -486,13 +463,13 @@ export default function Home() {
                       >
                         <span
                           className={`h-px shrink-0 transition-all duration-300 ${
-                            isAtivo ? "w-8 bg-primary" : "w-6 bg-white/40"
+                            isAtivo ? "w-8 bg-[#7D2B2B]" : "w-6 bg-[#6B6B6B]/60"
                           }`}
                           aria-hidden
                         />
                         <span
                           className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
-                            isAtivo ? "text-primary" : "text-white/70"
+                            isAtivo ? "text-[#7D2B2B]" : "text-[#A8A8A8]"
                           }`}
                         >
                           {item.label}
@@ -505,8 +482,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Linha 2: CAPACIDADE (fixo) à esquerda | conteúdo do item ativo à direita */}
-          <div className="mt-14 grid grid-cols-1 gap-8 border-t border-white/10 pt-14 lg:mt-20 lg:grid-cols-2 lg:gap-16 lg:pt-20">
+          <div className="mt-14 grid grid-cols-1 gap-8 border-t border-[#2A2A2A] pt-14 lg:mt-20 lg:grid-cols-2 lg:gap-16 lg:pt-20">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -514,7 +490,7 @@ export default function Home() {
               className="flex items-center lg:justify-start"
             >
               <span
-                className="font-display text-4xl font-bold tracking-tighter text-white/90 sm:text-5xl md:text-6xl lg:text-7xl"
+                className="font-display text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-gradient-capacidade"
                 style={{ letterSpacing: "-0.02em" }}
               >
                 CAPACIDADE
@@ -530,7 +506,7 @@ export default function Home() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="w-full"
                 >
-                  <p className="text-base leading-relaxed text-white/80 sm:text-lg">
+                  <p className="text-base leading-relaxed text-[#A8A8A8] sm:text-lg">
                     {metodologiaItens[metodologiaAtivo].description}
                   </p>
                 </motion.div>
@@ -540,87 +516,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA final de conversão — fundo preto, duas colunas + barra decorativa */}
-      <section
-        id="cta"
-        className="relative bg-black text-white"
-      >
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Coluna esquerda: título + texto */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="font-display text-3xl font-bold uppercase leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-5xl">
-                O digital avança todos os dias
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-white/85 sm:text-lg">
-                O ambiente digital se transforma em ritmo acelerado, exigindo
-                adaptação contínua das marcas que desejam permanecer
-                relevantes. Novas tecnologias, comportamentos e oportunidades
-                surgem constantemente, e acompanhar esse movimento deixou de ser
-                diferencial — tornou-se necessidade. Empresas que evoluem com
-                estratégia, dados e inovação conseguem não apenas acompanhar as
-                mudanças, mas liderar seus mercados.
-              </p>
-            </motion.div>
-
-            {/* Coluna direita: card de contato */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8 lg:self-start"
-            >
-              <ul className="space-y-4 text-sm text-white/90 sm:text-base">
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <span>
-                    Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
-                  </span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 shrink-0 text-primary" />
-                  <a
-                    href="tel:+5541988356427"
-                    className="hover:text-primary transition-colors"
-                  >
-                    (41) 98835-6427
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 shrink-0 text-primary" />
-                  <a
-                    href="mailto:contato@ampliareconsultoria.com.br"
-                    className="hover:text-primary transition-colors"
-                  >
-                    contato@ampliareconsultoria.com.br
-                  </a>
-                </li>
-              </ul>
-              <div className="mt-8">
-                <Link
-                  href="/contato"
-                  className="inline-flex w-full items-center justify-center rounded-lg bg-primary px-5 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all duration-200 hover:bg-primary-light hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black sm:w-auto"
-                >
-                  Entre em contato
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Barra colorida decorativa (gradiente roxo → amarelo → rosa) + logo */}
-        <div className="flex h-12 w-full items-center justify-end bg-gradient-to-r from-primary via-accent to-pink-400 px-4 sm:px-6 lg:px-8">
-          <span className="font-display text-xl font-bold tracking-tight text-white drop-shadow-md">
-            Ampliare
-          </span>
-        </div>
-      </section>
     </>
   );
 }

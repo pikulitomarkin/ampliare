@@ -41,7 +41,7 @@ export default function Contato() {
   };
 
   return (
-    <section className="min-h-screen bg-foreground px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <section className="min-h-screen bg-[#0a0a0a] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -49,10 +49,10 @@ export default function Contato() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-[#F0EDE8] sm:text-4xl">
             Entre em Contato
           </h1>
-          <p className="mt-3 text-lg text-white/80">
+          <p className="mt-3 text-lg text-[#A8A8A8]">
             Vamos conversar sobre como acelerar o crescimento do seu negócio
           </p>
         </motion.header>
@@ -66,7 +66,7 @@ export default function Contato() {
           >
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium text-white/90">
+                <label htmlFor="nome" className="block text-sm font-medium text-[#A8A8A8]">
                   Nome *
                 </label>
                 <input
@@ -74,7 +74,7 @@ export default function Contato() {
                   type="text"
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
                   placeholder="Seu nome"
                   aria-invalid={!!errors.nome}
                   aria-describedby={errors.nome ? "erro-nome" : undefined}
@@ -86,7 +86,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white/90">
+                <label htmlFor="email" className="block text-sm font-medium text-[#A8A8A8]">
                   E-mail *
                 </label>
                 <input
@@ -94,7 +94,7 @@ export default function Contato() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
                   placeholder="seu@email.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "erro-email" : undefined}
@@ -106,7 +106,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="telefone" className="block text-sm font-medium text-white/90">
+                <label htmlFor="telefone" className="block text-sm font-medium text-[#A8A8A8]">
                   Telefone *
                 </label>
                 <input
@@ -114,7 +114,7 @@ export default function Contato() {
                   type="tel"
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
                   placeholder="(11) 99999-9999"
                   aria-invalid={!!errors.telefone}
                   aria-describedby={errors.telefone ? "erro-telefone" : undefined}
@@ -126,7 +126,7 @@ export default function Contato() {
                 )}
               </div>
               <div>
-                <label htmlFor="empresa" className="block text-sm font-medium text-white/90">
+                <label htmlFor="empresa" className="block text-sm font-medium text-[#A8A8A8]">
                   Empresa
                 </label>
                 <input
@@ -134,12 +134,12 @@ export default function Contato() {
                   type="text"
                   value={empresa}
                   onChange={(e) => setEmpresa(e.target.value)}
-                  className="mt-1.5 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  className="mt-1.5 w-full rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
                   placeholder="Sua empresa"
                 />
               </div>
               <div>
-                <label htmlFor="mensagem" className="block text-sm font-medium text-white/90">
+                <label htmlFor="mensagem" className="block text-sm font-medium text-[#A8A8A8]">
                   Mensagem *
                 </label>
                 <textarea
@@ -147,7 +147,7 @@ export default function Contato() {
                   rows={4}
                   value={mensagem}
                   onChange={(e) => setMensagem(e.target.value)}
-                  className="mt-1.5 w-full resize-y rounded-lg border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 min-h-[120px]"
+                  className="mt-1.5 w-full min-h-[120px] resize-y rounded border border-[#2A2A2A] bg-[#111111] px-4 py-3 text-[#F0EDE8] placeholder-[#6B6B6B] transition-colors focus:border-[#7D2B2B] focus:outline-none focus:ring-2 focus:ring-[#7D2B2B]/30"
                   placeholder="Como podemos ajudar?"
                   aria-invalid={!!errors.mensagem}
                   aria-describedby={errors.mensagem ? "erro-mensagem" : undefined}
@@ -159,14 +159,14 @@ export default function Contato() {
                 )}
               </div>
               {submitted && (
-                <p className="rounded-lg bg-primary/20 px-4 py-3 text-sm text-white">
+                <p className="rounded bg-[#7D2B2B]/20 px-4 py-3 text-sm text-[#F0EDE8]">
                   Mensagem recebida. Retornaremos em breve!
                 </p>
               )}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-primary-light hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-foreground disabled:cursor-not-allowed disabled:opacity-70"
+                className="flex w-full items-center justify-center gap-2 rounded bg-[#7D2B2B] px-4 py-3.5 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-[#9B3535] hover:shadow-crimson focus:outline-none focus:ring-2 focus:ring-[#7D2B2B] focus:ring-offset-2 focus:ring-offset-[#0a0a0a] disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <>
@@ -192,39 +192,39 @@ export default function Contato() {
             </h2>
             <ul className="mt-6 space-y-6">
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
                   <MapPin className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-white/70">Endereço</p>
-                  <p className="mt-1 text-white/95">
+                  <p className="text-sm font-medium text-[#A8A8A8]">Endereço</p>
+                  <p className="mt-1 text-[#F0EDE8]">
                     Av. do Batel, 1230, Condomínio do Edifício Batel Trade Center, Batel, Curitiba, Paraná
                   </p>
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-white/70">Telefone</p>
+                  <p className="text-sm font-medium text-[#A8A8A8]">Telefone</p>
                   <a
                     href="tel:+5541988356427"
-                    className="mt-1 block text-white/95 hover:text-primary transition-colors"
+                    className="mt-1 block text-[#F0EDE8] transition-colors hover:text-[#7D2B2B]"
                   >
                     (41) 98835-6427
                   </a>
                 </div>
               </li>
               <li className="flex gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 text-primary">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#7D2B2B]/20 text-[#7D2B2B]">
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-white/70">E-mail</p>
+                  <p className="text-sm font-medium text-[#A8A8A8]">E-mail</p>
                   <a
                     href="mailto:contato@ampliareconsultoria.com.br"
-                    className="mt-1 block text-white/95 hover:text-primary transition-colors"
+                    className="mt-1 block text-[#F0EDE8] transition-colors hover:text-[#7D2B2B]"
                   >
                     contato@ampliareconsultoria.com.br
                   </a>
