@@ -3,6 +3,30 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+
+const equipeCards = [
+  {
+    foto: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    nome: "Consultoria Estratégica",
+    cargo: "Planejamento & Crescimento",
+  },
+  {
+    foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
+    nome: "Inteligência de Mercado",
+    cargo: "Dados & Performance",
+  },
+  {
+    foto: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80",
+    nome: "Marketing & Conteúdo",
+    cargo: "Criação & Campanhas",
+  },
+  {
+    foto: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
+    nome: "Transformação Digital",
+    cargo: "Tecnologia & Inovação",
+  },
+];
 
 const marcosTimeline = [
   {
@@ -205,7 +229,7 @@ export default function AmpliareConsultoria() {
             </div>
           </div>
 
-          {/* Fotos da equipe (placeholders) */}
+          {/* Nossa Equipe — cards com fotos Unsplash */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -216,15 +240,31 @@ export default function AmpliareConsultoria() {
               Nossa equipe
             </h3>
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="overflow-hidden rounded-xl border border-black/5 bg-zinc-100"
+              {equipeCards.map((card, i) => (
+                <motion.div
+                  key={card.nome}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="flex flex-col overflow-hidden border border-[#2A2A2A] bg-[#111111]"
+                  style={{ borderRadius: 8, height: 320 }}
                 >
-                  <div className="aspect-square w-full bg-gradient-to-br from-zinc-200 to-zinc-300 flex items-center justify-center text-zinc-500 text-sm">
-                    Equipe {i}
+                  <div className="relative shrink-0 w-full overflow-hidden" style={{ height: "70%" }}>
+                    <Image
+                      src={card.foto}
+                      alt=""
+                      width={600}
+                      height={400}
+                      className="h-full w-full object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
                   </div>
-                </div>
+                  <div className="flex shrink-0 flex-col justify-center p-4" style={{ height: "30%" }}>
+                    <p className="font-semibold text-[#F0EDE8]">{card.nome}</p>
+                    <p className="mt-1 text-sm text-[#A8A8A8]">{card.cargo}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
