@@ -97,33 +97,50 @@ const heroVariants = {
 
 const ROTACAO_METODOLOGIA_MS = 3000;
 
+const cardStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "1rem 1.5rem",
+  border: "1px solid #2A2A2A",
+  borderRadius: "6px",
+  background: "#111111",
+  minWidth: "120px",
+  height: "72px",
+};
+
 function ParceiroLogo({ nome, logo }: { nome: string; logo: string | null }) {
   const [imgFailed, setImgFailed] = useState(false);
   const showPlaceholder = logo === null || imgFailed;
-  return (
-    <span className="relative flex h-full w-full items-center justify-center">
-      {logo !== null && (
-        <img
-          src={logo}
-          alt=""
-          className="logo-parceiros h-[60px] w-auto max-w-full object-contain transition-[filter] duration-300 ease-out"
-          style={{
-            height: "56px",
-            width: "auto",
-            display: showPlaceholder ? "none" : undefined,
-          }}
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-            setImgFailed(true);
-          }}
-        />
-      )}
-      {showPlaceholder && (
-        <span className="absolute inset-0 flex items-center justify-center rounded-xl bg-[#2A2A2A] px-2">
-          <span className="text-center text-sm font-medium text-[#6B6B6B]">{nome}</span>
+
+  if (showPlaceholder) {
+    return (
+      <div style={{ ...cardStyle, background: "#2A2A2A" }}>
+        <span style={{ textAlign: "center", fontSize: "0.875rem", fontWeight: 500, color: "#6B6B6B" }}>
+          {nome}
         </span>
-      )}
-    </span>
+      </div>
+    );
+  }
+
+  return (
+    <div style={cardStyle}>
+      <img
+        src={logo!}
+        alt={nome}
+        style={{
+          maxHeight: "48px",
+          width: "auto",
+          maxWidth: "120px",
+          objectFit: "contain",
+          filter: "grayscale(100%)",
+          transition: "filter 0.3s ease",
+        }}
+        onError={() => setImgFailed(true)}
+        onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
+        onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
+      />
+    </div>
   );
 }
 
@@ -141,18 +158,17 @@ export default function Home() {
     <>
       {/* Hero — vídeo + background cinematográfico premium */}
       <section
-        className="relative min-h-screen overflow-hidden"
+        className="overflow-hidden"
         style={{
           minHeight: "100vh",
           position: "relative",
-          background: [
-            "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.85) 100%)",
-            "radial-gradient(ellipse 60% 50% at 0% 0%, rgba(125,43,43,0.45) 0%, transparent 60%)",
-            "radial-gradient(ellipse 55% 45% at 100% 100%, rgba(101,54,20,0.4) 0%, transparent 55%)",
-            "radial-gradient(ellipse 70% 30% at 50% 100%, rgba(80,35,15,0.5) 0%, transparent 60%)",
-            "radial-gradient(ellipse 40% 20% at 50% 0%, rgba(125,43,43,0.25) 0%, transparent 50%)",
-            "linear-gradient(160deg, #0f0805 0%, #0a0a0a 35%, #100808 65%, #0a0605 100%)",
-          ].join(", "),
+          background: `
+    radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.85) 100%),
+    radial-gradient(ellipse 60% 50% at 0% 0%, rgba(125,43,43,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 100% 100%, rgba(101,54,20,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 30% at 50% 100%, rgba(80,35,15,0.5) 0%, transparent 60%),
+    linear-gradient(160deg, #0f0805 0%, #0a0a0a 35%, #100808 65%, #0a0605 100%)
+  `,
         }}
       >
         {/* Grain / noise sutil */}
@@ -373,12 +389,7 @@ export default function Home() {
                   style={{ animation: "marquee-parceiros 40s linear infinite" }}
                 >
                   {[...parceiros, ...parceiros].map((p, i) => (
-                    <div
-                      key={`${p.nome}-${i}`}
-                      className="group relative flex h-[60px] w-[160px] shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#2A2A2A] bg-[#111111] px-4 py-3 transition-[box-shadow,border-color] duration-300 ease-out hover:border-[#7D2B2B] hover:shadow-crimson-sm"
-                      role="img"
-                      aria-label={p.nome}
-                    >
+                    <div key={`${p.nome}-${i}`} className="shrink-0" role="img" aria-label={p.nome}>
                       <ParceiroLogo nome={p.nome} logo={p.logo} />
                     </div>
                   ))}

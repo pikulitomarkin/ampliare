@@ -27,10 +27,9 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-90">
           <img
-            src="/logos/ampliare.svg"
+            src="/logos/ampliare.jpeg"
             alt="Ampliare Consultoria"
-            className="glow-crimson h-10 w-auto sm:h-12 object-contain"
-            style={{ height: "56px", width: "auto" }}
+            style={{ height: "48px", width: "auto", objectFit: "contain" }}
           />
         </Link>
 
