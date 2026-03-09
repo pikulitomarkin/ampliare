@@ -316,7 +316,7 @@ export default function Home() {
                     >
                       <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", background: "#F2F0EC", display: "flex", flexDirection: "column", height: "100%" }}>
                         {/* Imagem do card */}
-                        <div style={{ lineHeight: 0, overflow: "hidden" }}>
+                        <div style={{ position: "relative", width: "100%", height: "180px", overflow: "hidden", flexShrink: 0 }}>
                           <img
                             src={
                               card.title === "Análise Estratégica"
@@ -329,13 +329,17 @@ export default function Home() {
                             }
                             alt={card.title}
                             style={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
                               width: "100%",
-                              height: "clamp(150px, 20vw, 180px)",
+                              height: "100%",
                               objectFit: "cover",
                               objectPosition: "center",
                               display: "block",
                               margin: 0,
                               padding: 0,
+                              border: "none",
                             }}
                           />
                         </div>
@@ -525,19 +529,26 @@ export default function Home() {
                   padding: 0,
                   margin: 0,
                   lineHeight: 0,
+                  position: "relative",
+                  width: "100%",
+                  height: "300px",
                 }}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
                     width: "100%",
-                    height: "clamp(200px, 30vw, 300px)",
+                    height: "100%",
                     objectFit: "cover",
                     objectPosition: "center",
                     display: "block",
                     margin: 0,
                     padding: 0,
+                    border: "none",
                   }}
                 />
               </motion.div>

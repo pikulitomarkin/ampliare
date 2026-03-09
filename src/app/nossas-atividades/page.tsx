@@ -356,35 +356,43 @@ export default function NossasAtividades() {
                   </div>
                   {/* Imagem do serviço */}
                   <div className="lg:hidden mb-6">
-                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", lineHeight: 0 }}>
+                    <div style={{ position: "relative", width: "100%", height: "260px", borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE" }}>
                       <img
                         src={servicosImagens[index].src}
                         alt={servicosImagens[index].alt}
                         style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
                           width: "100%",
-                          height: "clamp(200px, 30vw, 420px)",
+                          height: "100%",
                           objectFit: "cover",
                           objectPosition: "center",
                           display: "block",
                           margin: 0,
                           padding: 0,
+                          border: "none",
                         }}
                       />
                     </div>
                   </div>
                   <div className="hidden lg:block">
-                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", lineHeight: 0 }}>
+                    <div style={{ position: "relative", width: "100%", height: "260px", borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE" }}>
                       <img
                         src={servicosImagens[index].src}
                         alt={servicosImagens[index].alt}
                         style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
                           width: "100%",
-                          height: "420px",
+                          height: "100%",
                           objectFit: "cover",
                           objectPosition: "center",
                           display: "block",
                           margin: 0,
                           padding: 0,
+                          border: "none",
                         }}
                       />
                     </div>

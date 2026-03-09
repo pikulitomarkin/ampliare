@@ -245,11 +245,14 @@ export default function AmpliareConsultoria() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="group relative overflow-hidden"
+                  className="group"
                   style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "240px",
                     borderRadius: "8px",
                     border: "1px solid #D8D4CE",
-                    lineHeight: 0,
+                    overflow: "hidden",
                     transition: "border-color 0.3s",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#7D2B2B")}
@@ -259,13 +262,17 @@ export default function AmpliareConsultoria() {
                     src={card.imagem}
                     alt={card.legenda}
                     style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
                       width: "100%",
-                      height: "clamp(180px, 25vw, 240px)",
+                      height: "100%",
                       objectFit: "cover",
                       objectPosition: "center",
                       display: "block",
                       margin: 0,
                       padding: 0,
+                      border: "none",
                     }}
                   />
                   {/* Overlay gradiente escuro no hover */}
