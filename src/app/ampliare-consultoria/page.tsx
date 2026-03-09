@@ -7,19 +7,19 @@ import Link from "next/link";
 // Nosso Foco — imagens de serviços
 const focoCards = [
   {
-    imagem: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=480&fit=crop",
+    imagem: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=480&fit=crop",
     legenda: "Análise Estratégica",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=480&fit=crop",
+    imagem: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=480&fit=crop",
     legenda: "Marketing & Performance",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=480&fit=crop",
+    imagem: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=480&fit=crop",
     legenda: "Criação de Campanhas",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=480&fit=crop",
+    imagem: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&h=480&fit=crop",
     legenda: "Soluções Digitais & IA",
   },
 ];
