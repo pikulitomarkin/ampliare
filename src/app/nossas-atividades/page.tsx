@@ -19,7 +19,7 @@ type Servico = {
 const servicos: Servico[] = [
   {
     id: "gestao-midia",
-    title: "Como Atuamos",
+    title: "Google ADS e Meta ADS",
     subtitle: "Google ADS e Meta ADS",
     intro:
       "Vivemos em um mundo conectado, onde as pessoas passam grande parte do dia interagindo com conteúdos digitais em computadores e celulares. É nesse ambiente que elas consomem informação, se divertem e tomam decisões de compra. Por isso, sua marca precisa ocupar espaço nesses canais: se não estiver online, sua campanha simplesmente não será vista.",
