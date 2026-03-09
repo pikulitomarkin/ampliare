@@ -401,7 +401,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:hidden" style={{ color: "var(--crimson)" }}>
                   {"//SOLUÇÕES"}
                 </p>
                 <h2
@@ -542,7 +542,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:hidden" style={{ color: "var(--crimson)" }}>
                   {"//PARCEIROS"}
                 </p>
                 <h2 className="mt-3 font-bold uppercase tracking-tight" style={{ color: "var(--text-primary)", fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}>
@@ -603,7 +603,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="min-w-0"
               >
-                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:hidden" style={{ color: "var(--crimson)" }}>
                   {"//SERVIÇOS"}
                 </p>
                 <h2 className="mt-3 border-l-4 pl-4 font-bold uppercase tracking-tight" style={{ borderColor: "var(--crimson)", color: "var(--text-primary)", fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}>
