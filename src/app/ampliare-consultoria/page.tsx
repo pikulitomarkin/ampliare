@@ -7,19 +7,19 @@ import Link from "next/link";
 // Nosso Foco — imagens de serviços
 const focoCards = [
   {
-    imagem: "/imagens/NOSSOFOCO1.png",
+    imagem: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=480&fit=crop",
     legenda: "Análise Estratégica",
   },
   {
-    imagem: "/imagens/NOSSOFOCO2.png",
+    imagem: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=480&fit=crop",
     legenda: "Marketing & Performance",
   },
   {
-    imagem: "/imagens/NOSSOFOCO3.png",
+    imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=480&fit=crop",
     legenda: "Criação de Campanhas",
   },
   {
-    imagem: "/imagens/NOSSOFOCO4.png",
+    imagem: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=480&fit=crop",
     legenda: "Soluções Digitais & IA",
   },
 ];
