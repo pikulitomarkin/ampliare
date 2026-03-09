@@ -247,44 +247,50 @@ export default function AmpliareConsultoria() {
                   transition={{ duration: 0.4, delay: i * 0.08 }}
                   className="group"
                   style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "240px",
                     borderRadius: "8px",
+                    padding: 0,
                     border: "1px solid #D8D4CE",
                     overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
                     transition: "border-color 0.3s",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#7D2B2B")}
                   onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#D8D4CE")}
                 >
-                  <img
-                    src={card.imagem}
-                    alt={card.legenda}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                      display: "block",
-                      margin: 0,
-                      padding: 0,
-                      border: "none",
-                    }}
-                  />
-                  {/* Overlay gradiente escuro no hover */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    aria-hidden
-                  />
-                  {/* Legenda centralizada, visível no hover */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="text-center font-semibold text-white drop-shadow-lg">
-                      {card.legenda}
-                    </span>
+                  <div style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "240px",
+                    overflow: "hidden",
+                    borderRadius: "8px 8px 0 0",
+                    flexShrink: 0,
+                    display: "block",
+                  }}>
+                    <img
+                      src={card.imagem}
+                      alt={card.legenda}
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        display: "block",
+                      }}
+                    />
+                    {/* Overlay gradiente escuro no hover */}
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      aria-hidden
+                    />
+                    {/* Legenda centralizada, visível no hover */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-center font-semibold text-white drop-shadow-lg">
+                        {card.legenda}
+                      </span>
+                    </div>
                   </div>
                 </motion.div>
               ))}

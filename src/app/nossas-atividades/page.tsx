@@ -356,45 +356,57 @@ export default function NossasAtividades() {
                   </div>
                   {/* Imagem do serviço */}
                   <div className="lg:hidden mb-6">
-                    <div style={{ position: "relative", width: "100%", height: "260px", borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE" }}>
-                      <img
-                        src={servicosImagens[index].src}
-                        alt={servicosImagens[index].alt}
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          objectPosition: "center",
-                          display: "block",
-                          margin: 0,
-                          padding: 0,
-                          border: "none",
-                        }}
-                      />
+                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", padding: 0, display: "flex", flexDirection: "column" }}>
+                      <div style={{
+                        position: "relative",
+                        width: "100%",
+                        height: "260px",
+                        overflow: "hidden",
+                        borderRadius: "8px 8px 0 0",
+                        flexShrink: 0,
+                        display: "block",
+                      }}>
+                        <img
+                          src={servicosImagens[index].src}
+                          alt={servicosImagens[index].alt}
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            objectPosition: "center",
+                            display: "block",
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="hidden lg:block">
-                    <div style={{ position: "relative", width: "100%", height: "260px", borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE" }}>
-                      <img
-                        src={servicosImagens[index].src}
-                        alt={servicosImagens[index].alt}
-                        style={{
-                          position: "absolute",
-                          top: 0,
-                          left: 0,
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          objectPosition: "center",
-                          display: "block",
-                          margin: 0,
-                          padding: 0,
-                          border: "none",
-                        }}
-                      />
+                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", padding: 0, display: "flex", flexDirection: "column" }}>
+                      <div style={{
+                        position: "relative",
+                        width: "100%",
+                        height: "260px",
+                        overflow: "hidden",
+                        borderRadius: "8px 8px 0 0",
+                        flexShrink: 0,
+                        display: "block",
+                      }}>
+                        <img
+                          src={servicosImagens[index].src}
+                          alt={servicosImagens[index].alt}
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            objectPosition: "center",
+                            display: "block",
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

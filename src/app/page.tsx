@@ -314,9 +314,17 @@ export default function Home() {
                         delay: index * 0.08,
                       }}
                     >
-                      <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", background: "#F2F0EC", display: "flex", flexDirection: "column", height: "100%" }}>
+                      <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", background: "#F2F0EC", display: "flex", flexDirection: "column", height: "100%", padding: 0 }}>
                         {/* Imagem do card */}
-                        <div style={{ position: "relative", width: "100%", height: "180px", overflow: "hidden", flexShrink: 0 }}>
+                        <div style={{
+                          position: "relative",
+                          width: "100%",
+                          height: "180px",
+                          overflow: "hidden",
+                          borderRadius: "8px 8px 0 0",
+                          flexShrink: 0,
+                          display: "block",
+                        }}>
                           <img
                             src={
                               card.title === "Análise Estratégica"
@@ -330,21 +338,17 @@ export default function Home() {
                             alt={card.title}
                             style={{
                               position: "absolute",
-                              top: 0,
-                              left: 0,
+                              inset: 0,
                               width: "100%",
                               height: "100%",
                               objectFit: "cover",
                               objectPosition: "center",
                               display: "block",
-                              margin: 0,
-                              padding: 0,
-                              border: "none",
                             }}
                           />
                         </div>
                         {/* Conteúdo com padding */}
-                        <div className="p-4 lg:p-6" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                        <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column" }}>
                           <div className="flex shrink-0 justify-center">
                             <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
                               <card.icon className="h-8 w-8 sm:h-10 sm:w-10 glow-crimson" />
@@ -527,30 +531,33 @@ export default function Home() {
                   border: "1px solid #D8D4CE",
                   background: "transparent",
                   padding: 0,
-                  margin: 0,
-                  lineHeight: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div style={{
                   position: "relative",
                   width: "100%",
                   height: "300px",
-                }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                    display: "block",
-                    margin: 0,
-                    padding: 0,
-                    border: "none",
-                  }}
-                />
+                  overflow: "hidden",
+                  borderRadius: "8px 8px 0 0",
+                  flexShrink: 0,
+                  display: "block",
+                }}>
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      display: "block",
+                    }}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
