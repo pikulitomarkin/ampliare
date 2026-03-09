@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import {
   TrendingUp,
   ArrowUp,
@@ -552,7 +551,7 @@ export default function Home() {
               display: "block",
             }}
           >
-            //METODOLOGIAS
+            {"//METODOLOGIAS"}
           </span>
 
           {/* TAG MOBILE */}
@@ -560,7 +559,7 @@ export default function Home() {
             className="block md:hidden text-xs font-semibold uppercase tracking-widest mb-4"
             style={{ color: "#7D2B2B" }}
           >
-            //METODOLOGIAS
+            {"//METODOLOGIAS"}
           </span>
 
           {/* GRID PRINCIPAL — 1 coluna mobile, 2 colunas desktop */}
