@@ -564,14 +564,14 @@ export default function Home() {
 
           {/* GRID PRINCIPAL — 1 coluna mobile, 2 colunas desktop */}
           <div
-            className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-8 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-8 md:gap-8"
             style={{
               alignItems: "start",
             }}
           >
             {/* COLUNA ESQUERDA */}
-            <div style={{ overflow: "visible", minWidth: 0 }}>
-              {/* PALAVRA GRANDE — sem gradient, usa cor sólida */}
+            <div style={{ minWidth: 0, overflow: "visible", width: "100%" }}>
+              {/* PALAVRA GRANDE — sem gradient, usa cor sólida, NUNCA quebra linha */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={ativo}
@@ -580,17 +580,18 @@ export default function Home() {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4 }}
                   style={{
-                    fontSize: "clamp(2rem, 8vw, 4.5rem)",
+                    fontSize: "clamp(1.5rem, 4vw, 4rem)",
                     fontWeight: 900,
                     lineHeight: 1,
                     color: "#7D2B2B",
                     textShadow: "2px 2px 0px #5C1F1F",
                     letterSpacing: "-0.02em",
                     marginBottom: "2rem",
-                    wordBreak: "break-word",
-                    overflowWrap: "break-word",
-                    width: "100%",
+                    whiteSpace: "nowrap",
+                    width: "fit-content",
+                    maxWidth: "100%",
                     display: "block",
+                    transform: "scaleX(1)",
                   }}
                 >
                   {metodologiaItens[ativo].palavra}
