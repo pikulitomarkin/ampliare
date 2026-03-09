@@ -511,17 +511,27 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="relative overflow-hidden rounded-xl border shadow-sm"
-                style={{ borderColor: "var(--border-light)", height: "clamp(220px, 30vw, 320px)" }}
+                style={{
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  border: "1px solid #D8D4CE",
+                  background: "transparent",
+                  padding: 0,
+                  margin: 0,
+                  lineHeight: 0,
+                }}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
                   style={{
                     width: "100%",
-                    height: "100%",
+                    height: "clamp(220px, 30vw, 320px)",
                     objectFit: "cover",
+                    objectPosition: "center",
                     display: "block",
+                    margin: 0,
+                    padding: 0,
                   }}
                 />
               </motion.div>
