@@ -314,27 +314,33 @@ export default function Home() {
                         delay: index * 0.08,
                       }}
                     >
-                      <div className="card-light group flex h-full flex-col rounded-xl border overflow-hidden" style={{ borderColor: "var(--border-light)", backgroundColor: "var(--bg-card)" }}>
+                      <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", background: "#F2F0EC", display: "flex", flexDirection: "column", height: "100%" }}>
                         {/* Imagem do card */}
-                        <img
-                          src={
-                            card.title === "Análise Estratégica"
-                              ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.jpg"
-                              : card.title === "Crescimento"
-                              ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.jpg"
-                              : card.title === "Estratégia de Marca"
-                              ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.jpg"
-                              : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.jpg"
-                          }
-                          alt={card.title}
-                          style={{
-                            width: "100%",
-                            height: "160px",
-                            objectFit: "cover",
-                            display: "block",
-                          }}
-                        />
-                        <div className="p-4 lg:p-6">
+                        <div style={{ lineHeight: 0, overflow: "hidden" }}>
+                          <img
+                            src={
+                              card.title === "Análise Estratégica"
+                                ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.jpg"
+                                : card.title === "Crescimento"
+                                ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.jpg"
+                                : card.title === "Estratégia de Marca"
+                                ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.jpg"
+                                : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.jpg"
+                            }
+                            alt={card.title}
+                            style={{
+                              width: "100%",
+                              height: "clamp(150px, 20vw, 180px)",
+                              objectFit: "cover",
+                              objectPosition: "center",
+                              display: "block",
+                              margin: 0,
+                              padding: 0,
+                            }}
+                          />
+                        </div>
+                        {/* Conteúdo com padding */}
+                        <div className="p-4 lg:p-6" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
                           <div className="flex shrink-0 justify-center">
                             <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
                               <card.icon className="h-8 w-8 sm:h-10 sm:w-10 glow-crimson" />
@@ -526,7 +532,7 @@ export default function Home() {
                   alt={img.alt}
                   style={{
                     width: "100%",
-                    height: "clamp(220px, 30vw, 320px)",
+                    height: "clamp(200px, 30vw, 300px)",
                     objectFit: "cover",
                     objectPosition: "center",
                     display: "block",

@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
 // Nosso Foco — imagens de serviços (pasta /public/site/ vazia; usando Unsplash)
 const focoCards = [
@@ -246,16 +245,28 @@ export default function AmpliareConsultoria() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="group relative h-[280px] overflow-hidden rounded-lg border transition-[border-color] duration-300 hover:border-[var(--crimson)]"
-                  style={{ borderColor: "var(--border-light)" }}
+                  className="group relative overflow-hidden"
+                  style={{
+                    borderRadius: "8px",
+                    border: "1px solid #D8D4CE",
+                    lineHeight: 0,
+                    transition: "border-color 0.3s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#7D2B2B")}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#D8D4CE")}
                 >
-                  <Image
+                  <img
                     src={card.imagem}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    style={{ maxWidth: "100%", objectFit: "cover" }}
+                    alt={card.legenda}
+                    style={{
+                      width: "100%",
+                      height: "clamp(180px, 25vw, 240px)",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      display: "block",
+                      margin: 0,
+                      padding: 0,
+                    }}
                   />
                   {/* Overlay gradiente escuro no hover */}
                   <div

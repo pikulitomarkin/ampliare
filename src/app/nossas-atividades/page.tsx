@@ -356,32 +356,39 @@ export default function NossasAtividades() {
                   </div>
                   {/* Imagem do serviço */}
                   <div className="lg:hidden mb-6">
-                    <div className="overflow-hidden rounded-xl shadow-md">
+                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", lineHeight: 0 }}>
                       <img
                         src={servicosImagens[index].src}
                         alt={servicosImagens[index].alt}
                         style={{
                           width: "100%",
-                          height: "clamp(220px, 30vw, 400px)",
+                          height: "clamp(200px, 30vw, 420px)",
                           objectFit: "cover",
+                          objectPosition: "center",
                           display: "block",
+                          margin: 0,
+                          padding: 0,
                         }}
                       />
                     </div>
                   </div>
                   <div className="hidden lg:block">
-                    <div className="overflow-hidden rounded-xl shadow-md">
+                    <div style={{ borderRadius: "8px", overflow: "hidden", border: "1px solid #D8D4CE", lineHeight: 0 }}>
                       <img
                         src={servicosImagens[index].src}
                         alt={servicosImagens[index].alt}
                         style={{
                           width: "100%",
-                          height: "400px",
+                          height: "420px",
                           objectFit: "cover",
+                          objectPosition: "center",
                           display: "block",
+                          margin: 0,
+                          padding: 0,
                         }}
                       />
                     </div>
+                  </div>
                   </div>
                 </div>
               </section>
