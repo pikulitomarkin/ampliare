@@ -349,21 +349,42 @@ export default function Home() {
                         delay: index * 0.08,
                       }}
                     >
-                      <div className="card-light group flex h-full flex-col rounded-xl border p-4 lg:p-6" style={{ borderColor: "var(--border-light)", backgroundColor: "var(--bg-card)" }}>
-                        <div className="flex shrink-0 justify-center">
-                          <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
-                            <card.icon className="h-10 w-10 glow-crimson" size={40} />
+                      <div className="card-light group flex h-full flex-col rounded-xl border overflow-hidden" style={{ borderColor: "var(--border-light)", backgroundColor: "var(--bg-card)" }}>
+                        {/* Imagem do card */}
+                        <img
+                          src={
+                            card.title === "Análise Estratégica"
+                              ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.jpg"
+                              : card.title === "Crescimento"
+                              ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.jpg"
+                              : card.title === "Estratégia de Marca"
+                              ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.jpg"
+                              : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.jpg"
+                          }
+                          alt={card.title}
+                          style={{
+                            width: "100%",
+                            height: "160px",
+                            objectFit: "cover",
+                            display: "block",
+                          }}
+                        />
+                        <div className="p-4 lg:p-6">
+                          <div className="flex shrink-0 justify-center">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
+                              <card.icon className="h-10 w-10 glow-crimson" size={40} />
+                            </div>
                           </div>
-                        </div>
-                        <h3 className="mt-4 text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                          <h3 className="mt-4 text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
                             {card.title}
                           </h3>
                           <p
                             className="mt-3 leading-relaxed"
                             style={{ color: "var(--text-secondary)", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
                           >
-                          {card.description}
-                        </p>
+                            {card.description}
+                          </p>
+                        </div>
                       </div>
                     </motion.li>
                   ))}
@@ -508,16 +529,16 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8 lg:mt-16">
             {[
               {
-                src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
-                alt: "Reunião de estratégia em agência",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS1.jpg",
+                alt: "Ecossistema de serviços - Imagem 1",
               },
               {
-                src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
-                alt: "Equipe trabalhando em projeto digital",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS2.jpg",
+                alt: "Ecossistema de serviços - Imagem 2",
               },
               {
-                src: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
-                alt: "Apresentação e análise de dados",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS3.jpg",
+                alt: "Ecossistema de serviços - Imagem 3",
               },
             ].map((img, i) => (
               <motion.div
@@ -526,15 +547,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="relative h-[400px] overflow-hidden rounded-xl border shadow-sm"
+                className="relative h-[320px] overflow-hidden rounded-xl border shadow-sm"
                 style={{ borderColor: "var(--border-light)" }}
               >
-                <Image
+                <img
                   src={img.src}
                   alt={img.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
                 />
               </motion.div>
             ))}

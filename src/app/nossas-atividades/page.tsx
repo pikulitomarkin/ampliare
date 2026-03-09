@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 
 type Servico = {
@@ -165,15 +164,15 @@ const servicos: Servico[] = [
 ];
 
 const servicosImagens: { src: string; alt: string }[] = [
-  { src: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80", alt: "Dashboard de anúncios e performance digital" },
-  { src: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80", alt: "Social media e redes sociais" },
-  { src: "https://images.unsplash.com/photo-1552581234-26160f608093?w=800&q=80", alt: "Equipe em reunião estratégica" },
-  { src: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80", alt: "E-commerce e compras online" },
-  { src: "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=80", alt: "Equipe criativa em campanha" },
-  { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", alt: "Gráficos e análise de dados de mercado" },
-  { src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80", alt: "Desenvolvimento web e código" },
-  { src: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80", alt: "SEO e pesquisa orgânica" },
-  { src: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80", alt: "Inteligência artificial e tecnologia" },
+  { src: "/imagens/NOSSASATIVIDADESGOOGLEADSMETAADS.jpg", alt: "Google ADS e Meta ADS" },
+  { src: "/imagens/NOSSASATIVIDADESGESTAODEREDESSOCIAIS.jpg", alt: "Gestão de Redes Sociais" },
+  { src: "/imagens/NOSSASATIVIDADESCONEXAOENGAJAMENTOCLIENTES.jpg", alt: "Conexão e Engajamento de Clientes" },
+  { src: "/imagens/NOSSASATIVIDADESECOMMERCE.jpg", alt: "E-commerce" },
+  { src: "/imagens/NOSSASATIVIDADESCRIACAODECAMPANHAS.jpg", alt: "Criação de Campanhas e Conteúdos" },
+  { src: "/imagens/NOSSASATIVIDADESINSIGTHSDEMERCADO.jpg", alt: "Insights de Mercado" },
+  { src: "/imagens/NOSSASATIVIDADESSOLUCOESDIGITAISEDESENVOLVIMENTODESITES.jpg", alt: "Soluções Digitais e Desenvolvimento de Sites" },
+  { src: "/imagens/NOSSASATIVIDADESSEO.jpg", alt: "SEO" },
+  { src: "/imagens/NOSSASATIVIDADESAGENTESDEIA.jpg", alt: "Agentes de IA" },
 ];
 
 export default function NossasAtividades() {
@@ -354,16 +353,18 @@ export default function NossasAtividades() {
                       </ol>
                     )}
                   </div>
-                  {/* Imagem do serviço — Unsplash */}
+                  {/* Imagem do serviço */}
                   <div className="hidden lg:block">
                     <div className="overflow-hidden rounded-xl shadow-md">
-                      <Image
+                      <img
                         src={servicosImagens[index].src}
                         alt={servicosImagens[index].alt}
-                        width={500}
-                        height={350}
-                        className="h-[350px] w-full object-cover"
-                        style={{ maxWidth: "100%" }}
+                        style={{
+                          width: "100%",
+                          height: "400px",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
                       />
                     </div>
                   </div>
