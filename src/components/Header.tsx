@@ -23,13 +23,21 @@ export function Header() {
   }, [menuAberto]);
 
   return (
-    <header className="sticky top-0 z-50 w-full shadow-lg backdrop-blur-md" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)", background: "var(--bg-header)" }}>
+    <header className="sticky top-0 z-50 w-full shadow-lg backdrop-blur-md" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)", background: "#1A1010" }}>
       <div
         className="mx-auto flex w-full max-w-7xl items-center justify-between py-3 px-4 sm:px-6 md:px-8 lg:px-16"
       >
         <Link
           href="/"
-          style={{ display: "flex", alignItems: "center", flexShrink: 0, position: "relative", zIndex: 10 }}
+          style={{ 
+            background: "transparent",
+            padding: 0,
+            display: "flex",
+            alignItems: "center",
+            flexShrink: 0,
+            position: "relative",
+            zIndex: 10
+          }}
           className="transition-opacity hover:opacity-90"
           aria-label="Ampliare Consultoria - início"
         >
@@ -37,10 +45,11 @@ export function Header() {
             src="/logos/ampliare.svg"
             alt="Ampliare Consultoria"
             style={{
-              height: "48px",
+              height: "56px",
               width: "auto",
               display: "block",
               objectFit: "contain",
+              background: "transparent",
             }}
           />
         </Link>
