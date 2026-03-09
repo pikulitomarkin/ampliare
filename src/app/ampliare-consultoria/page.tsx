@@ -7,19 +7,19 @@ import Link from "next/link";
 // Nosso Foco — imagens de serviços
 const focoCards = [
   {
-    imagem: "/imagens/NOSSOFOCO1.jpg",
+    imagem: "/imagens/NOSSOFOCO1.png",
     legenda: "Análise Estratégica",
   },
   {
-    imagem: "/imagens/NOSSOFOCO2.jpg",
+    imagem: "/imagens/NOSSOFOCO2.png",
     legenda: "Marketing & Performance",
   },
   {
-    imagem: "/imagens/NOSSOFOCO3.jpg",
+    imagem: "/imagens/NOSSOFOCO3.png",
     legenda: "Criação de Campanhas",
   },
   {
-    imagem: "/imagens/NOSSOFOCO4.jpg",
+    imagem: "/imagens/NOSSOFOCO4.png",
     legenda: "Soluções Digitais & IA",
   },
 ];

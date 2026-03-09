@@ -328,12 +328,12 @@ export default function Home() {
                           <img
                             src={
                               card.title === "Análise Estratégica"
-                                ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.jpg"
+                                ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.png"
                                 : card.title === "Crescimento"
-                                ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.jpg"
+                                ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.png"
                                 : card.title === "Estratégia de Marca"
-                                ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.jpg"
-                                : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.jpg"
+                                ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.png"
+                                : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.png"
                             }
                             alt={card.title}
                             style={{
@@ -507,15 +507,15 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:mt-16">
             {[
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS1.jpg",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS1.png",
                 alt: "Ecossistema de serviços - Imagem 1",
               },
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS2.jpg",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS2.png",
                 alt: "Ecossistema de serviços - Imagem 2",
               },
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS3.jpg",
+                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS3.png",
                 alt: "Ecossistema de serviços - Imagem 3",
               },
             ].map((img, i) => (

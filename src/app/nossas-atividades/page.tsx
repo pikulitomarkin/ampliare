@@ -164,15 +164,15 @@ const servicos: Servico[] = [
 ];
 
 const servicosImagens: { src: string; alt: string }[] = [
-  { src: "/imagens/NOSSASATIVIDADESGOOGLEADSMETAADS.jpg", alt: "Google ADS e Meta ADS" },
-  { src: "/imagens/NOSSASATIVIDADESGESTAODEREDESSOCIAIS.jpg", alt: "Gestão de Redes Sociais" },
-  { src: "/imagens/NOSSASATIVIDADESCONEXAOENGAJAMENTOCLIENTES.jpg", alt: "Conexão e Engajamento de Clientes" },
-  { src: "/imagens/NOSSASATIVIDADESECOMMERCE.jpg", alt: "E-commerce" },
-  { src: "/imagens/NOSSASATIVIDADESCRIACAODECAMPANHAS.jpg", alt: "Criação de Campanhas e Conteúdos" },
-  { src: "/imagens/NOSSASATIVIDADESINSIGTHSDEMERCADO.jpg", alt: "Insights de Mercado" },
-  { src: "/imagens/NOSSASATIVIDADESSOLUCOESDIGITAISEDESENVOLVIMENTODESITES.jpg", alt: "Soluções Digitais e Desenvolvimento de Sites" },
-  { src: "/imagens/NOSSASATIVIDADESSEO.jpg", alt: "SEO" },
-  { src: "/imagens/NOSSASATIVIDADESAGENTESDEIA.jpg", alt: "Agentes de IA" },
+  { src: "/imagens/NOSSASATIVIDADESGOOGLEADSMETAADS.png", alt: "Google ADS e Meta ADS" },
+  { src: "/imagens/NOSSASATIVIDADESGESTAODEREDESSOCIAIS.png", alt: "Gestão de Redes Sociais" },
+  { src: "/imagens/NOSSASATIVIDADESCONEXAOENGAJAMENTOCLIENTES.png", alt: "Conexão e Engajamento de Clientes" },
+  { src: "/imagens/NOSSASATIVIDADESECOMMERCE.png", alt: "E-commerce" },
+  { src: "/imagens/NOSSASATIVIDADESCRIACAODECAMPANHAS.png", alt: "Criação de Campanhas e Conteúdos" },
+  { src: "/imagens/NOSSASATIVIDADESINSIGTHSDEMERCADO.png", alt: "Insights de Mercado" },
+  { src: "/imagens/NOSSASATIVIDADESSOLUCOESDIGITAISEDESENVOLVIMENTODESITES.png", alt: "Soluções Digitais e Desenvolvimento de Sites" },
+  { src: "/imagens/NOSSASATIVIDADESSEO.png", alt: "SEO" },
+  { src: "/imagens/NOSSASATIVIDADESAGENTESDEIA.png", alt: "Agentes de IA" },
 ];
 
 export default function NossasAtividades() {
