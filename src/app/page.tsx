@@ -548,141 +548,118 @@ export default function Home() {
       {/* Metodologia — seção escura para contraste */}
       <section
         id="metodologia"
-        className="relative overflow-clip py-16 sm:py-20 lg:py-24"
-        style={{ background: "var(--bg-dark)" }}
+        style={{ background: "#2A1F1F", padding: "6rem 0", overflow: "hidden" }}
       >
-        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16" style={{ overflow: "visible" }}>
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-12" style={{ overflow: "visible" }}>
-            <motion.div
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="hidden shrink-0 lg:block"
-              aria-hidden
-            >
-              <span
-                className="text-sm font-semibold tracking-[0.2em]"
-                style={{ writingMode: "vertical-rl", textOrientation: "mixed", color: "var(--crimson)" }}
-              >
-                {"//METODOLOGIAS"}
-              </span>
-            </motion.div>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+          {/* TAG LATERAL */}
+          <span
+            style={{
+              writingMode: "vertical-rl",
+              fontSize: "0.7rem",
+              letterSpacing: "0.2em",
+              color: "#7D2B2B",
+              marginBottom: "2rem",
+              display: "block",
+            }}
+          >
+            //METODOLOGIAS
+          </span>
 
-            <div
-              className="grid min-w-0 flex-1 grid-cols-1 md:grid-cols-2"
-              style={{
-                gap: "4rem",
-                alignItems: "start",
-                overflow: "visible",
-                width: "100%",
-              }}
-            >
-              {/* Coluna esquerda: palavra grande + texto */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                style={{ overflow: "visible", minWidth: 0 }}
-              >
-                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
-                  {"//METODOLOGIAS"}
-                </p>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={ativo}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.4 }}
-                    className="metodologia-palavra"
-                    style={{
-                      fontSize: "clamp(2.5rem, 6vw, 5rem)",
-                      fontWeight: 900,
-                      lineHeight: 1,
-                      whiteSpace: "nowrap",
-                      overflow: "visible",
-                      width: "100%",
-                      maxWidth: "100%",
-                      background: "linear-gradient(135deg, #7D2B2B, #B07070)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                      marginBottom: "1.5rem",
-                      display: "block",
-                    }}
-                  >
-                    {metodologiaItens[ativo].palavra}
-                  </motion.div>
-                </AnimatePresence>
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={ativo}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ color: "var(--text-light)", lineHeight: 1.8, fontSize: "1rem" }}
-                  >
-                    {metodologiaItens[ativo].texto}
-                  </motion.p>
-                </AnimatePresence>
-              </motion.div>
+          {/* GRID PRINCIPAL — proporção 55/45 */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "55% 45%",
+              gap: "2rem",
+              alignItems: "start",
+            }}
+          >
+            {/* COLUNA ESQUERDA */}
+            <div style={{ overflow: "visible", minWidth: 0 }}>
+              {/* PALAVRA GRANDE — sem gradient, usa cor sólida */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={ativo}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  style={{
+                    fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                    fontWeight: 900,
+                    lineHeight: 1,
+                    color: "#7D2B2B",
+                    textShadow: "2px 2px 0px #5C1F1F",
+                    letterSpacing: "-0.02em",
+                    marginBottom: "2rem",
+                    wordBreak: "break-word",
+                    overflowWrap: "break-word",
+                    width: "100%",
+                    display: "block",
+                  }}
+                >
+                  {metodologiaItens[ativo].palavra}
+                </motion.div>
+              </AnimatePresence>
 
-              {/* Coluna direita: menu clicável — horizontal scroll no mobile, lista no desktop */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide md:flex-col md:overflow-visible md:gap-0 md:pb-0"
-                style={{ scrollbarWidth: "none" }}
-              >
-                {metodologiaItens.map((item, index) => (
+              {/* TEXTO */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={`texto-${ativo}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    color: "#C4BFB8",
+                    lineHeight: 1.8,
+                    fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+                    maxWidth: "560px",
+                  }}
+                >
+                  {metodologiaItens[ativo].texto}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+
+            {/* COLUNA DIREITA — menu */}
+            <div style={{ paddingTop: "0.5rem" }}>
+              {metodologiaItens.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => irPara(index)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                    padding: "1rem 0",
+                    cursor: "pointer",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    transition: "all 0.3s",
+                  }}
+                >
                   <div
-                    key={item.titulo}
-                    onClick={() => irPara(index)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        irPara(index);
-                      }
-                    }}
-                    className="shrink-0 md:shrink"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1rem",
-                      padding: "0.75rem 0",
-                      cursor: "pointer",
-                      borderBottom: "1px solid rgba(255,255,255,0.08)",
+                      width: index === ativo ? "40px" : "20px",
+                      height: "2px",
+                      background: index === ativo ? "#7D2B2B" : "#3D2525",
                       transition: "all 0.3s",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      color: index === ativo ? "#B07070" : "#6B5555",
+                      fontWeight: index === ativo ? 600 : 400,
+                      fontSize: "0.95rem",
+                      transition: "all 0.3s",
+                      letterSpacing: "0.05em",
                     }}
                   >
-                    <div
-                      style={{
-                        width: index === ativo ? "40px" : "20px",
-                        height: "2px",
-                        background: index === ativo ? "var(--crimson)" : "rgba(255,255,255,0.08)",
-                        transition: "all 0.3s",
-                      }}
-                    />
-                    <span
-                      style={{
-                        color: index === ativo ? "var(--crimson)" : "var(--gray-300)",
-                        fontWeight: index === ativo ? 600 : 400,
-                        fontSize: "0.95rem",
-                        transition: "all 0.3s",
-                        letterSpacing: "0.05em",
-                      }}
-                    >
-                      {item.titulo}
-                    </span>
-                  </div>
-                ))}
-              </motion.div>
+                    {item.titulo}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
