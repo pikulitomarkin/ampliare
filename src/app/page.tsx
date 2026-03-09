@@ -225,6 +225,58 @@ export default function Home() {
           aria-hidden
         />
 
+        {/* Texto sobreposto - NÓS CRIAMOS A EVOLUÇÃO */}
+        <div
+          style={{
+            position: "absolute",
+            top: "52%",
+            left: "5%",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+          className="hero-text-overlay"
+        >
+          {/* Linha decorativa */}
+          <div
+            style={{
+              width: "48px",
+              height: "3px",
+              background: "#7D2B2B",
+              marginBottom: "1rem",
+              borderRadius: "2px",
+            }}
+          />
+
+          {/* NÓS CRIAMOS */}
+          <div
+            style={{
+              fontSize: "clamp(2rem, 5vw, 4rem)",
+              fontWeight: 900,
+              lineHeight: 1,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#2C2825",
+              marginBottom: "0.15em",
+            }}
+          >
+            NÓS CRIAMOS
+          </div>
+
+          {/* A EVOLUÇÃO — em bordô */}
+          <div
+            style={{
+              fontSize: "clamp(2rem, 5vw, 4rem)",
+              fontWeight: 900,
+              lineHeight: 1,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#7D2B2B",
+            }}
+          >
+            A EVOLUÇÃO
+          </div>
+        </div>
+
         <style jsx>{`
           @media (max-width: 768px) {
             .hero-section {
@@ -232,6 +284,14 @@ export default function Home() {
             }
             .hero-image {
               object-position: left center !important;
+            }
+            .hero-text-overlay {
+              top: 55% !important;
+              left: 4% !important;
+            }
+            .hero-text-overlay > div:nth-child(2),
+            .hero-text-overlay > div:nth-child(3) {
+              font-size: clamp(1.4rem, 6vw, 2.2rem) !important;
             }
           }
         `}</style>
