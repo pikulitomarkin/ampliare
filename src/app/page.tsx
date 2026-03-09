@@ -187,18 +187,15 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero — imagem fullscreen + texto rodapé */}
+      {/* Hero — imagem fullscreen com texto embutido */}
       <section
         style={{
           position: "relative",
           width: "100%",
-          minHeight: "clamp(60vh, 80vh, 100vh)",
+          minHeight: "100vh",
           overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "var(--bg-main)",
         }}
+        className="hero-section"
       >
         {/* Imagem de fundo fullscreen */}
         <img
@@ -213,44 +210,28 @@ export default function Home() {
             objectPosition: "center top",
             zIndex: 0,
           }}
+          className="hero-image"
         />
 
-        {/* Texto rodapé */}
+        {/* Overlay gradiente sutil para fundir com o site */}
         <div
           style={{
             position: "absolute",
-            bottom: "2rem",
-            left: 0,
-            right: 0,
-            zIndex: 3,
-            textAlign: "center",
-            pointerEvents: "none",
+            inset: 0,
+            zIndex: 1,
+            background:
+              "linear-gradient(to bottom, transparent 60%, rgba(236,234,230,0.95) 100%)",
           }}
-          className="hero-footer-text"
-        >
-          <h1
-            style={{
-              fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
-              fontWeight: 800,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "#2C2825",
-              margin: 0,
-              lineHeight: 1,
-            }}
-          >
-            Nós Criamos{" "}
-            <span style={{ color: "#7D2B2B" }}>a Evolução</span>
-          </h1>
-        </div>
+          aria-hidden
+        />
 
         <style jsx>{`
           @media (max-width: 768px) {
-            .hero-footer-text {
-              bottom: 1.5rem !important;
+            .hero-section {
+              min-height: 60vh !important;
             }
-            .hero-footer-text h1 {
-              font-size: clamp(1rem, 5vw, 1.4rem) !important;
+            .hero-image {
+              object-position: left center !important;
             }
           }
         `}</style>
