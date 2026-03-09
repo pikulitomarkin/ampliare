@@ -164,15 +164,15 @@ const servicos: Servico[] = [
 ];
 
 const servicosImagens: { src: string; alt: string }[] = [
-  { src: "/imagens/NOSSASATIVIDADESGOOGLEADSMETAADS.png", alt: "Google ADS e Meta ADS" },
-  { src: "/imagens/NOSSASATIVIDADESGESTAODEREDESSOCIAIS.png", alt: "Gestão de Redes Sociais" },
-  { src: "/imagens/NOSSASATIVIDADESCONEXAOENGAJAMENTOCLIENTES.png", alt: "Conexão e Engajamento de Clientes" },
-  { src: "/imagens/NOSSASATIVIDADESECOMMERCE.png", alt: "E-commerce" },
-  { src: "/imagens/NOSSASATIVIDADESCRIACAODECAMPANHAS.png", alt: "Criação de Campanhas e Conteúdos" },
-  { src: "/imagens/NOSSASATIVIDADESINSIGTHSDEMERCADO.png", alt: "Insights de Mercado" },
-  { src: "/imagens/NOSSASATIVIDADESSOLUCOESDIGITAISEDESENVOLVIMENTODESITES.png", alt: "Soluções Digitais e Desenvolvimento de Sites" },
-  { src: "/imagens/NOSSASATIVIDADESSEO.png", alt: "SEO" },
-  { src: "/imagens/NOSSASATIVIDADESAGENTESDEIA.png", alt: "Agentes de IA" },
+  { src: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&h=500&fit=crop", alt: "Google ADS e Meta ADS" },
+  { src: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1200&h=500&fit=crop", alt: "Gestão de Redes Sociais" },
+  { src: "https://images.unsplash.com/photo-1515169067868-5387ec356754?w=1200&h=500&fit=crop", alt: "Conexão e Engajamento de Clientes" },
+  { src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=500&fit=crop", alt: "E-commerce" },
+  { src: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&h=500&fit=crop", alt: "Criação de Campanhas e Conteúdos" },
+  { src: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=500&fit=crop", alt: "Insights de Mercado" },
+  { src: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=500&fit=crop", alt: "Soluções Digitais e Desenvolvimento de Sites" },
+  { src: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1200&h=500&fit=crop", alt: "SEO" },
+  { src: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=500&fit=crop", alt: "Agentes de IA" },
 ];
 
 export default function NossasAtividades() {

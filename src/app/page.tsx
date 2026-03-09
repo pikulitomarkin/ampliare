@@ -460,12 +460,12 @@ export default function Home() {
                           <img
                             src={
                               card.title === "Análise Estratégica"
-                                ? "/imagens/AMPLIARECONSULTORIAANALISEESTRATEGICA.png"
+                                ? "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
                                 : card.title === "Crescimento"
-                                ? "/imagens/AMPLIARECONSULTORIAMARKETINGEPERFORMANCE.png"
+                                ? "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
                                 : card.title === "Estratégia de Marca"
-                                ? "/imagens/AMPLIARECONSULTORIACRIACAODECAMPANHAS.png"
-                                : "/imagens/AMPLIARECONSULTORIASOLUCOESDIGITAISIA.png"
+                                ? "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=800&h=400&fit=crop"
+                                : "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=400&fit=crop"
                             }
                             alt={card.title}
                             style={{
@@ -639,15 +639,15 @@ export default function Home() {
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:mt-16">
             {[
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS1.png",
+                src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=500&fit=crop",
                 alt: "Ecossistema de serviços - Imagem 1",
               },
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS2.png",
+                src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=500&fit=crop",
                 alt: "Ecossistema de serviços - Imagem 2",
               },
               {
-                src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS3.png",
+                src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=500&fit=crop",
                 alt: "Ecossistema de serviços - Imagem 3",
               },
             ].map((img, i) => (
