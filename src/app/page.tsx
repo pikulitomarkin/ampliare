@@ -114,6 +114,21 @@ const parceiros: { nome: string; src: string; alt: string }[] = [
     src: "/logos/hotel-ibis-logo-115294069548cavco4znp.svg",
     alt: "Ibis Hotels",
   },
+  {
+    nome: "Curitiba",
+    src: "/logos/curitiba.jpeg",
+    alt: "Curitiba",
+  },
+  {
+    nome: "Club",
+    src: "/logos/club.jpeg",
+    alt: "Club",
+  },
+  {
+    nome: "7Place",
+    src: "/logos/7place.jpeg",
+    alt: "7Place",
+  },
 ];
 
 function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
