@@ -89,97 +89,63 @@ const cardStyleParceiro: React.CSSProperties = {
   height: "72px",
 };
 
-const parceiros: { nome: string; logo?: string; svg: React.ReactNode }[] = [
+const parceiros: { nome: string; src: string; alt: string }[] = [
   {
     nome: "Pizza Prime",
-    svg: (
-      <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
-        <text x="100" y="28" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
-          PIZZA
-        </text>
-        <text x="100" y="52" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
-          PRIME
-        </text>
-      </svg>
-    ),
+    src: "/logos/logo_pizza_prime.svg",
+    alt: "Pizza Prime",
   },
   {
     nome: "Petz",
-    logo: "/logos/Petz.svg",
-    svg: (
-      <svg viewBox="0 0 160 60" style={{ width: "120px", height: "45px" }}>
-        <text x="80" y="42" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="32" fontWeight="900" fill="#2C2825">
-          Petz
-        </text>
-      </svg>
-    ),
+    src: "/logos/Petz.svg",
+    alt: "Petz",
   },
   {
     nome: "Fast Shop",
-    logo: "/logos/FastShop.svg",
-    svg: (
-      <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
-        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="20" fontWeight="900" fill="#2C2825">
-          FAST
-        </text>
-        <text x="90" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="13" fill="#5A524E" letterSpacing="4">
-          SHOP
-        </text>
-      </svg>
-    ),
+    src: "/logos/FastShop.svg",
+    alt: "Fast Shop",
   },
   {
     nome: "Rede D'Or",
-    svg: (
-      <svg viewBox="0 0 180 60" style={{ width: "140px", height: "45px" }}>
-        <text x="90" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="18" fontWeight="900" fill="#2C2825">
-          REDE
-        </text>
-        <text x="90" y="54" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="13" fill="#5A524E">
-          D&apos;OR
-        </text>
-      </svg>
-    ),
+    src: "/logos/logo_rede_dor-21331594.svg",
+    alt: "Rede D'Or",
   },
   {
     nome: "Ibis Hotels",
-    svg: (
-      <svg viewBox="0 0 200 60" style={{ width: "140px", height: "45px" }}>
-        <text x="100" y="32" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontSize="22" fontWeight="900" fill="#2C2825">
-          Ibis
-        </text>
-        <text x="100" y="54" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="14" fill="#5A524E">
-          Hotels
-        </text>
-      </svg>
-    ),
+    src: "/logos/hotel-ibis-logo-115294069548cavco4znp.svg",
+    alt: "Ibis Hotels",
   },
 ];
 
 function ParceiroCard({ p }: { p: (typeof parceiros)[number] }) {
-  const [imgFailed, setImgFailed] = useState(false);
-  const useImg = p.logo && !imgFailed;
   return (
-    <div className="card-parceiro" style={cardStyleParceiro}>
-      {useImg ? (
-        <img
-          src={p.logo}
-          alt={p.nome}
-          style={{
-            maxHeight: "48px",
-            width: "auto",
-            maxWidth: "120px",
-            objectFit: "contain",
-            filter: "grayscale(100%)",
-            transition: "filter 0.3s ease",
-          }}
-          onError={() => setImgFailed(true)}
-          onMouseEnter={(e) => (e.currentTarget.style.filter = "grayscale(0%)")}
-          onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-        />
-      ) : (
-        p.svg
-      )}
+    <div
+      className="card-parceiro"
+      style={{
+        ...cardStyleParceiro,
+        filter: "grayscale(100%)",
+        transition: "filter 0.3s ease, border-color 0.3s ease",
+        cursor: "pointer",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.filter = "grayscale(0%)";
+        e.currentTarget.style.borderColor = "var(--crimson)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.filter = "grayscale(100%)";
+        e.currentTarget.style.borderColor = "var(--border-light)";
+      }}
+    >
+      <img
+        src={p.src}
+        alt={p.alt}
+        style={{
+          maxWidth: "120px",
+          maxHeight: "50px",
+          objectFit: "contain",
+          display: "block",
+        }}
+      />
     </div>
   );
 }
