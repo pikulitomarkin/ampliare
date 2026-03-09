@@ -215,40 +215,157 @@ export default function Home() {
           }}
         />
 
-        {/* Overlay gradiente sobre a imagem para profundidade */}
+        {/* Overlay gradiente para legibilidade do texto */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            zIndex: 1,
+            zIndex: 2,
             background: `
-              linear-gradient(to bottom,
-                rgba(15,8,8,0.3) 0%,
-                rgba(15,8,8,0.1) 40%,
-                rgba(15,8,8,0.5) 70%,
-                rgba(15,8,8,0.95) 100%
-              ),
               linear-gradient(to right,
-                rgba(15,8,8,0.6) 0%,
-                transparent 50%,
-                rgba(15,8,8,0.3) 100%
+                rgba(236,234,230,0.75) 0%,
+                rgba(236,234,230,0.4) 45%,
+                transparent 70%
+              ),
+              linear-gradient(to top,
+                rgba(236,234,230,0.6) 0%,
+                transparent 50%
               )
             `,
+            pointerEvents: "none",
           }}
           aria-hidden
         />
 
-        {/* Conteúdo sobre a imagem */}
+        {/* Texto Hero — NÓS CRIAMOS A EVOLUÇÃO */}
         <div
           style={{
-            position: "relative",
-            zIndex: 2,
-            textAlign: "center",
-            padding: "2rem",
+            position: "absolute",
+            bottom: "10%",
+            left: "5%",
+            zIndex: 3,
+            maxWidth: "520px",
           }}
+          className="hero-text-container"
         >
-          {/* Espaço para tagline ou CTA se necessário */}
+          {/* Tag decorativa */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "1rem",
+            }}
+          >
+            <div
+              style={{
+                width: "32px",
+                height: "2px",
+                background: "#7D2B2B",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "0.7rem",
+                letterSpacing: "0.25em",
+                color: "#7D2B2B",
+                textTransform: "uppercase",
+                fontWeight: 500,
+              }}
+            >
+              Ampliare Consultoria
+            </span>
+          </div>
+
+          {/* Título principal */}
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
+              fontWeight: 900,
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+              color: "#2C2825",
+              marginBottom: "1.25rem",
+              textTransform: "uppercase",
+            }}
+          >
+            NÓS CRIAMOS
+            <br />
+            <span style={{ color: "#7D2B2B" }}>A EVOLUÇÃO.</span>
+          </h1>
+
+          {/* Linha decorativa */}
+          <div
+            style={{
+              width: "60px",
+              height: "3px",
+              background: "linear-gradient(90deg, #7D2B2B, #B07070)",
+              marginBottom: "1.25rem",
+              borderRadius: "2px",
+            }}
+          />
+
+          {/* Subtítulo */}
+          <p
+            style={{
+              fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+              color: "#5A524E",
+              lineHeight: 1.7,
+              marginBottom: "2rem",
+              maxWidth: "380px",
+            }}
+          >
+            Estratégia, dados e inovação para marcas que querem liderar seus
+            mercados.
+          </p>
+
+          {/* CTA */}
+          <a
+            href="/solucoes-estrategicas"
+            style={{
+              display: "inline-block",
+              padding: "0.875rem 2rem",
+              background: "#7D2B2B",
+              color: "#EDE8E0",
+              fontSize: "0.8rem",
+              fontWeight: 600,
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              borderRadius: "2px",
+              transition: "all 0.3s",
+              boxShadow: "0 4px 20px rgba(125,43,43,0.3)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#9B3535";
+              e.currentTarget.style.boxShadow =
+                "0 6px 28px rgba(125,43,43,0.45)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#7D2B2B";
+              e.currentTarget.style.boxShadow =
+                "0 4px 20px rgba(125,43,43,0.3)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            Conheça Nossas Soluções
+          </a>
         </div>
+
+        <style jsx>{`
+          @media (max-width: 768px) {
+            .hero-text-container {
+              bottom: 5% !important;
+              left: 1.5rem !important;
+              right: 1.5rem !important;
+              max-width: 100% !important;
+            }
+            .hero-text-container h1 {
+              font-size: clamp(1.6rem, 7vw, 2.5rem) !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Separador */}
