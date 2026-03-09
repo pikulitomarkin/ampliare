@@ -4,22 +4,22 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 
-// Nosso Foco — imagens de serviços (pasta /public/site/ vazia; usando Unsplash)
+// Nosso Foco — imagens de serviços
 const focoCards = [
   {
-    imagem: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
+    imagem: "/imagens/NOSSOFOCO1.jpg",
     legenda: "Análise Estratégica",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=600&q=80",
+    imagem: "/imagens/NOSSOFOCO2.jpg",
     legenda: "Marketing & Performance",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+    imagem: "/imagens/NOSSOFOCO3.jpg",
     legenda: "Criação de Campanhas",
   },
   {
-    imagem: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    imagem: "/imagens/NOSSOFOCO4.jpg",
     legenda: "Soluções Digitais & IA",
   },
 ];
