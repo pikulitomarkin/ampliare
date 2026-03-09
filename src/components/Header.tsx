@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full shadow-lg backdrop-blur-md" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)", background: "var(--bg-header)" }}>
       <div
-        className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 md:px-8 lg:px-16"
+        className="mx-auto flex w-full max-w-7xl items-center justify-between py-3 px-4 sm:px-6 md:px-8 lg:px-16"
       >
         <Link
           href="/"
@@ -35,7 +35,7 @@ export function Header() {
         >
           <svg
             viewBox="0 0 260 90"
-            style={{ maxWidth: "100%", height: "auto", width: "160px", flexShrink: 0 }}
+            style={{ maxWidth: "100%", height: "auto", width: "clamp(120px, 20vw, 160px)", flexShrink: 0 }}
             className="h-auto"
             aria-hidden
           >
@@ -54,8 +54,8 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
-          style={{ color: "var(--text-light)", zIndex: 60 }}
+          className="flex shrink-0 items-center justify-center rounded-lg transition-colors"
+          style={{ color: "var(--text-light)", zIndex: 60, minWidth: "44px", minHeight: "44px" }}
           onClick={() => setMenuAberto(!menuAberto)}
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
           aria-expanded={menuAberto}
@@ -79,24 +79,24 @@ export function Header() {
             ✕
           </button>
 
-          <nav className="flex flex-col items-center gap-8">
-            <Link href="/" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
+          <nav className="flex flex-col items-center gap-6 px-4">
+            <Link href="/" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-2xl sm:text-3xl md:text-4xl font-light no-underline tracking-wide transition-colors">
               Início
             </Link>
-            <Link href="/solucoes-estrategicas" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
+            <Link href="/solucoes-estrategicas" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-2xl sm:text-3xl md:text-4xl font-light no-underline tracking-wide transition-colors">
               Soluções Estratégicas
             </Link>
-            <Link href="/nossas-atividades" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
+            <Link href="/nossas-atividades" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-2xl sm:text-3xl md:text-4xl font-light no-underline tracking-wide transition-colors">
               Nossas Atividades
             </Link>
-            <Link href="/ampliare-consultoria" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-[2rem] font-light no-underline tracking-wide transition-colors">
+            <Link href="/ampliare-consultoria" onClick={() => setMenuAberto(false)} className="nav-overlay-link text-2xl sm:text-3xl md:text-4xl font-light no-underline tracking-wide transition-colors">
               Ampliare Consultoria
             </Link>
             <Link
               href="/contato"
               onClick={() => setMenuAberto(false)}
-              className="mt-4 inline-block px-10 py-3.5 text-base font-medium uppercase tracking-wider no-underline transition-colors hover:opacity-90"
-              style={{ backgroundColor: "var(--crimson)", color: "#EDE8E0" }}
+              className="mt-4 inline-block px-8 py-3.5 text-sm sm:text-base font-medium uppercase tracking-wider no-underline transition-colors hover:opacity-90"
+              style={{ backgroundColor: "var(--crimson)", color: "#EDE8E0", minHeight: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}
             >
               Entre em Contato
             </Link>

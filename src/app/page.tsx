@@ -178,7 +178,7 @@ export default function Home() {
         style={{
           position: "relative",
           width: "100%",
-          minHeight: "100vh",
+          minHeight: "clamp(60vh, 80vh, 100vh)",
           overflow: "hidden",
           display: "flex",
           alignItems: "center",
@@ -196,7 +196,7 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center",
+            objectPosition: "center top",
             zIndex: 0,
           }}
         />
@@ -243,10 +243,10 @@ export default function Home() {
       {/* Soluções — tag vertical, título, 4 cards */}
       <section
         id="solucoes"
-        className="relative overflow-x-hidden overflow-y-visible py-16 sm:py-20 lg:py-24"
+        className="relative overflow-x-hidden overflow-y-visible py-12 md:py-20 lg:py-28"
         style={{ background: "var(--bg-main)" }}
       >
-        <div className="mx-auto max-w-7xl overflow-x-hidden px-6 md:px-8 lg:px-16">
+        <div className="mx-auto max-w-7xl overflow-x-hidden px-4 sm:px-6 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -270,13 +270,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//SOLUÇÕES"}
                 </p>
                 <h2
                   className="mt-3 border-l-4 pl-4 font-bold uppercase tracking-tight"
                   style={{
-                    fontSize: "clamp(1.6rem, 4vw, 3rem)",
+                    fontSize: "clamp(1.6rem, 5vw, 3rem)",
                     wordBreak: "break-word",
                     lineHeight: 1.2,
                     borderColor: "var(--crimson)",
@@ -285,7 +285,7 @@ export default function Home() {
                 >
                   Crescimento exige estratégia
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+                <p className="mt-4 max-w-2xl leading-relaxed" style={{ color: "var(--text-secondary)", fontSize: "clamp(0.9rem, 2vw, 1.05rem)" }}>
                   Nossas soluções propõem uma nova forma de pensar, criar e gerar
                   resultados de alto impacto para o mundo em constante
                   transformação.
@@ -293,8 +293,8 @@ export default function Home() {
                 <div className="mt-8">
                   <Link
                     href="/solucoes-estrategicas"
-                    className="inline-flex items-center justify-center rounded px-5 py-2.5 text-sm font-semibold uppercase tracking-wider shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
-                    style={{ background: "var(--crimson)", color: "var(--text-light)" }}
+                    className="inline-flex items-center justify-center rounded px-5 py-3 text-sm font-semibold uppercase tracking-wider shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+                    style={{ background: "var(--crimson)", color: "var(--text-light)", minHeight: "44px" }}
                   >
                     Conheça nossas soluções
                   </Link>
@@ -303,7 +303,7 @@ export default function Home() {
 
               {/* Grid responsivo: 1 col mobile, 2 cols tablet, 4 cols desktop */}
               <div className="mt-12 lg:mt-14">
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                   {solucoesCards.map((card, index) => (
                     <motion.li
                       key={card.title}
@@ -337,16 +337,16 @@ export default function Home() {
                         />
                         <div className="p-4 lg:p-6">
                           <div className="flex shrink-0 justify-center">
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
-                              <card.icon className="h-10 w-10 glow-crimson" size={40} />
+                            <div className="flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full transition-colors group-hover:bg-[var(--crimson)] group-hover:text-white" style={{ backgroundColor: "rgba(125,43,43,0.1)", color: "var(--crimson)" }}>
+                              <card.icon className="h-8 w-8 sm:h-10 sm:w-10 glow-crimson" />
                             </div>
                           </div>
-                          <h3 className="mt-4 text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                          <h3 className="mt-4 text-base sm:text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
                             {card.title}
                           </h3>
                           <p
                             className="mt-3 leading-relaxed"
-                            style={{ color: "var(--text-secondary)", fontSize: "clamp(0.85rem, 2vw, 1rem)" }}
+                            style={{ color: "var(--text-secondary)", fontSize: "clamp(0.85rem, 1.5vw, 1rem)" }}
                           >
                             {card.description}
                           </p>
@@ -370,10 +370,10 @@ export default function Home() {
       `}} />
       <section
         id="parceiros"
-        className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
+        className="relative overflow-hidden py-12 md:py-20 lg:py-28"
         style={{ background: "var(--bg-section)" }}
       >
-        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -12 }}
@@ -397,21 +397,20 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#7D2B2B] lg:sr-only">
                   {"//PARCEIROS"}
                 </p>
-                <h2 className="mt-3 text-responsive-h2 font-bold uppercase tracking-tight" style={{ color: "var(--text-primary)" }}>
+                <h2 className="mt-3 font-bold uppercase tracking-tight" style={{ color: "var(--text-primary)", fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}>
                   Marcas que estão evoluindo conosco
                 </h2>
               </motion.div>
 
               <div
-                className="mt-10 overflow-x-auto pb-4 scrollbar-hide lg:mt-12 lg:overflow-hidden lg:pb-0"
-                style={{ scrollbarWidth: "none" }}
+                className="mt-10 overflow-x-auto pb-4 parceiros-scroll lg:mt-12 lg:overflow-hidden lg:pb-0"
                 aria-label="Parceiros"
               >
                 <div
-                  className="flex w-max gap-8 sm:gap-10"
+                  className="flex w-max gap-6 sm:gap-8 lg:gap-10"
                   style={{ animation: "marquee-parceiros 40s linear infinite" }}
                 >
                   {[...parceiros, ...parceiros].map((p, i) => (
@@ -432,11 +431,11 @@ export default function Home() {
       {/* Ecossistema de Serviços — tag + título à esquerda, texto à direita, grid 3 imagens */}
       <section
         id="servicos"
-        className="py-16 sm:py-20 lg:py-24"
+        className="py-12 md:py-20 lg:py-28"
         style={{ background: "var(--bg-main)" }}
       >
-        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-16">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-16">
             <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
               <motion.div
                 initial={{ opacity: 0, x: -12 }}
@@ -459,17 +458,17 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="min-w-0"
               >
-                <p className="text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest lg:sr-only" style={{ color: "var(--crimson)" }}>
                   {"//SERVIÇOS"}
                 </p>
-                <h2 className="mt-3 border-l-4 pl-4 text-2xl font-bold uppercase tracking-tight sm:text-3xl lg:text-4xl" style={{ borderColor: "var(--crimson)", color: "var(--text-primary)" }}>
+                <h2 className="mt-3 border-l-4 pl-4 font-bold uppercase tracking-tight" style={{ borderColor: "var(--crimson)", color: "var(--text-primary)", fontSize: "clamp(1.4rem, 3.5vw, 2.5rem)" }}>
                   Ecossistema de serviços
                 </h2>
                 <div className="mt-6">
                   <Link
                     href="/nossas-atividades"
-                    className="inline-flex items-center justify-center rounded border-2 bg-transparent px-5 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all hover:bg-[var(--crimson)] hover:text-[var(--text-light)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
-                    style={{ borderColor: "var(--crimson)", color: "var(--crimson)" }}
+                    className="inline-flex items-center justify-center rounded border-2 bg-transparent px-5 py-3 text-sm font-semibold uppercase tracking-wider transition-all hover:bg-[var(--crimson)] hover:text-[var(--text-light)] focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+                    style={{ borderColor: "var(--crimson)", color: "var(--crimson)", minHeight: "44px" }}
                   >
                     O que fazemos
                   </Link>
@@ -484,7 +483,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex items-start lg:pt-2"
             >
-              <p className="text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-secondary)" }}>
+              <p className="leading-relaxed" style={{ color: "var(--text-secondary)", fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)" }}>
                 Entendemos o mercado e as tendências para gerar soluções
                 assertivas. Nossos serviços envolvem planejamento, produção,
                 análise e otimização de todos os processos de marketing e vendas.
@@ -492,7 +491,7 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8 lg:mt-16">
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 lg:mt-16">
             {[
               {
                 src: "/imagens/PRIMEIRAPAGINAECOSSISTEMADESERVICOS1.jpg",
@@ -513,8 +512,8 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="relative h-[320px] overflow-hidden rounded-xl border shadow-sm"
-                style={{ borderColor: "var(--border-light)" }}
+                className="relative overflow-hidden rounded-xl border shadow-sm"
+                style={{ borderColor: "var(--border-light)", height: "clamp(220px, 30vw, 320px)" }}
               >
                 <img
                   src={img.src}
@@ -538,11 +537,12 @@ export default function Home() {
       {/* Metodologia — seção escura para contraste */}
       <section
         id="metodologia"
-        style={{ background: "#2A1F1F", padding: "6rem 0", overflow: "hidden" }}
+        style={{ background: "#2A1F1F", padding: "clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 4rem)", overflow: "hidden" }}
       >
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           {/* TAG LATERAL */}
           <span
+            className="hidden md:block"
             style={{
               writingMode: "vertical-rl",
               fontSize: "0.7rem",
@@ -555,12 +555,18 @@ export default function Home() {
             //METODOLOGIAS
           </span>
 
-          {/* GRID PRINCIPAL — proporção 55/45 */}
+          {/* TAG MOBILE */}
+          <span
+            className="block md:hidden text-xs font-semibold uppercase tracking-widest mb-4"
+            style={{ color: "#7D2B2B" }}
+          >
+            //METODOLOGIAS
+          </span>
+
+          {/* GRID PRINCIPAL — 1 coluna mobile, 2 colunas desktop */}
           <div
+            className="grid grid-cols-1 md:grid-cols-[55%_45%] gap-8 md:gap-8"
             style={{
-              display: "grid",
-              gridTemplateColumns: "55% 45%",
-              gap: "2rem",
               alignItems: "start",
             }}
           >
@@ -575,7 +581,7 @@ export default function Home() {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4 }}
                   style={{
-                    fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
+                    fontSize: "clamp(2rem, 8vw, 4.5rem)",
                     fontWeight: 900,
                     lineHeight: 1,
                     color: "#7D2B2B",
@@ -603,7 +609,7 @@ export default function Home() {
                   style={{
                     color: "#C4BFB8",
                     lineHeight: 1.8,
-                    fontSize: "clamp(0.85rem, 1.2vw, 1rem)",
+                    fontSize: "clamp(0.85rem, 1.5vw, 1rem)",
                     maxWidth: "560px",
                   }}
                 >
@@ -626,6 +632,7 @@ export default function Home() {
                     cursor: "pointer",
                     borderBottom: "1px solid rgba(255,255,255,0.06)",
                     transition: "all 0.3s",
+                    minHeight: "44px",
                   }}
                 >
                   <div
@@ -641,7 +648,7 @@ export default function Home() {
                     style={{
                       color: index === ativo ? "#B07070" : "#6B5555",
                       fontWeight: index === ativo ? 600 : 400,
-                      fontSize: "0.95rem",
+                      fontSize: "clamp(0.85rem, 1.5vw, 0.95rem)",
                       transition: "all 0.3s",
                       letterSpacing: "0.05em",
                     }}

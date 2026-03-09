@@ -229,12 +229,12 @@ export default function NossasAtividades() {
       </section>
 
       {/* Layout: select (mobile) / menu lateral (desktop) + conteúdo */}
-      <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 lg:py-16 lg:px-16">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 lg:py-16 lg:px-16">
         <div className="lg:flex lg:gap-12">
           {/* Select dropdown no mobile */}
           <select
             className="mb-6 w-full rounded border p-3 md:mb-0 md:hidden"
-            style={{ borderColor: "var(--border-mid)", background: "var(--bg-card)", color: "var(--text-primary)" }}
+            style={{ borderColor: "var(--border-mid)", background: "var(--bg-card)", color: "var(--text-primary)", fontSize: "16px", minHeight: "44px" }}
             value={Math.max(0, servicos.findIndex((s) => s.id === activeId))}
             onChange={(e) => {
               const i = Number(e.target.value);
@@ -267,9 +267,10 @@ export default function NossasAtividades() {
                     e.preventDefault();
                     document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                  className={`block rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
                     activeId === s.id ? "bg-[var(--crimson)] text-[var(--text-light)]" : "text-[var(--gray-700)] hover:text-[var(--crimson)]"
                   }`}
+                  style={{ minHeight: "44px", display: "flex", alignItems: "center" }}
                 >
                   {s.title}
                 </a>
@@ -292,28 +293,28 @@ export default function NossasAtividades() {
                       initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      className="text-2xl font-bold sm:text-3xl"
-                      style={{ color: "var(--text-primary)" }}
+                      className="font-bold"
+                      style={{ color: "var(--text-primary)", fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
                     >
                       {s.title}
                     </motion.h2>
                     {s.subtitle && (
-                      <p className="mt-2 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
+                      <p className="mt-2 font-semibold" style={{ color: "var(--crimson)", fontSize: "clamp(1rem, 2vw, 1.125rem)" }}>
                         {s.subtitle}
                       </p>
                     )}
                     {s.intro && (
-                      <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                      <p className="mt-4 leading-relaxed" style={{ color: "var(--text-secondary)", fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}>
                         {s.intro}
                       </p>
                     )}
                     {s.text && (
-                      <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                      <p className="mt-4 leading-relaxed" style={{ color: "var(--text-secondary)", fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}>
                         {s.text}
                       </p>
                     )}
                     {s.subtitle2 && (
-                      <p className="mt-6 text-lg font-semibold" style={{ color: "var(--crimson)" }}>
+                      <p className="mt-6 font-semibold" style={{ color: "var(--crimson)", fontSize: "clamp(1rem, 2vw, 1.125rem)" }}>
                         {s.subtitle2}
                       </p>
                     )}
@@ -354,6 +355,20 @@ export default function NossasAtividades() {
                     )}
                   </div>
                   {/* Imagem do serviço */}
+                  <div className="lg:hidden mb-6">
+                    <div className="overflow-hidden rounded-xl shadow-md">
+                      <img
+                        src={servicosImagens[index].src}
+                        alt={servicosImagens[index].alt}
+                        style={{
+                          width: "100%",
+                          height: "clamp(220px, 30vw, 400px)",
+                          objectFit: "cover",
+                          display: "block",
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div className="hidden lg:block">
                     <div className="overflow-hidden rounded-xl shadow-md">
                       <img
@@ -377,8 +392,8 @@ export default function NossasAtividades() {
         <div className="mt-12 text-center">
           <Link
             href="/contato"
-            className="inline-flex items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
-            style={{ background: "var(--crimson)", color: "var(--text-light)" }}
+            className="inline-flex w-full sm:w-auto items-center justify-center rounded px-6 py-3 text-sm font-semibold shadow-md transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--crimson)] focus:ring-offset-2 focus:ring-offset-[var(--bg-main)]"
+            style={{ background: "var(--crimson)", color: "var(--text-light)", minHeight: "44px" }}
           >
             Falar sobre um projeto
           </Link>

@@ -41,16 +41,16 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <footer>
           <section style={{ background: "var(--bg-dark)" }}>
-            <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20 lg:px-16 lg:py-24">
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:px-8 md:py-20 lg:px-16 lg:py-24">
               <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
                 <div>
-                  <h2 className="font-display text-responsive-h2 font-bold uppercase leading-tight tracking-tight" style={{ color: "var(--text-light)" }}>
+                  <h2 className="font-display font-bold uppercase leading-tight tracking-tight" style={{ color: "var(--text-light)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
                     O digital avança todos os dias
                   </h2>
-                  <p className="mt-6 text-base leading-relaxed sm:text-lg" style={{ color: "var(--gray-300)" }}>
+                  <p className="mt-6 leading-relaxed" style={{ color: "var(--gray-300)", fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)" }}>
                     O ambiente digital se transforma em ritmo acelerado, exigindo adaptação contínua das marcas que desejam permanecer relevantes. Novas tecnologias, comportamentos e oportunidades surgem constantemente, e acompanhar esse movimento deixou de ser diferencial — tornou-se necessidade.
                   </p>
-                  <p className="mt-4 text-base leading-relaxed sm:text-lg" style={{ color: "var(--gray-300)" }}>
+                  <p className="mt-4 leading-relaxed" style={{ color: "var(--gray-300)", fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)" }}>
                     Empresas que evoluem com estratégia, dados e inovação conseguem não apenas acompanhar as mudanças, mas liderar seus mercados.
                   </p>
                 </div>
@@ -79,6 +79,7 @@ export default function RootLayout({
                     <Link
                       href="/contato"
                       className="btn-cta-footer inline-flex w-full items-center justify-center rounded px-6 py-3.5 text-sm font-semibold uppercase tracking-wider shadow-lg transition-all sm:w-auto"
+                      style={{ minHeight: "44px" }}
                     >
                       Entre em contato
                     </Link>
@@ -97,7 +98,7 @@ export default function RootLayout({
               padding: "1.5rem",
               textAlign: "center",
               color: "var(--text-muted)",
-              fontSize: "0.8rem",
+              fontSize: "clamp(0.7rem, 1.5vw, 0.8rem)",
               background: "var(--bg-main)",
             }}
           >

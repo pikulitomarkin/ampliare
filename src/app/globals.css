@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ━━━ RESET E RESPONSIVIDADE BASE ━━━ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* ━━━ TEMA GLOBAL — cinza premium (light) inspirado na imagem Hero ━━━ */
 :root {
   /* Backgrounds — cinza frio/quente em camadas */
@@ -94,6 +110,15 @@ textarea::placeholder {
   scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Parceiros scroll mobile */
+.parceiros-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.parceiros-scroll::-webkit-scrollbar {
   display: none;
 }
 
